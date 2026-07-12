@@ -1,0 +1,226 @@
+{% liquid
+  assign has_desktop_image = false
+  if section.settings.desktop_image != blank
+    assign has_desktop_image = true
+  endif
+
+  assign has_mobile_image = false
+  if section.settings.mobile_image != blank
+    assign has_mobile_image = true
+  endif
+
+  assign image_alt = section.settings.image_alt
+  if image_alt == blank and has_desktop_image
+    assign image_alt = section.settings.desktop_image.alt
+  endif
+%}
+
+{{ 'hvdq-homepage.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="hvdq-hero hvdq-hero--content-{{ section.settings.content_alignment }} hvdq-hero--image-{{ section.settings.image_position }}"
+  {{ section.shopify_attributes }}
+>
+  <div class="hvdq-hero__media">
+    {% if has_desktop_image %}
+      <img
+        srcset="
+          {{ section.settings.desktop_image | image_url: width: 750 }} 750w,
+          {{ section.settings.desktop_image | image_url: width: 1100 }} 1100w,
+          {{ section.settings.desktop_image | image_url: width: 1500 }} 1500w,
+          {{ section.settings.desktop_image | image_url: width: 2200 }} 2200w
+        "
+        sizes="(min-width: 750px) 50vw, 100vw"
+        src="{{ section.settings.desktop_image | image_url: width: 1500 }}"
+        alt="{{ image_alt | escape }}"
+        width="{{ section.settings.desktop_image.width }}"
+        height="{{ section.settings.desktop_image.height }}"
+        loading="eager"
+        fetchpriority="high"
+        class="hvdq-hero__image hvdq-hero__image--desktop{% if has_mobile_image %} hvdq-hero__image--desktop-only{% endif %}"
+      >
+      {% if has_mobile_image %}
+        <img
+          srcset="
+            {{ section.settings.mobile_image | image_url: width: 480 }} 480w,
+            {{ section.settings.mobile_image | image_url: width: 750 }} 750w,
+            {{ section.settings.mobile_image | image_url: width: 1100 }} 1100w
+          "
+          sizes="100vw"
+          src="{{ section.settings.mobile_image | image_url: width: 750 }}"
+          alt="{{ image_alt | escape }}"
+          width="{{ section.settings.mobile_image.width }}"
+          height="{{ section.settings.mobile_image.height }}"
+          loading="eager"
+          fetchpriority="high"
+          class="hvdq-hero__image hvdq-hero__image--mobile-only"
+        >
+      {% endif %}
+      {% if section.settings.overlay_strength > 0 %}
+        <span
+          class="hvdq-hero__overlay"
+          style="--hvdq-hero-overlay-opacity: {{ section.settings.overlay_strength | times: 0.01 }};"
+          aria-hidden="true"
+        ></span>
+      {% endif %}
+    {% else %}
+      <div class="hvdq-hero__placeholder" role="img" aria-label="{{ 'hvdq.hero.placeholder_alt' | t }}">
+        {{ 'image' | placeholder_svg_tag: 'hvdq-hero__placeholder-svg' }}
+      </div>
+    {% endif %}
+    {% if section.settings.show_decorative_mark %}
+      <span class="hvdq-hero__decorative-mark" aria-hidden="true"></span>
+    {% endif %}
+  </div>
+
+  <div class="hvdq-hero__content">
+    {% if section.settings.eyebrow != blank %}
+      <p class="hvdq-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h1 class="hvdq-hero__heading">{{ section.settings.heading | escape }}</h1>
+    {% endif %}
+
+    {% if section.settings.body != blank %}
+      <div class="hvdq-hero__body">{{ section.settings.body }}</div>
+    {% endif %}
+
+    {% if section.settings.primary_button_label != blank or section.settings.secondary_button_label != blank %}
+      <div class="hvdq-hero__actions">
+        {% if section.settings.primary_button_label != blank and section.settings.primary_button_url != blank %}
+          <a href="{{ section.settings.primary_button_url }}" class="button">
+            {{- section.settings.primary_button_label | escape -}}
+          </a>
+        {% endif %}
+        {% if section.settings.secondary_button_label != blank and section.settings.secondary_button_url != blank %}
+          <a href="{{ section.settings.secondary_button_url }}" class="button-secondary">
+            {{- section.settings.secondary_button_label | escape -}}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:names.hvdq_hero",
+  "tag": "section",
+  "class": "hvdq-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:settings.hvdq_eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.hvdq_heading"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "t:settings.hvdq_body"
+    },
+    {
+      "type": "header",
+      "content": "t:content.hvdq_media"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "t:settings.hvdq_desktop_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "t:settings.hvdq_mobile_image",
+      "info": "t:info.hvdq_mobile_image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "t:settings.hvdq_image_alt",
+      "info": "t:info.hvdq_image_alt"
+    },
+    {
+      "type": "range",
+      "id": "overlay_strength",
+      "label": "t:settings.hvdq_overlay_strength",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "show_decorative_mark",
+      "label": "t:settings.hvdq_show_decorative_mark",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:content.hvdq_actions"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "t:settings.hvdq_button_label"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_url",
+      "label": "t:settings.hvdq_button_url"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "t:settings.hvdq_button_label"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_url",
+      "label": "t:settings.hvdq_button_url"
+    },
+    {
+      "type": "header",
+      "content": "t:content.hvdq_layout"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "t:settings.hvdq_content_alignment",
+      "options": [
+        { "value": "start", "label": "t:options.left" },
+        { "value": "center", "label": "t:options.center" }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "t:settings.hvdq_image_position",
+      "options": [
+        { "value": "start", "label": "t:options.left" },
+        { "value": "end", "label": "t:options.right" }
+      ],
+      "default": "end"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.hvdq_hero",
+      "settings": {
+        "eyebrow": "HVDQ",
+        "heading": "Thủ Nghệ Bách Phẩm Đường",
+        "content_alignment": "start",
+        "image_position": "end",
+        "show_decorative_mark": true
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,118 @@
+{% liquid
+  assign valid_blocks = section.blocks | where: 'type', 'testimonial'
+%}
+
+{% capture testimonials_markup %}
+  {% for block in valid_blocks %}
+    {% if block.settings.quote != blank %}
+      {% liquid
+        assign has_image = false
+        if block.settings.image != blank
+          assign has_image = true
+        endif
+        assign testimonial_alt = block.settings.image_alt
+        if testimonial_alt == blank and has_image
+          assign testimonial_alt = block.settings.customer_name
+        endif
+      %}
+      <li class="hvdq-testimonial" {{ block.shopify_attributes }}>
+        <blockquote class="hvdq-testimonial__quote">
+          <p>{{ block.settings.quote | escape }}</p>
+        </blockquote>
+        {% if block.settings.customer_name != blank or has_image %}
+          <figcaption class="hvdq-testimonial__attribution">
+            {% if has_image %}
+              <img
+                srcset="
+                  {{ block.settings.image | image_url: width: 80 }} 80w,
+                  {{ block.settings.image | image_url: width: 160 }} 160w
+                "
+                sizes="48px"
+                src="{{ block.settings.image | image_url: width: 80 }}"
+                alt="{{ testimonial_alt | escape }}"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                loading="lazy"
+                class="hvdq-testimonial__image"
+              >
+            {% endif %}
+            {% if block.settings.customer_name != blank %}
+              <span class="hvdq-testimonial__name">{{ block.settings.customer_name | escape }}</span>
+            {% endif %}
+            {% if block.settings.customer_role != blank %}
+              <span class="hvdq-testimonial__role">{{ block.settings.customer_role | escape }}</span>
+            {% endif %}
+          </figcaption>
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+{% assign trimmed_testimonials = testimonials_markup | strip %}
+
+{% if trimmed_testimonials != blank %}
+  <section class="hvdq-testimonials" {{ section.shopify_attributes }}>
+    {% if section.settings.heading != blank %}
+      <h2 class="hvdq-testimonials__heading">{{ section.settings.heading | escape }}</h2>
+    {% endif %}
+    <ul class="hvdq-testimonials__grid" role="list">
+      {{ testimonials_markup }}
+    </ul>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:names.hvdq_testimonials",
+  "tag": "section",
+  "class": "hvdq-section",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.hvdq_heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "t:names.hvdq_testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "t:settings.hvdq_quote"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "t:settings.hvdq_customer_name"
+        },
+        {
+          "type": "text",
+          "id": "customer_role",
+          "label": "t:settings.hvdq_customer_role"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.hvdq_image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "t:settings.hvdq_image_alt",
+          "info": "t:info.hvdq_image_alt"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.hvdq_testimonials"
+    }
+  ]
+}
+{% endschema %}
