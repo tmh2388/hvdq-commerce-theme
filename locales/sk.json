@@ -364,19 +364,5 @@
       "default_title": "Predvolený názov",
       "sticky_add_to_cart": "Panel rýchleho pridania do košíka"
     }
-  },
-  "hvdq": {
-    "hero": {
-      "placeholder_alt": "Hero image placeholder"
-    },
-    "artisan": {
-      "placeholder_alt": "Artisan portrait placeholder"
-    },
-    "bespoke": {
-      "placeholder_alt": "Consultant portrait placeholder"
-    },
-    "footer": {
-      "booking_link_label": "Book a consultation"
-    }
   }
 }

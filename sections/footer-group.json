@@ -14,6 +14,10 @@
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
+        "hvdq_footer_brand_contact": {
+          "type": "hvdq-footer-brand-contact",
+          "settings": {}
+        },
         "group_H6VpwJ": {
           "type": "group",
           "settings": {
@@ -131,6 +135,7 @@
         }
       },
       "block_order": [
+        "hvdq_footer_brand_contact",
         "group_H6VpwJ",
         "email_signup_crihX7"
       ],

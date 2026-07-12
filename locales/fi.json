@@ -350,19 +350,5 @@
       "success_moderated": "Kommentti on julkaistu; odotetaan moderointia",
       "success": "Kommentti on julkaistu"
     }
-  },
-  "hvdq": {
-    "hero": {
-      "placeholder_alt": "Hero image placeholder"
-    },
-    "artisan": {
-      "placeholder_alt": "Artisan portrait placeholder"
-    },
-    "bespoke": {
-      "placeholder_alt": "Consultant portrait placeholder"
-    },
-    "footer": {
-      "booking_link_label": "Book a consultation"
-    }
   }
 }

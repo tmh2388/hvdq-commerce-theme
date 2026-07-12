@@ -350,19 +350,5 @@
       "default_title": "預設標題",
       "sticky_add_to_cart": "快速加入購物車列"
     }
-  },
-  "hvdq": {
-    "hero": {
-      "placeholder_alt": "Hero image placeholder"
-    },
-    "artisan": {
-      "placeholder_alt": "Artisan portrait placeholder"
-    },
-    "bespoke": {
-      "placeholder_alt": "Consultant portrait placeholder"
-    },
-    "footer": {
-      "booking_link_label": "Book a consultation"
-    }
   }
 }

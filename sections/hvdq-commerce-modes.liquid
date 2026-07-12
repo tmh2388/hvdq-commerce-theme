@@ -64,7 +64,7 @@
 
 {% schema %}
 {
-  "name": "t:names.hvdq_commerce_modes",
+  "name": "HVDQ Commerce Modes",
   "tag": "section",
   "class": "hvdq-section",
   "max_blocks": 3,
@@ -72,57 +72,57 @@
     {
       "type": "text",
       "id": "heading",
-      "label": "t:settings.hvdq_heading"
+      "label": "Tiêu đề / Heading"
     }
   ],
   "blocks": [
     {
       "type": "mode",
-      "name": "t:names.hvdq_commerce_mode",
+      "name": "Hình thức mua hàng / Commerce mode",
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "t:settings.hvdq_title"
+          "label": "Tiêu đề / Title"
         },
         {
           "type": "text",
           "id": "subtitle",
-          "label": "t:settings.hvdq_subtitle"
+          "label": "Tiêu đề phụ / Subtitle"
         },
         {
           "type": "richtext",
           "id": "body",
-          "label": "t:settings.hvdq_body"
+          "label": "Nội dung / Body"
         },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "t:settings.hvdq_image"
+          "label": "Ảnh / Image"
         },
         {
           "type": "text",
           "id": "image_alt",
-          "label": "t:settings.hvdq_image_alt",
-          "info": "t:info.hvdq_image_alt"
+          "label": "Văn bản thay thế cho ảnh / Image alt text",
+          "info": "Dùng văn bản thay thế của ảnh nếu để trống. / Falls back to the image's own alt text."
         },
         {
           "type": "text",
           "id": "link_label",
-          "label": "t:settings.hvdq_link_label"
+          "label": "Nhãn liên kết / Link label"
         },
         {
           "type": "url",
           "id": "link_url",
-          "label": "t:settings.hvdq_link_url"
+          "label": "Liên kết / Link"
         },
         {
           "type": "select",
           "id": "tone",
-          "label": "t:settings.hvdq_tone",
+          "label": "Tông màu / Tone",
           "options": [
-            { "value": "light", "label": "t:options.hvdq_tone_light" },
-            { "value": "dark", "label": "t:options.hvdq_tone_dark" }
+            { "value": "light", "label": "Sáng / Light" },
+            { "value": "dark", "label": "Tối / Dark" }
           ],
           "default": "light"
         }
@@ -131,7 +131,7 @@
   ],
   "presets": [
     {
-      "name": "t:names.hvdq_commerce_modes",
+      "name": "HVDQ Commerce Modes",
       "blocks": [
         { "type": "mode", "settings": { "title": "Ready to Ship", "tone": "light" } },
         { "type": "mode", "settings": { "title": "Made to Order", "tone": "light" } },

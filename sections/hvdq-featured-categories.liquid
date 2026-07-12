@@ -75,7 +75,7 @@
 
 {% schema %}
 {
-  "name": "t:names.hvdq_featured_categories",
+  "name": "HVDQ Featured Categories",
   "tag": "section",
   "class": "hvdq-section",
   "max_blocks": 10,
@@ -83,13 +83,13 @@
     {
       "type": "text",
       "id": "heading",
-      "label": "t:settings.hvdq_heading"
+      "label": "Tiêu đề / Heading"
     }
   ],
   "blocks": [
     {
       "type": "category",
-      "name": "t:names.hvdq_category",
+      "name": "Danh mục / Category",
       "settings": [
         {
           "type": "collection",
@@ -99,33 +99,33 @@
         {
           "type": "text",
           "id": "custom_title",
-          "label": "t:settings.hvdq_custom_title",
-          "info": "t:info.hvdq_custom_title"
+          "label": "Tiêu đề tùy chỉnh / Custom title",
+          "info": "Dùng tên bộ sưu tập nếu để trống. / Falls back to the collection's title."
         },
         {
           "type": "image_picker",
           "id": "custom_image",
-          "label": "t:settings.hvdq_custom_image",
-          "info": "t:info.hvdq_custom_image"
+          "label": "Ảnh tùy chỉnh / Custom image",
+          "info": "Dùng ảnh bộ sưu tập nếu để trống. / Falls back to the collection's image."
         },
         {
           "type": "text",
           "id": "image_alt",
-          "label": "t:settings.hvdq_image_alt",
-          "info": "t:info.hvdq_image_alt"
+          "label": "Văn bản thay thế cho ảnh / Image alt text",
+          "info": "Dùng văn bản thay thế của ảnh nếu để trống. / Falls back to the image's own alt text."
         },
         {
           "type": "url",
           "id": "custom_url",
-          "label": "t:settings.hvdq_custom_url",
-          "info": "t:info.hvdq_custom_url"
+          "label": "Liên kết tùy chỉnh / Custom link",
+          "info": "Dùng liên kết bộ sưu tập nếu để trống. / Falls back to the collection's link."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:names.hvdq_featured_categories",
+      "name": "HVDQ Featured Categories",
       "blocks": [
         { "type": "category" },
         { "type": "category" },

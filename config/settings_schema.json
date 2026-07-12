@@ -2118,58 +2118,65 @@
     ]
   },
   {
-    "name": "t:names.hvdq_brand_profile",
+    "name": "HVDQ — Hồ sơ thương hiệu / Brand Profile",
     "settings": [
       {
         "type": "paragraph",
-        "content": "t:content.hvdq_brand_profile_info"
+        "content": "Các trường này được dùng lại ở đầu trang, chân trang và trang chủ. Để trống để ẩn. / Reused across the header, footer, and homepage. Leave blank to hide."
       },
       {
         "type": "text",
         "id": "brand_display_name",
-        "label": "t:settings.hvdq_brand_display_name",
+        "label": "Tên thương hiệu / Brand name",
         "default": "HVDQ"
       },
       {
         "type": "text",
         "id": "brand_tagline",
-        "label": "t:settings.hvdq_brand_tagline",
+        "label": "Khẩu hiệu / Tagline",
         "default": "Thủ Nghệ Bách Phẩm Đường"
       },
       {
         "type": "image_picker",
         "id": "secondary_brand_mark",
-        "label": "t:settings.hvdq_secondary_brand_mark"
+        "label": "Biểu tượng phụ / Secondary brand mark"
       },
       {
         "type": "text",
         "id": "atelier_name",
-        "label": "t:settings.hvdq_atelier_name"
+        "label": "Tên xưởng chế tác / Atelier name"
       },
       {
         "type": "textarea",
         "id": "contact_address",
-        "label": "t:settings.hvdq_contact_address"
+        "label": "Địa chỉ / Address"
       },
       {
         "type": "text",
         "id": "contact_phone",
-        "label": "t:settings.hvdq_contact_phone"
+        "label": "Số điện thoại / Phone"
       },
       {
         "type": "text",
         "id": "contact_email",
-        "label": "t:settings.hvdq_contact_email"
+        "label": "Email"
       },
       {
         "type": "text",
         "id": "business_hours",
-        "label": "t:settings.hvdq_business_hours"
+        "label": "Giờ làm việc / Business hours"
       },
       {
         "type": "url",
         "id": "booking_url",
-        "label": "t:settings.hvdq_booking_url"
+        "label": "Liên kết đặt lịch / Booking link"
+      },
+      {
+        "type": "text",
+        "id": "booking_url_label",
+        "label": "Nhãn liên kết đặt lịch / Booking link label",
+        "default": "Đặt lịch tư vấn",
+        "info": "Chỉ hiển thị khi có liên kết đặt lịch ở trên. / Only shown when the booking link above is set."
       }
     ]
   }

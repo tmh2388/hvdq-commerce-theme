@@ -350,19 +350,5 @@
       "default_title": "Tiêu đề mặc định",
       "sticky_add_to_cart": "Thanh thêm nhanh vào giỏ hàng"
     }
-  },
-  "hvdq": {
-    "hero": {
-      "placeholder_alt": "Ảnh minh họa trang chủ"
-    },
-    "artisan": {
-      "placeholder_alt": "Ảnh chân dung nghệ nhân"
-    },
-    "bespoke": {
-      "placeholder_alt": "Ảnh chân dung tư vấn viên"
-    },
-    "footer": {
-      "booking_link_label": "Đặt lịch tư vấn"
-    }
   }
 }

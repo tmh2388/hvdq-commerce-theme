@@ -357,19 +357,5 @@
       "default_title": "Titlu implicit",
       "sticky_add_to_cart": "Bara de adăugare rapidă în coș"
     }
-  },
-  "hvdq": {
-    "hero": {
-      "placeholder_alt": "Hero image placeholder"
-    },
-    "artisan": {
-      "placeholder_alt": "Artisan portrait placeholder"
-    },
-    "bespoke": {
-      "placeholder_alt": "Consultant portrait placeholder"
-    },
-    "footer": {
-      "booking_link_label": "Book a consultation"
-    }
   }
 }

@@ -350,19 +350,5 @@
       "default_title": "Varsayılan Başlık",
       "sticky_add_to_cart": "Sepete hızlı ekle çubuğu"
     }
-  },
-  "hvdq": {
-    "hero": {
-      "placeholder_alt": "Hero image placeholder"
-    },
-    "artisan": {
-      "placeholder_alt": "Artisan portrait placeholder"
-    },
-    "bespoke": {
-      "placeholder_alt": "Consultant portrait placeholder"
-    },
-    "footer": {
-      "booking_link_label": "Book a consultation"
-    }
   }
 }

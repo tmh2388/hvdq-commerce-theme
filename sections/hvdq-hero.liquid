@@ -64,7 +64,7 @@
         ></span>
       {% endif %}
     {% else %}
-      <div class="hvdq-hero__placeholder" role="img" aria-label="{{ 'hvdq.hero.placeholder_alt' | t }}">
+      <div class="hvdq-hero__placeholder" aria-hidden="true">
         {{ 'image' | placeholder_svg_tag: 'hvdq-hero__placeholder-svg' }}
       </div>
     {% endif %}
@@ -105,50 +105,50 @@
 
 {% schema %}
 {
-  "name": "t:names.hvdq_hero",
+  "name": "HVDQ Hero",
   "tag": "section",
   "class": "hvdq-section",
   "settings": [
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "t:settings.hvdq_eyebrow"
+      "label": "Nhãn phụ / Eyebrow"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "t:settings.hvdq_heading"
+      "label": "Tiêu đề / Heading"
     },
     {
       "type": "richtext",
       "id": "body",
-      "label": "t:settings.hvdq_body"
+      "label": "Nội dung / Body"
     },
     {
       "type": "header",
-      "content": "t:content.hvdq_media"
+      "content": "Hình ảnh / Media"
     },
     {
       "type": "image_picker",
       "id": "desktop_image",
-      "label": "t:settings.hvdq_desktop_image"
+      "label": "Ảnh máy tính / Desktop image"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "t:settings.hvdq_mobile_image",
-      "info": "t:info.hvdq_mobile_image"
+      "label": "Ảnh điện thoại / Mobile image",
+      "info": "Chỉ hiển thị dưới 750px. Dùng ảnh máy tính nếu để trống. / Shown only below 750px. Falls back to the desktop image."
     },
     {
       "type": "text",
       "id": "image_alt",
-      "label": "t:settings.hvdq_image_alt",
-      "info": "t:info.hvdq_image_alt"
+      "label": "Văn bản thay thế cho ảnh / Image alt text",
+      "info": "Dùng văn bản thay thế của ảnh nếu để trống. / Falls back to the image's own alt text."
     },
     {
       "type": "range",
       "id": "overlay_strength",
-      "label": "t:settings.hvdq_overlay_strength",
+      "label": "Độ đậm lớp phủ / Overlay strength",
       "min": 0,
       "max": 60,
       "step": 5,
@@ -158,41 +158,41 @@
     {
       "type": "checkbox",
       "id": "show_decorative_mark",
-      "label": "t:settings.hvdq_show_decorative_mark",
+      "label": "Hiển thị chi tiết trang trí / Show decorative mark",
       "default": true
     },
     {
       "type": "header",
-      "content": "t:content.hvdq_actions"
+      "content": "Hành động / Actions"
     },
     {
       "type": "text",
       "id": "primary_button_label",
-      "label": "t:settings.hvdq_button_label"
+      "label": "Nhãn nút chính / Primary button label"
     },
     {
       "type": "url",
       "id": "primary_button_url",
-      "label": "t:settings.hvdq_button_url"
+      "label": "Liên kết nút chính / Primary button link"
     },
     {
       "type": "text",
       "id": "secondary_button_label",
-      "label": "t:settings.hvdq_button_label"
+      "label": "Nhãn nút phụ / Secondary button label"
     },
     {
       "type": "url",
       "id": "secondary_button_url",
-      "label": "t:settings.hvdq_button_url"
+      "label": "Liên kết nút phụ / Secondary button link"
     },
     {
       "type": "header",
-      "content": "t:content.hvdq_layout"
+      "content": "Bố cục / Layout"
     },
     {
       "type": "select",
       "id": "content_alignment",
-      "label": "t:settings.hvdq_content_alignment",
+      "label": "Căn chỉnh nội dung / Content alignment",
       "options": [
         { "value": "start", "label": "t:options.left" },
         { "value": "center", "label": "t:options.center" }
@@ -202,7 +202,7 @@
     {
       "type": "select",
       "id": "image_position",
-      "label": "t:settings.hvdq_image_position",
+      "label": "Vị trí ảnh / Image position",
       "options": [
         { "value": "start", "label": "t:options.left" },
         { "value": "end", "label": "t:options.right" }
@@ -212,7 +212,7 @@
   ],
   "presets": [
     {
-      "name": "t:names.hvdq_hero",
+      "name": "HVDQ Hero",
       "settings": {
         "eyebrow": "HVDQ",
         "heading": "Thủ Nghệ Bách Phẩm Đường",

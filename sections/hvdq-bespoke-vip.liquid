@@ -74,7 +74,7 @@
         class="hvdq-bespoke__image"
       >
     {% else %}
-      <div class="hvdq-bespoke__placeholder" role="img" aria-label="{{ 'hvdq.bespoke.placeholder_alt' | t }}">
+      <div class="hvdq-bespoke__placeholder" aria-hidden="true">
         {{ 'lifestyle' | placeholder_svg_tag: 'hvdq-bespoke__placeholder-svg' }}
       </div>
     {% endif %}
@@ -83,7 +83,7 @@
 
 {% schema %}
 {
-  "name": "t:names.hvdq_bespoke_vip",
+  "name": "HVDQ Bespoke / VIP",
   "tag": "section",
   "class": "hvdq-section",
   "max_blocks": 8,
@@ -91,80 +91,80 @@
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "t:settings.hvdq_eyebrow"
+      "label": "Nhãn phụ / Eyebrow"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "t:settings.hvdq_heading",
+      "label": "Tiêu đề / Heading",
       "default": "Cá nhân hóa & biểu tượng văn hóa"
     },
     {
       "type": "richtext",
       "id": "richtext_body",
-      "label": "t:settings.hvdq_body"
+      "label": "Nội dung / Body"
     },
     {
       "type": "header",
-      "content": "t:content.hvdq_media"
+      "content": "Hình ảnh / Media"
     },
     {
       "type": "image_picker",
       "id": "portrait",
-      "label": "t:settings.hvdq_portrait"
+      "label": "Ảnh chân dung / Portrait"
     },
     {
       "type": "text",
       "id": "portrait_alt",
-      "label": "t:settings.hvdq_image_alt",
-      "info": "t:info.hvdq_image_alt"
+      "label": "Văn bản thay thế cho ảnh / Image alt text",
+      "info": "Dùng văn bản thay thế của ảnh nếu để trống. / Falls back to the image's own alt text."
     },
     {
       "type": "header",
-      "content": "t:content.hvdq_attribution"
+      "content": "Thông tin tác giả / Attribution"
     },
     {
       "type": "text",
       "id": "consultant_name",
-      "label": "t:settings.hvdq_consultant_name",
+      "label": "Tên chuyên gia / Consultant name",
       "default": "Hạ Vân Minh"
     },
     {
       "type": "text",
       "id": "consultant_role",
-      "label": "t:settings.hvdq_consultant_role"
+      "label": "Vai trò chuyên gia / Consultant role"
     },
     {
       "type": "header",
-      "content": "t:content.hvdq_actions"
+      "content": "Hành động / Actions"
     },
     {
       "type": "text",
       "id": "button_label",
-      "label": "t:settings.hvdq_button_label"
+      "label": "Nhãn nút / Button label"
     },
     {
       "type": "url",
       "id": "button_url",
-      "label": "t:settings.hvdq_button_url"
+      "label": "Liên kết nút / Button link"
     }
   ],
   "blocks": [
     {
       "type": "benefit",
-      "name": "t:names.hvdq_benefit",
+      "name": "Quyền lợi / Benefit",
       "settings": [
         {
           "type": "text",
           "id": "text",
-          "label": "t:settings.hvdq_benefit_text"
+          "label": "Quyền lợi / Benefit"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:names.hvdq_bespoke_vip",
+      "name": "HVDQ Bespoke / VIP",
       "settings": {
         "eyebrow": "HVDQ",
         "heading": "Cá nhân hóa & biểu tượng văn hóa",

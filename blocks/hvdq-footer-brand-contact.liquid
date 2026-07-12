@@ -58,9 +58,9 @@
           {{ settings.business_hours | escape }}
         </li>
       {% endif %}
-      {% if settings.booking_url != blank %}
+      {% if settings.booking_url != blank and settings.booking_url_label != blank %}
         <li class="hvdq-footer-brand__contact-row hvdq-footer-brand__contact-row--booking">
-          <a href="{{ settings.booking_url }}">{{ 'hvdq.footer.booking_link_label' | t }}</a>
+          <a href="{{ settings.booking_url }}">{{ settings.booking_url_label | escape }}</a>
         </li>
       {% endif %}
     </ul>
@@ -69,7 +69,7 @@
 
 {% schema %}
 {
-  "name": "t:names.hvdq_footer_brand_contact",
+  "name": "HVDQ Thương hiệu",
   "tag": null
 }
 {% endschema %}
