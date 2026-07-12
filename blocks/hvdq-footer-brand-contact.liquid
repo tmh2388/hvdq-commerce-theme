@@ -1,0 +1,75 @@
+{% liquid
+  assign brand_name = settings.brand_display_name | default: shop.name
+  assign has_logo = false
+  if settings.logo != blank
+    assign has_logo = true
+  elsif settings.secondary_brand_mark != blank
+    assign has_logo = true
+  endif
+%}
+
+<div class="hvdq-footer-brand" {{ block.shopify_attributes }}>
+  {% if has_logo %}
+    <div class="hvdq-footer-brand__mark">
+      {% if settings.logo != blank %}
+        {% render 'image', image: settings.logo, height: settings.logo_height, alt_text_fallback: brand_name %}
+      {% else %}
+        {% render 'image', image: settings.secondary_brand_mark, height: settings.logo_height, alt_text_fallback: brand_name %}
+      {% endif %}
+    </div>
+  {% elsif brand_name != blank %}
+    <p class="hvdq-footer-brand__name">{{ brand_name | escape }}</p>
+  {% endif %}
+
+  {% if settings.brand_tagline != blank %}
+    <p class="hvdq-footer-brand__tagline">{{ settings.brand_tagline | escape }}</p>
+  {% endif %}
+
+  {% if settings.atelier_name != blank
+    or settings.contact_address != blank
+    or settings.contact_phone != blank
+    or settings.contact_email != blank
+    or settings.business_hours != blank
+    or settings.booking_url != blank
+  %}
+    <ul class="hvdq-footer-brand__contact" role="list">
+      {% if settings.atelier_name != blank %}
+        <li class="hvdq-footer-brand__contact-row hvdq-footer-brand__contact-row--atelier">
+          {{ settings.atelier_name | escape }}
+        </li>
+      {% endif %}
+      {% if settings.contact_address != blank %}
+        <li class="hvdq-footer-brand__contact-row hvdq-footer-brand__contact-row--address">
+          {{ settings.contact_address | newline_to_br }}
+        </li>
+      {% endif %}
+      {% if settings.contact_phone != blank %}
+        <li class="hvdq-footer-brand__contact-row hvdq-footer-brand__contact-row--phone">
+          <a href="tel:{{ settings.contact_phone | strip }}">{{ settings.contact_phone | escape }}</a>
+        </li>
+      {% endif %}
+      {% if settings.contact_email != blank %}
+        <li class="hvdq-footer-brand__contact-row hvdq-footer-brand__contact-row--email">
+          <a href="mailto:{{ settings.contact_email | strip }}">{{ settings.contact_email | escape }}</a>
+        </li>
+      {% endif %}
+      {% if settings.business_hours != blank %}
+        <li class="hvdq-footer-brand__contact-row hvdq-footer-brand__contact-row--hours">
+          {{ settings.business_hours | escape }}
+        </li>
+      {% endif %}
+      {% if settings.booking_url != blank %}
+        <li class="hvdq-footer-brand__contact-row hvdq-footer-brand__contact-row--booking">
+          <a href="{{ settings.booking_url }}">{{ 'hvdq.footer.booking_link_label' | t }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "t:names.hvdq_footer_brand_contact",
+  "tag": null
+}
+{% endschema %}

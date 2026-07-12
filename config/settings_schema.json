@@ -2116,5 +2116,61 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "t:names.hvdq_brand_profile",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:content.hvdq_brand_profile_info"
+      },
+      {
+        "type": "text",
+        "id": "brand_display_name",
+        "label": "t:settings.hvdq_brand_display_name",
+        "default": "HVDQ"
+      },
+      {
+        "type": "text",
+        "id": "brand_tagline",
+        "label": "t:settings.hvdq_brand_tagline",
+        "default": "Thủ Nghệ Bách Phẩm Đường"
+      },
+      {
+        "type": "image_picker",
+        "id": "secondary_brand_mark",
+        "label": "t:settings.hvdq_secondary_brand_mark"
+      },
+      {
+        "type": "text",
+        "id": "atelier_name",
+        "label": "t:settings.hvdq_atelier_name"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_address",
+        "label": "t:settings.hvdq_contact_address"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "t:settings.hvdq_contact_phone"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "t:settings.hvdq_contact_email"
+      },
+      {
+        "type": "text",
+        "id": "business_hours",
+        "label": "t:settings.hvdq_business_hours"
+      },
+      {
+        "type": "url",
+        "id": "booking_url",
+        "label": "t:settings.hvdq_booking_url"
+      }
+    ]
   }
 ]
