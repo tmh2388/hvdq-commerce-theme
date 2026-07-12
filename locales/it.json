@@ -357,5 +357,19 @@
       "default_title": "Titolo predefinito",
       "sticky_add_to_cart": "Barra per l'aggiunta rapida al carrello"
     }
+  },
+  "hvdq": {
+    "hero": {
+      "placeholder_alt": "Hero image placeholder"
+    },
+    "artisan": {
+      "placeholder_alt": "Artisan portrait placeholder"
+    },
+    "bespoke": {
+      "placeholder_alt": "Consultant portrait placeholder"
+    },
+    "footer": {
+      "booking_link_label": "Book a consultation"
+    }
   }
 }

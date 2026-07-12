@@ -1,0 +1,89 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "content": {
+    "hvdq_brand_profile_info": "Các trường này được dùng lại ở phần đầu trang, chân trang và các mục trên trang chủ. Để trống một trường để ẩn nó ở mọi nơi.",
+    "hvdq_media": "Hình ảnh",
+    "hvdq_actions": "Hành động",
+    "hvdq_layout": "Bố cục",
+    "hvdq_attribution": "Thông tin tác giả"
+  },
+  "info": {
+    "hvdq_mobile_image": "Chỉ hiển thị dưới 750px. Dùng ảnh trên máy tính nếu để trống.",
+    "hvdq_image_alt": "Dùng văn bản thay thế của ảnh nếu để trống.",
+    "hvdq_custom_title": "Dùng tên bộ sưu tập đã chọn nếu để trống.",
+    "hvdq_custom_image": "Dùng ảnh của bộ sưu tập đã chọn nếu để trống.",
+    "hvdq_custom_url": "Dùng liên kết của bộ sưu tập đã chọn nếu để trống."
+  },
+  "names": {
+    "hvdq_brand_profile": "HVDQ — Hồ sơ thương hiệu",
+    "hvdq_hero": "HVDQ Hero",
+    "hvdq_commerce_modes": "HVDQ Hình thức mua hàng",
+    "hvdq_commerce_mode": "Hình thức mua hàng",
+    "hvdq_featured_categories": "HVDQ Danh mục nổi bật",
+    "hvdq_category": "Danh mục",
+    "hvdq_artisan_story": "HVDQ Câu chuyện nghệ nhân",
+    "hvdq_craft_techniques": "HVDQ Kỹ thuật chế tác",
+    "hvdq_technique": "Kỹ thuật",
+    "hvdq_bespoke_vip": "HVDQ Đặt riêng / VIP",
+    "hvdq_benefit": "Quyền lợi",
+    "hvdq_testimonials": "HVDQ Đánh giá khách hàng",
+    "hvdq_testimonial": "Đánh giá",
+    "hvdq_footer_brand_contact": "HVDQ Thương hiệu & Liên hệ"
+  },
+  "options": {
+    "hvdq_tone_light": "Sáng",
+    "hvdq_tone_dark": "Tối"
+  },
+  "settings": {
+    "hvdq_brand_display_name": "Tên thương hiệu hiển thị",
+    "hvdq_brand_tagline": "Khẩu hiệu",
+    "hvdq_secondary_brand_mark": "Biểu tượng phụ",
+    "hvdq_atelier_name": "Tên xưởng chế tác",
+    "hvdq_contact_address": "Địa chỉ",
+    "hvdq_contact_phone": "Số điện thoại",
+    "hvdq_contact_email": "Email",
+    "hvdq_business_hours": "Giờ làm việc",
+    "hvdq_booking_url": "Liên kết đặt lịch",
+    "hvdq_eyebrow": "Nhãn phụ",
+    "hvdq_heading": "Tiêu đề",
+    "hvdq_body": "Nội dung",
+    "hvdq_desktop_image": "Ảnh trên máy tính",
+    "hvdq_mobile_image": "Ảnh trên di động",
+    "hvdq_image_alt": "Văn bản thay thế cho ảnh",
+    "hvdq_overlay_strength": "Độ đậm lớp phủ",
+    "hvdq_show_decorative_mark": "Hiển thị chi tiết trang trí",
+    "hvdq_button_label": "Nhãn nút",
+    "hvdq_button_url": "Liên kết nút",
+    "hvdq_content_alignment": "Căn chỉnh nội dung",
+    "hvdq_image_position": "Vị trí ảnh",
+    "hvdq_title": "Tiêu đề",
+    "hvdq_subtitle": "Tiêu đề phụ",
+    "hvdq_image": "Ảnh",
+    "hvdq_link_label": "Nhãn liên kết",
+    "hvdq_link_url": "Liên kết",
+    "hvdq_tone": "Tông màu",
+    "hvdq_custom_title": "Tiêu đề tùy chỉnh",
+    "hvdq_custom_image": "Ảnh tùy chỉnh",
+    "hvdq_custom_url": "Liên kết tùy chỉnh",
+    "hvdq_portrait": "Ảnh chân dung",
+    "hvdq_artisan_name": "Tên nghệ nhân",
+    "hvdq_artisan_role": "Vai trò nghệ nhân",
+    "hvdq_layout_direction": "Vị trí ảnh",
+    "hvdq_international_name": "Tên quốc tế",
+    "hvdq_short_description": "Mô tả ngắn",
+    "hvdq_consultant_name": "Tên tư vấn viên",
+    "hvdq_consultant_role": "Vai trò tư vấn viên",
+    "hvdq_benefit_text": "Quyền lợi",
+    "hvdq_quote": "Trích dẫn",
+    "hvdq_customer_name": "Tên khách hàng",
+    "hvdq_customer_role": "Vai trò khách hàng"
+  }
+}

@@ -350,5 +350,19 @@
       "default_title": "Standardtittel",
       "sticky_add_to_cart": "Hurtiglinje for «Legg i handlekurv»"
     }
+  },
+  "hvdq": {
+    "hero": {
+      "placeholder_alt": "Hero image placeholder"
+    },
+    "artisan": {
+      "placeholder_alt": "Artisan portrait placeholder"
+    },
+    "bespoke": {
+      "placeholder_alt": "Consultant portrait placeholder"
+    },
+    "footer": {
+      "booking_link_label": "Book a consultation"
+    }
   }
 }

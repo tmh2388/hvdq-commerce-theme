@@ -350,5 +350,19 @@
       "success_moderated": "评论已发布，等待审核",
       "success": "评论已发布"
     }
+  },
+  "hvdq": {
+    "hero": {
+      "placeholder_alt": "Hero image placeholder"
+    },
+    "artisan": {
+      "placeholder_alt": "Artisan portrait placeholder"
+    },
+    "bespoke": {
+      "placeholder_alt": "Consultant portrait placeholder"
+    },
+    "footer": {
+      "booking_link_label": "Book a consultation"
+    }
   }
 }
