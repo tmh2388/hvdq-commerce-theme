@@ -103,10 +103,10 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "color_palette": {
-      "background": "#ffffff",
-      "foreground": "#000000",
-      "color1": "#333333",
-      "color2": "#DFDFDF"
+      "background": "#FBFAF7",
+      "foreground": "#0E0E0E",
+      "color1": "#4A4A47",
+      "color2": "#E8E5DE"
     }
   },
   "presets": {
@@ -139,10 +139,10 @@
       "palette_selected_variant_text": "{{ settings.color_palette.background }}",
       "palette_selected_variant_border": "{{ settings.color_palette.foreground }}",
       "color_palette": {
-        "background": "#ffffff",
-        "foreground": "#000000",
-        "color1": "#333333",
-        "color2": "#DFDFDF"
+        "background": "#FBFAF7",
+        "foreground": "#0E0E0E",
+        "color1": "#4A4A47",
+        "color2": "#E8E5DE"
       }
     }
   }

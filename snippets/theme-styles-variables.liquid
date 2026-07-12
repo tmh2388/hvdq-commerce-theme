@@ -124,6 +124,16 @@
   %}
 
   :root {
+    /* HVDQ brand accent tokens — fixed brand constants with no native Horizon
+       equivalent (settings.color_palette only exposes 4 slots). Do not add
+       further entries here without an architecture decision; reuse
+       settings.color_palette / --color-* palette vars for anything that
+       already has a native slot. */
+    --color-hvdq-warm-ivory: #f5f1e8;
+    --color-hvdq-accent-gold: #b79a5b;
+    --color-hvdq-accent-cinnabar: #8b1e1e;
+    --color-hvdq-accent-jade: #17352e;
+
     /* Page Layout */
     --sidebar-width: 25rem;
     --theme-drawer-width: 30rem;
