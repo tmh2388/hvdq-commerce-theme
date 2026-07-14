@@ -343,29 +343,9 @@
       "type": "product-recommendations",
       "blocks": {
         "text_cbcgyb": {
-          "type": "text",
+          "type": "hvdq-recommendations-heading",
           "name": "t:names.header",
-          "settings": {
-            "text": "t:html_defaults.may_also_like",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-primary--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
+          "settings": {},
           "blocks": {}
         },
         "static-product-card": {
