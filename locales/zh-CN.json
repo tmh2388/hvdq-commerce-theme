@@ -326,6 +326,25 @@
       "in_cart": "在购物车中",
       "default_title": "默认标题",
       "sticky_add_to_cart": "快速添加到购物车栏"
+    },
+    "hvdq": {
+      "details_heading": "工艺与产品信息",
+      "ready_to_ship": "现货",
+      "made_to_order": "按款定制",
+      "bespoke": "专属定制",
+      "lead_time_days": {
+        "one": "预计制作时间：{{ count }} 天",
+        "other": "预计制作时间：{{ count }} 天"
+      },
+      "technique": "工艺",
+      "material": "材质",
+      "dimensions": "尺寸",
+      "edition": "版本",
+      "artisan": "工艺师",
+      "personalization": "个性化定制",
+      "care": "保养说明",
+      "warranty": "保修",
+      "recommendations": "您可能也喜欢"
     }
   },
   "fields": {

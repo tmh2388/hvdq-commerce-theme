@@ -1,0 +1,93 @@
+{% doc %}
+  Renders the HVDQ commerce model and estimated lead time sourced from product metafields.
+
+  @example
+  {% content_for 'block', type: 'hvdq-product-commerce-status', id: 'hvdq-commerce-status' %}
+{% enddoc %}
+
+{% liquid
+  assign product_resource = closest.product
+  assign commerce_mode = product_resource.metafields.hvdq.commerce_mode.value
+  assign lead_time_days = product_resource.metafields.hvdq.lead_time_days.value
+
+  capture commerce_mode_label
+    case commerce_mode
+      when 'READY_TO_SHIP'
+        echo 'products.hvdq.ready_to_ship' | t
+      when 'MADE_TO_ORDER'
+        echo 'products.hvdq.made_to_order' | t
+      when 'BESPOKE'
+        echo 'products.hvdq.bespoke' | t
+      else
+        echo commerce_mode | escape
+    endcase
+  endcapture
+%}
+
+{% if commerce_mode != blank or lead_time_days != blank %}
+  <div class="hvdq-product-status" {{ block.shopify_attributes }}>
+    {% if commerce_mode != blank %}
+      <span class="hvdq-product-status__mode">
+        <span class="hvdq-product-status__dot" aria-hidden="true"></span>
+        {{ commerce_mode_label | strip }}
+      </span>
+    {% endif %}
+
+    {% if lead_time_days != blank %}
+      <span class="hvdq-product-status__lead-time">
+        {{ 'products.hvdq.lead_time_days' | t: count: lead_time_days }}
+      </span>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .hvdq-product-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gap-xs) var(--gap-sm);
+    width: 100%;
+  }
+
+  .hvdq-product-status__mode {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.2);
+    border-radius: 999px;
+    font-size: var(--font-paragraph-small--size);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .hvdq-product-status__dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--color-hvdq-accent-gold);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-hvdq-accent-gold) 18%, transparent);
+  }
+
+  .hvdq-product-status__lead-time {
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    font-size: var(--font-paragraph-small--size);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_information",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:names.product_information"
+    }
+  ]
+}
+{% endschema %}

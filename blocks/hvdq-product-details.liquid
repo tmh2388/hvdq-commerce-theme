@@ -1,0 +1,222 @@
+{% doc %}
+  Renders HVDQ craft specifications, personalization, care, and warranty from product metafields.
+
+  @example
+  {% content_for 'block', type: 'hvdq-product-details', id: 'hvdq-product-details' %}
+{% enddoc %}
+
+{% liquid
+  assign product_resource = closest.product
+  assign technique = product_resource.metafields.hvdq.technique.value
+  assign material = product_resource.metafields.hvdq.material.value
+  assign dimensions = product_resource.metafields.hvdq.dimensions.value
+  assign edition = product_resource.metafields.hvdq.edition.value
+  assign artisan = product_resource.metafields.hvdq.artisan.value
+  assign personalization = product_resource.metafields.hvdq.personalization.value
+  assign care = product_resource.metafields.hvdq.care.value
+  assign warranty = product_resource.metafields.hvdq.warranty.value
+
+  assign has_specifications = false
+  if technique != blank or material != blank or dimensions != blank or edition != blank or artisan != blank
+    assign has_specifications = true
+  endif
+%}
+
+{% if has_specifications or personalization != blank or care != blank or warranty != blank %}
+  <section class="hvdq-product-details" aria-labelledby="HvdqProductDetails-{{ block.id }}" {{ block.shopify_attributes }}>
+    <h2 id="HvdqProductDetails-{{ block.id }}" class="hvdq-product-details__heading">
+      {{ 'products.hvdq.details_heading' | t }}
+    </h2>
+
+    {% if has_specifications %}
+      <dl class="hvdq-product-details__specifications">
+        {% if technique != blank %}
+          <div class="hvdq-product-details__row">
+            <dt>{{ 'products.hvdq.technique' | t }}</dt>
+            <dd>{{ technique | escape }}</dd>
+          </div>
+        {% endif %}
+        {% if material != blank %}
+          <div class="hvdq-product-details__row">
+            <dt>{{ 'products.hvdq.material' | t }}</dt>
+            <dd>{{ material | escape | newline_to_br }}</dd>
+          </div>
+        {% endif %}
+        {% if dimensions != blank %}
+          <div class="hvdq-product-details__row">
+            <dt>{{ 'products.hvdq.dimensions' | t }}</dt>
+            <dd>{{ dimensions | escape }}</dd>
+          </div>
+        {% endif %}
+        {% if edition != blank %}
+          <div class="hvdq-product-details__row">
+            <dt>{{ 'products.hvdq.edition' | t }}</dt>
+            <dd>{{ edition | escape }}</dd>
+          </div>
+        {% endif %}
+        {% if artisan != blank %}
+          <div class="hvdq-product-details__row">
+            <dt>{{ 'products.hvdq.artisan' | t }}</dt>
+            <dd>{{ artisan | escape }}</dd>
+          </div>
+        {% endif %}
+      </dl>
+    {% endif %}
+
+    {% if personalization != blank or care != blank or warranty != blank %}
+      <div class="hvdq-product-details__accordions">
+        {% if personalization != blank %}
+          <details class="hvdq-product-details__disclosure">
+            <summary>
+              {{ 'products.hvdq.personalization' | t }}
+              <span aria-hidden="true"></span>
+            </summary>
+            <div class="hvdq-product-details__content">{{ personalization | escape | newline_to_br }}</div>
+          </details>
+        {% endif %}
+        {% if care != blank %}
+          <details class="hvdq-product-details__disclosure">
+            <summary>
+              {{ 'products.hvdq.care' | t }}
+              <span aria-hidden="true"></span>
+            </summary>
+            <div class="hvdq-product-details__content">{{ care | escape | newline_to_br }}</div>
+          </details>
+        {% endif %}
+        {% if warranty != blank %}
+          <details class="hvdq-product-details__disclosure">
+            <summary>
+              {{ 'products.hvdq.warranty' | t }}
+              <span aria-hidden="true"></span>
+            </summary>
+            <div class="hvdq-product-details__content">{{ warranty | escape | newline_to_br }}</div>
+          </details>
+        {% endif %}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+
+{% stylesheet %}
+  .hvdq-product-details {
+    width: 100%;
+    padding-block: var(--padding-md) 0;
+    border-top: 1px solid rgb(var(--color-foreground-rgb) / 0.16);
+  }
+
+  .hvdq-product-details__heading {
+    margin: 0 0 var(--margin-sm);
+    font-family: var(--font-heading--family);
+    font-size: var(--font-h5--size);
+    font-weight: var(--font-heading--weight);
+    line-height: 1.25;
+  }
+
+  .hvdq-product-details__specifications {
+    display: grid;
+    gap: 0;
+    margin: 0;
+  }
+
+  .hvdq-product-details__row {
+    display: grid;
+    grid-template-columns: minmax(7rem, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--gap-sm);
+    padding-block: 0.65rem;
+    border-bottom: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
+  }
+
+  .hvdq-product-details__row dt,
+  .hvdq-product-details__row dd {
+    margin: 0;
+    font-size: var(--font-paragraph-small--size);
+    line-height: 1.5;
+  }
+
+  .hvdq-product-details__row dt {
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+  }
+
+  .hvdq-product-details__row dd {
+    overflow-wrap: anywhere;
+  }
+
+  .hvdq-product-details__accordions {
+    margin-top: var(--margin-sm);
+  }
+
+  .hvdq-product-details__disclosure {
+    border-bottom: 1px solid rgb(var(--color-foreground-rgb) / 0.14);
+  }
+
+  .hvdq-product-details__disclosure summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+    min-height: 3rem;
+    cursor: pointer;
+    font-size: var(--font-paragraph-small--size);
+    font-weight: 600;
+    list-style: none;
+  }
+
+  .hvdq-product-details__disclosure summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .hvdq-product-details__disclosure summary span {
+    position: relative;
+    width: 0.875rem;
+    height: 0.875rem;
+    flex: 0 0 auto;
+  }
+
+  .hvdq-product-details__disclosure summary span::before,
+  .hvdq-product-details__disclosure summary span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 1px;
+    background: currentcolor;
+    transform: translate(-50%, -50%);
+    transition: transform 160ms ease;
+  }
+
+  .hvdq-product-details__disclosure summary span::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .hvdq-product-details__disclosure[open] summary span::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .hvdq-product-details__content {
+    padding: 0 1.5rem var(--padding-md) 0;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    font-size: var(--font-paragraph-small--size);
+    line-height: 1.65;
+  }
+
+  @media screen and (max-width: 479px) {
+    .hvdq-product-details__row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_information",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:names.product_information"
+    }
+  ]
+}
+{% endschema %}

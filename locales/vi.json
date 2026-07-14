@@ -349,6 +349,25 @@
       "in_cart": "trong giỏ hàng",
       "default_title": "Tiêu đề mặc định",
       "sticky_add_to_cart": "Thanh thêm nhanh vào giỏ hàng"
+    },
+    "hvdq": {
+      "details_heading": "Chế tác và thông tin sản phẩm",
+      "ready_to_ship": "Hàng có sẵn",
+      "made_to_order": "Đặt làm theo mẫu",
+      "bespoke": "Chế tác riêng",
+      "lead_time_days": {
+        "one": "Thời gian dự kiến: {{ count }} ngày",
+        "other": "Thời gian dự kiến: {{ count }} ngày"
+      },
+      "technique": "Kỹ thuật",
+      "material": "Chất liệu",
+      "dimensions": "Kích thước",
+      "edition": "Phiên bản",
+      "artisan": "Nghệ nhân",
+      "personalization": "Cá nhân hóa",
+      "care": "Hướng dẫn bảo quản",
+      "warranty": "Bảo hành",
+      "recommendations": "Có thể bạn cũng yêu thích"
     }
   }
 }
