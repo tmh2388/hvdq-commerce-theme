@@ -13,7 +13,12 @@
       "type": "hvdq-hero",
       "settings": {
         "eyebrow": "HVDQ",
-        "heading": "Thủ Nghệ Bách Phẩm Đường",
+        "heading": "Tinh hoa Pháp Lam trong từng tuyệt tác",
+        "body": "<p>Đồng hồ và phụ kiện thủ công được chế tác từng chiếc bởi nghệ nhân Đặng Hương Quỳnh — nơi kỹ nghệ cổ truyền gặp ngôn ngữ thiết kế đương đại.</p>",
+        "primary_button_label": "Khám phá bộ sưu tập",
+        "primary_button_url": "#hvdq-demo-products",
+        "secondary_button_label": "Đặt chế tác riêng",
+        "secondary_button_url": "#hvdq-bespoke",
         "content_alignment": "start",
         "image_position": "end",
         "overlay_strength": 0,
@@ -22,45 +27,130 @@
     },
     "hvdq_commerce_modes": {
       "type": "hvdq-commerce-modes",
+      "settings": {
+        "heading": "Ba cách sở hữu một tác phẩm HVDQ"
+      },
       "blocks": {
         "mode_ready_to_ship": {
           "type": "mode",
           "settings": {
-            "title": "Ready to Ship",
+            "title": "Tác phẩm có sẵn",
+            "subtitle": "Ready to Ship · Giao trong 2–5 ngày",
+            "body": "<p>Những thiết kế đã hoàn thiện, mỗi mẫu chỉ có số lượng giới hạn.</p>",
+            "link_label": "Xem tác phẩm",
+            "link_url": "#hvdq-demo-products",
             "tone": "light"
           }
         },
         "mode_made_to_order": {
           "type": "mode",
           "settings": {
-            "title": "Made to Order",
+            "title": "Đặt làm theo mẫu",
+            "subtitle": "Made to Order · 21–45 ngày",
+            "body": "<p>Chọn một thiết kế HVDQ và cá nhân hóa màu men, kích thước hoặc khắc tên.</p>",
+            "link_label": "Tìm hiểu quy trình",
+            "link_url": "#hvdq-techniques",
             "tone": "light"
           }
         },
         "mode_bespoke": {
           "type": "mode",
           "settings": {
-            "title": "Bespoke",
+            "title": "Chế tác độc bản",
+            "subtitle": "Bespoke · Tư vấn riêng",
+            "body": "<p>Tác phẩm duy nhất được phát triển từ câu chuyện, biểu tượng văn hóa và dấu ấn cá nhân.</p>",
+            "link_label": "Đặt lịch tư vấn",
+            "link_url": "#hvdq-bespoke",
             "tone": "dark"
           }
         }
       },
       "block_order": ["mode_ready_to_ship", "mode_made_to_order", "mode_bespoke"]
     },
+    "hvdq_demo_products": {
+      "type": "hvdq-demo-products",
+      "settings": {
+        "eyebrow": "Bộ sưu tập tuyển chọn",
+        "heading": "Tác phẩm mang dấu ấn riêng",
+        "note": "Dữ liệu và hình ảnh vector đang dùng để duyệt giao diện. Chưa phải sản phẩm thật và không hiển thị trên website live."
+      },
+      "blocks": {
+        "demo_nocturne": {
+          "type": "product",
+          "settings": {
+            "badge": "Demo · Made to Order",
+            "meta": "Đồng hồ Pháp Lam · Champlevé",
+            "title": "Nocturne Éclat",
+            "description": "Sắc lam sâu và họa tiết ánh kim, bộ máy ETA 2824-2, dây da thủ công và khắc tên miễn phí.",
+            "price": "48.800.000₫",
+            "visual": "watch-blue"
+          }
+        },
+        "demo_vermilion": {
+          "type": "product",
+          "settings": {
+            "badge": "Demo · Độc bản",
+            "meta": "Đồng hồ Pháp Lam · Cloisonné",
+            "title": "Vermilion Dynasty",
+            "description": "Mặt số đỏ son, đường tơ đồng tạo hình thủ công và hoàn thiện giới hạn một chiếc.",
+            "price": "Liên hệ",
+            "visual": "watch-red"
+          }
+        },
+        "demo_jade": {
+          "type": "product",
+          "settings": {
+            "badge": "Demo · Có sẵn",
+            "meta": "Phụ kiện nam · Champlevé",
+            "title": "Jade Current",
+            "description": "Kẹp cà vạt men lục trầm trên nền kim loại hoàn thiện thủ công, dành cho trang phục trang trọng.",
+            "price": "8.600.000₫",
+            "visual": "tie-clip"
+          }
+        },
+        "demo_cufflinks": {
+          "type": "product",
+          "settings": {
+            "badge": "Demo · Cá nhân hóa",
+            "meta": "Khuy măng sét · Pháp Lam",
+            "title": "Midnight Seal",
+            "description": "Cặp khuy măng sét xanh đêm, nhận khắc triện hoặc ký hiệu riêng theo yêu cầu.",
+            "price": "12.800.000₫",
+            "visual": "cufflinks"
+          }
+        }
+      },
+      "block_order": ["demo_nocturne", "demo_vermilion", "demo_jade", "demo_cufflinks"]
+    },
     "hvdq_featured_categories": {
       "type": "hvdq-featured-categories",
+      "settings": {
+        "heading": "Khám phá theo dòng sản phẩm"
+      },
       "blocks": {
         "category_1": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "custom_title": "Đồng hồ Pháp Lam",
+            "image_alt": "Danh mục đồng hồ Pháp Lam",
+            "custom_url": "#hvdq-demo-products"
+          }
         },
         "category_2": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "custom_title": "Phụ kiện quý ông",
+            "image_alt": "Danh mục phụ kiện nam thủ công",
+            "custom_url": "#hvdq-demo-products"
+          }
         },
         "category_3": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "custom_title": "Tác phẩm độc bản",
+            "image_alt": "Danh mục tác phẩm chế tác độc bản",
+            "custom_url": "#hvdq-bespoke"
+          }
         }
       },
       "block_order": ["category_1", "category_2", "category_3"]
@@ -69,6 +159,8 @@
       "type": "hvdq-artisan-story",
       "settings": {
         "eyebrow": "HVDQ",
+        "heading": "Mỗi lớp men là một lần đối thoại với lửa",
+        "richtext_body": "<p>Nghệ nhân Đặng Hương Quỳnh trực tiếp phát triển bảng màu, tạo cốt kim loại và nung từng lớp men. Sai lệch nhỏ của nhiệt độ có thể thay đổi toàn bộ sắc độ — vì thế không có hai tác phẩm hoàn toàn giống nhau.</p><p>HVDQ gìn giữ tinh thần thủ công truyền thống nhưng đặt nó trong tỷ lệ, công năng và thẩm mỹ của đời sống đương đại.</p>",
         "artisan_name": "Đặng Hương Quỳnh",
         "artisan_role": "Nghệ nhân Pháp Lam",
         "layout_direction": "image-start"
@@ -76,18 +168,36 @@
     },
     "hvdq_craft_techniques": {
       "type": "hvdq-craft-techniques",
+      "settings": {
+        "heading": "Ngôn ngữ của kim loại, men và lửa"
+      },
       "blocks": {
         "technique_1": {
           "type": "technique",
-          "settings": {}
+          "settings": {
+            "title": "Khắc lõm điền men",
+            "international_name": "Champlevé",
+            "short_description": "Bề mặt kim loại được khắc lõm, điền men và nung nhiều lần để đạt chiều sâu màu sắc.",
+            "link_url": "#hvdq-demo-products"
+          }
         },
         "technique_2": {
           "type": "technique",
-          "settings": {}
+          "settings": {
+            "title": "Tơ đồng ngăn men",
+            "international_name": "Cloisonné",
+            "short_description": "Những sợi kim loại mảnh tạo đường biên họa tiết trước khi từng ô màu được điền và nung.",
+            "link_url": "#hvdq-demo-products"
+          }
         },
         "technique_3": {
           "type": "technique",
-          "settings": {}
+          "settings": {
+            "title": "Chế tác theo dấu ấn",
+            "international_name": "Bespoke Enamelling",
+            "short_description": "Màu sắc, biểu tượng và cấu trúc được phát triển riêng cho từng câu chuyện cá nhân.",
+            "link_url": "#hvdq-bespoke"
+          }
         }
       },
       "block_order": ["technique_1", "technique_2", "technique_3"]
@@ -97,18 +207,58 @@
       "settings": {
         "eyebrow": "HVDQ",
         "heading": "Cá nhân hóa & biểu tượng văn hóa",
-        "consultant_name": "Hạ Vân Minh"
-      }
+        "richtext_body": "<p>Dành cho khách hàng mong muốn một tác phẩm không lặp lại. Quy trình bắt đầu từ câu chuyện cá nhân, mục đích sử dụng và hệ biểu tượng phù hợp — sau đó chuyển hóa thành màu men, bố cục và chi tiết chế tác.</p>",
+        "consultant_name": "Hạ Vân Minh",
+        "consultant_role": "Tư vấn biểu tượng & chiến lược cá nhân hóa",
+        "button_label": "Bắt đầu tư vấn riêng",
+        "button_url": "#hvdq-demo-products"
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": { "text": "Tư vấn riêng 1:1 về câu chuyện và biểu tượng" }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": { "text": "Duyệt màu men và phác thảo trước khi chế tác" }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": { "text": "Hồ sơ tác phẩm và chứng nhận độc bản" }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3"]
     },
     "hvdq_testimonials": {
       "type": "hvdq-testimonials",
-      "blocks": {},
-      "block_order": []
+      "settings": {
+        "heading": "Trải nghiệm sở hữu một tác phẩm thủ công"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Bản demo nội dung: tôi muốn cảm giác tinh xảo, có chiều sâu văn hóa nhưng vẫn đủ hiện đại để sử dụng hằng ngày.",
+            "customer_name": "Khách hàng mẫu 01",
+            "customer_role": "Dữ liệu minh họa giao diện"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Bản demo nội dung: quá trình duyệt màu và biểu tượng khiến chiếc đồng hồ thực sự mang câu chuyện của riêng tôi.",
+            "customer_name": "Khách hàng mẫu 02",
+            "customer_role": "Dữ liệu minh họa giao diện"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2"]
     }
   },
   "order": [
     "hvdq_hero",
     "hvdq_commerce_modes",
+    "hvdq_demo_products",
     "hvdq_featured_categories",
     "hvdq_artisan_story",
     "hvdq_craft_techniques",

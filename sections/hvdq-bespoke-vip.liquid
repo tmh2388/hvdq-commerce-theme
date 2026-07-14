@@ -15,7 +15,7 @@
   assign benefit_blocks = section.blocks | where: 'type', 'benefit'
 %}
 
-<section class="hvdq-bespoke" {{ section.shopify_attributes }}>
+<section id="hvdq-bespoke" class="hvdq-bespoke" {{ section.shopify_attributes }}>
   <div class="hvdq-bespoke__content">
     {% if section.settings.eyebrow != blank %}
       <p class="hvdq-bespoke__eyebrow">{{ section.settings.eyebrow | escape }}</p>
