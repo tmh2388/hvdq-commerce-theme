@@ -64,7 +64,11 @@
         ></span>
       {% endif %}
     {% else %}
-      <div class="hvdq-hero__placeholder" aria-hidden="true">
+      <div
+        class="hvdq-hero__placeholder hvdq-hero__placeholder--photo"
+        style="background-image: url('{{ 'hvdq-demo-products.png' | asset_url }}');"
+        aria-hidden="true"
+      >
         <svg class="hvdq-hero__demo-art" viewBox="0 0 900 1125" role="presentation">
           <defs>
             <radialGradient id="hvdqHeroDial" cx="38%" cy="30%" r="72%">
