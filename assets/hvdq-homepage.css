@@ -127,6 +127,16 @@
   object-fit: cover;
 }
 
+.hvdq-hero__placeholder--photo {
+  background-repeat: no-repeat;
+  background-position: 64% top;
+  background-size: auto 182.7%;
+}
+
+.hvdq-hero__placeholder--photo .hvdq-hero__demo-art {
+  opacity: 0;
+}
+
 .hvdq-hero__overlay {
   position: absolute;
   inset: 0;

@@ -16,7 +16,10 @@
   <div class="hvdq-demo-products__grid">
     {% for block in section.blocks %}
       <article class="hvdq-demo-product" {{ block.shopify_attributes }}>
-        <div class="hvdq-demo-product__visual hvdq-demo-product__visual--{{ block.settings.visual }}">
+        <div
+          class="hvdq-demo-product__visual hvdq-demo-product__visual--{{ block.settings.visual }}"
+          style="background-image: url('{{ 'hvdq-demo-products.png' | asset_url }}');"
+        >
           <span class="hvdq-demo-product__badge">{{ block.settings.badge | escape }}</span>
           {% case block.settings.visual %}
             {% when 'watch-blue' %}
@@ -193,16 +196,36 @@
     overflow: hidden;
     aspect-ratio: 4 / 5;
     background: #d8d1c4;
+    background-repeat: no-repeat;
+    background-size: 432% auto;
+    background-position-y: 97.3%;
   }
 
   .hvdq-demo-product__visual svg {
     width: 100%;
     height: 100%;
+    opacity: 0;
     transition: transform 600ms cubic-bezier(.2,.8,.2,1);
   }
 
   .hvdq-demo-product:hover .hvdq-demo-product__visual svg {
     transform: scale(1.025);
+  }
+
+  .hvdq-demo-product__visual--watch-blue {
+    background-position-x: 98.5%;
+  }
+
+  .hvdq-demo-product__visual--watch-red {
+    background-position-x: 1.6%;
+  }
+
+  .hvdq-demo-product__visual--tie-clip {
+    background-position-x: 66.4%;
+  }
+
+  .hvdq-demo-product__visual--cufflinks {
+    background-position-x: 33.7%;
   }
 
   .hvdq-demo-product__badge {
