@@ -1,0 +1,248 @@
+/* HVDQ Model 03 — collection, product and cart experience. */
+:root {
+  --hvdq-m03-green: #0b704c;
+  --hvdq-m03-green-dark: #075b3d;
+  --hvdq-m03-ink: #171a17;
+  --hvdq-m03-muted: #666a64;
+  --hvdq-m03-line: #d9d8d1;
+  --hvdq-m03-ivory: #f7f5ef;
+}
+
+body:is(.template-collection, .template-product, .template-cart) {
+  background: var(--hvdq-m03-ivory);
+  color: var(--hvdq-m03-ink);
+}
+
+body:is(.template-collection, .template-product, .template-cart) #header-group {
+  position: sticky;
+  z-index: 40;
+  top: 0;
+  background: rgb(255 255 255 / 96%);
+  box-shadow: 0 8px 24px rgb(19 45 34 / 5%);
+  backdrop-filter: blur(12px);
+}
+
+body:is(.template-collection, .template-product, .template-cart) .header-announcements {
+  background: #173c2e;
+  color: #e8f1ec;
+}
+
+body:is(.template-collection, .template-product, .template-cart) :is(.button, button[type='submit']) {
+  border-radius: 2px;
+}
+
+body:is(.template-collection, .template-product, .template-cart) :is(.button, .add-to-cart-button) {
+  min-height: 46px;
+  font-weight: 650;
+  letter-spacing: .035em;
+}
+
+body:is(.template-collection, .template-product, .template-cart) .add-to-cart-button {
+  border-color: var(--hvdq-m03-green) !important;
+  background: var(--hvdq-m03-green) !important;
+  color: #fff !important;
+}
+
+body:is(.template-collection, .template-product, .template-cart) .add-to-cart-button:hover {
+  background: var(--hvdq-m03-green-dark) !important;
+}
+
+/* Collection */
+body.template-collection main > .shopify-section:first-child .section {
+  padding-block: clamp(34px, 5vw, 70px) !important;
+  background: var(--hvdq-m03-ivory);
+  border-bottom: 1px solid var(--hvdq-m03-line);
+}
+
+body.template-collection main > .shopify-section:first-child h1 {
+  max-width: 18ch;
+  margin: 0;
+  font-family: var(--font-heading--family);
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.04;
+}
+
+body.template-collection .product-grid-container {
+  padding-block: 18px 60px;
+  background: #fff;
+}
+
+body.template-collection .collection-wrapper {
+  gap: 22px;
+}
+
+body.template-collection .product-grid {
+  row-gap: 38px;
+}
+
+body.template-collection .product-card {
+  background: transparent;
+}
+
+body.template-collection .product-card-gallery {
+  overflow: hidden;
+  background: #efeee9;
+}
+
+body.template-collection .product-card-gallery img {
+  transition: transform 450ms ease, filter 240ms ease;
+}
+
+body.template-collection .product-card:hover .product-card-gallery img {
+  filter: saturate(1.05) contrast(1.02);
+  transform: scale(1.018);
+}
+
+body.template-collection .product-card__content {
+  padding-top: 8px;
+}
+
+body.template-collection .product-card a {
+  text-decoration: none;
+}
+
+/* Product */
+body.template-product .product-information {
+  max-width: 1500px;
+  padding-block: clamp(24px, 4vw, 58px) !important;
+  background: #fff;
+}
+
+body.template-product .product-information__grid {
+  gap: clamp(28px, 5vw, 72px) !important;
+}
+
+body.template-product .product-information__media {
+  background: #efeee9;
+}
+
+body.template-product .product-details {
+  padding: clamp(22px, 3.2vw, 48px) !important;
+  background: var(--hvdq-m03-ivory);
+}
+
+body.template-product .product-details h1 {
+  margin: 0;
+  font-family: var(--font-heading--family);
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.04;
+}
+
+body.template-product .hvdq-product-status__mode {
+  border-color: color-mix(in srgb, var(--hvdq-m03-green) 34%, transparent);
+  color: var(--hvdq-m03-green);
+}
+
+body.template-product .hvdq-product-status__dot {
+  background: var(--hvdq-m03-green);
+  box-shadow: 0 0 0 3px rgb(11 112 76 / 13%);
+}
+
+body.template-product .product-form-buttons {
+  gap: 10px;
+}
+
+body.template-product .shopify-payment-button__button {
+  min-height: 46px !important;
+  border: 1px solid #9c9e98 !important;
+  border-radius: 2px !important;
+  background: transparent !important;
+  color: var(--hvdq-m03-ink) !important;
+}
+
+body.template-product .hvdq-product-details {
+  border-color: var(--hvdq-m03-line);
+}
+
+body.template-product .product-recommendations {
+  padding-block: clamp(42px, 6vw, 78px);
+  background: #fff;
+}
+
+/* Cart */
+body.template-cart .cart-page {
+  min-height: 62vh;
+  padding-block: clamp(32px, 5vw, 70px) !important;
+}
+
+body.template-cart .cart-title {
+  font-family: var(--font-heading--family);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 500;
+}
+
+body.template-cart .cart-page__items {
+  padding-right: clamp(0px, 3vw, 42px);
+}
+
+body.template-cart .cart-page__summary {
+  background: #eef2eb;
+}
+
+body.template-cart .cart-summary {
+  border: 0;
+  border-radius: 0;
+}
+
+body.template-cart .cart__checkout-button,
+body.template-cart button[name='checkout'] {
+  min-height: 50px;
+  background: var(--hvdq-m03-green) !important;
+  color: #fff !important;
+}
+
+@media screen and (max-width: 749px) {
+  body:is(.template-collection, .template-product, .template-cart) #header-group {
+    box-shadow: 0 6px 18px rgb(19 45 34 / 7%);
+  }
+
+  body.template-collection main > .shopify-section:first-child .section {
+    padding: 30px 16px !important;
+  }
+
+  body.template-collection .product-grid-container {
+    padding: 10px 16px 42px;
+  }
+
+  body.template-collection .product-grid {
+    row-gap: 28px;
+  }
+
+  body.template-product .product-information {
+    padding-block: 0 36px !important;
+  }
+
+  body.template-product .product-information__media {
+    margin-inline: -16px;
+  }
+
+  body.template-product .product-details {
+    margin-top: 0;
+    padding: 28px 18px 36px !important;
+  }
+
+  body.template-product .product-details h1 {
+    font-size: 34px;
+  }
+
+  body.template-product .product-form-buttons {
+    position: relative;
+  }
+
+  body.template-cart .cart-page {
+    padding: 30px 16px 44px !important;
+  }
+
+  body.template-cart .cart-page__items {
+    padding-right: 0;
+  }
+
+  body.template-cart .cart-page__summary {
+    margin-inline: -16px;
+    padding: 24px 16px;
+  }
+}

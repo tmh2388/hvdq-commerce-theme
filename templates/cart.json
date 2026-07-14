@@ -62,6 +62,10 @@
         "padding-block-end": 0
       }
     },
+    "hvdq_order_assurance": {
+      "type": "hvdq-order-assurance",
+      "settings": {}
+    },
     "product_list_NNFgcy": {
       "type": "product-list",
       "blocks": {
@@ -250,6 +254,7 @@
   },
   "order": [
     "cart-section",
+    "hvdq_order_assurance",
     "product_list_NNFgcy"
   ]
 }
