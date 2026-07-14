@@ -10,6 +10,17 @@
   assign commerce_mode = product_resource.metafields.hvdq.commerce_mode.value
   assign lead_time_days = product_resource.metafields.hvdq.lead_time_days.value
   assign language_code = localization.language.iso_code
+  assign reference_price_usd = blank
+  case product_resource.handle
+    when 'hvdq-test-imperial-dragon'
+      assign reference_price_usd = '$2,650 USD'
+    when 'hvdq-test-lotus-harmony'
+      assign reference_price_usd = '$1,650 USD'
+    when 'hvdq-test-nocturne-eclat'
+      assign reference_price_usd = '$1,850 USD'
+    when 'hvdq-test-blue-mountain-cufflinks'
+      assign reference_price_usd = '$750 USD'
+  endcase
   assign ready_to_ship_label = 'Ready to ship'
   assign made_to_order_label = 'Made to order'
   assign bespoke_label = 'Bespoke'
@@ -58,6 +69,11 @@
         endif
     endcase
   endcapture
+
+  assign reference_price_label = 'International reference price'
+  if language_code == 'vi'
+    assign reference_price_label = 'Giá tham chiếu quốc tế'
+  endif
 %}
 
 {% if commerce_mode != blank or lead_time_days != blank %}
@@ -72,6 +88,12 @@
     {% if lead_time_days != blank %}
       <span class="hvdq-product-status__lead-time">
         {{ lead_time_label | strip }}
+      </span>
+    {% endif %}
+
+    {% if reference_price_usd != blank %}
+      <span class="hvdq-product-status__reference-price">
+        {{ reference_price_label }}: {{ reference_price_usd }}
       </span>
     {% endif %}
   </div>
@@ -110,6 +132,12 @@
   }
 
   .hvdq-product-status__lead-time {
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
+    font-size: var(--font-paragraph-small--size);
+  }
+
+  .hvdq-product-status__reference-price {
+    width: 100%;
     color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
     font-size: var(--font-paragraph-small--size);
   }

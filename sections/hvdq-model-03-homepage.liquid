@@ -1,5 +1,27 @@
 {% liquid
   assign language_code = localization.language.iso_code
+  assign demo_imperial = all_products['hvdq-test-imperial-dragon']
+  assign demo_lotus = all_products['hvdq-test-lotus-harmony']
+  assign demo_nocturne = all_products['hvdq-test-nocturne-eclat']
+  assign demo_cufflinks = all_products['hvdq-test-blue-mountain-cufflinks']
+
+  assign demo_imperial_price = '68.800.000₫'
+  assign demo_lotus_price = '42.800.000₫'
+  assign demo_nocturne_price = '48.800.000₫'
+  assign demo_cufflinks_price = '18.800.000₫'
+  if demo_imperial != blank
+    assign demo_imperial_price = demo_imperial.price | money_with_currency
+  endif
+  if demo_lotus != blank
+    assign demo_lotus_price = demo_lotus.price | money_with_currency
+  endif
+  if demo_nocturne != blank
+    assign demo_nocturne_price = demo_nocturne.price | money_with_currency
+  endif
+  if demo_cufflinks != blank
+    assign demo_cufflinks_price = demo_cufflinks.price | money_with_currency
+  endif
+
   assign is_english = false
   if language_code == 'en'
     assign is_english = true
@@ -30,10 +52,10 @@
     assign trust_4_body = 'Fully insured'
     assign arrivals_heading = 'New Arrivals'
     assign view_all = 'View all'
-    assign product_1_meta = 'Champlevé enamel watch'
-    assign product_2_meta = 'Cloisonné cufflinks'
-    assign product_3_meta = 'Champlevé tie clip'
-    assign product_4_meta = 'Cloisonné enamel watch'
+    assign product_1_meta = 'Bespoke enamel artwork'
+    assign product_2_meta = 'Cloisonné enamel watch'
+    assign product_3_meta = 'Champlevé enamel watch'
+    assign product_4_meta = 'Cloisonné cufflinks'
     assign ready_badge = 'Ready'
     assign bespoke_badge = 'Bespoke'
     assign made_badge = 'Made to order'
@@ -90,10 +112,10 @@
     assign trust_4_body = 'Bảo hiểm đầy đủ'
     assign arrivals_heading = 'Tác phẩm mới'
     assign view_all = 'Xem tất cả'
-    assign product_1_meta = 'Đồng hồ men Champlevé'
-    assign product_2_meta = 'Khuy măng sét Cloisonné'
-    assign product_3_meta = 'Kẹp cà vạt Champlevé'
-    assign product_4_meta = 'Đồng hồ men Cloisonné'
+    assign product_1_meta = 'Tác phẩm Pháp Lam độc bản'
+    assign product_2_meta = 'Đồng hồ men Cloisonné'
+    assign product_3_meta = 'Đồng hồ men Champlevé'
+    assign product_4_meta = 'Khuy măng sét Cloisonné'
     assign ready_badge = 'Có sẵn'
     assign bespoke_badge = 'Độc bản'
     assign made_badge = 'Đặt chế tác'
@@ -244,8 +266,8 @@
           <div class="m03__product-info">
             <p class="m03__product-name">Imperial Dragon 1964</p>
             <p class="m03__product-meta">{{ product_1_meta }}</p>
-            <div class="m03__product-price"><strong>48.800.000₫</strong><span>♡</span></div>
-            <small>{{ free_shipping }}</small>
+            <div class="m03__product-price"><strong>{{ demo_imperial_price }}</strong><span>♡</span></div>
+            <small>≈ $2,650 USD · {{ free_shipping }}</small>
           </div>
         </a>
 
@@ -256,8 +278,8 @@
           <div class="m03__product-info">
             <p class="m03__product-name">Lotus Harmony</p>
             <p class="m03__product-meta">{{ product_2_meta }}</p>
-            <div class="m03__product-price"><strong>12.800.000₫</strong><span>♡</span></div>
-            <small>{{ free_shipping }}</small>
+            <div class="m03__product-price"><strong>{{ demo_lotus_price }}</strong><span>♡</span></div>
+            <small>≈ $1,650 USD · {{ free_shipping }}</small>
           </div>
         </a>
 
@@ -266,10 +288,10 @@
             <span class="m03__badge">{{ bespoke_badge }}</span>
           </div>
           <div class="m03__product-info">
-            <p class="m03__product-name">Cloud Mountains</p>
+            <p class="m03__product-name">Nocturne Éclat</p>
             <p class="m03__product-meta">{{ product_3_meta }}</p>
-            <div class="m03__product-price"><strong>8.600.000₫</strong><span>♡</span></div>
-            <small>{{ free_shipping }}</small>
+            <div class="m03__product-price"><strong>{{ demo_nocturne_price }}</strong><span>♡</span></div>
+            <small>≈ $1,850 USD · {{ free_shipping }}</small>
           </div>
         </a>
 
@@ -278,10 +300,10 @@
             <span class="m03__badge">{{ ready_badge }}</span>
           </div>
           <div class="m03__product-info">
-            <p class="m03__product-name">Blue Mountain</p>
+            <p class="m03__product-name">Blue Mountain Cufflinks</p>
             <p class="m03__product-meta">{{ product_4_meta }}</p>
-            <div class="m03__product-price"><strong>42.800.000₫</strong><span>♡</span></div>
-            <small>{{ free_shipping }}</small>
+            <div class="m03__product-price"><strong>{{ demo_cufflinks_price }}</strong><span>♡</span></div>
+            <small>≈ $750 USD · {{ free_shipping }}</small>
           </div>
         </a>
       </div>
