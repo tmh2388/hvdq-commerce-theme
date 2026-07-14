@@ -1,0 +1,921 @@
+{% liquid
+  assign language_code = localization.language.iso_code
+  assign is_english = false
+  if language_code == 'en'
+    assign is_english = true
+  endif
+
+  if is_english
+    assign utility_text = 'Complimentary worldwide shipping & returns'
+    assign nav_watches = 'Watches'
+    assign nav_cufflinks = 'Cufflinks'
+    assign nav_tie_clips = 'Tie Clips'
+    assign nav_accessories = 'Accessories'
+    assign nav_bespoke = 'Bespoke'
+    assign nav_gifts = 'Gifts'
+    assign nav_atelier = 'The Atelier'
+    assign nav_journal = 'Journal'
+    assign eyebrow = 'Vietnamese artisan enamel · Made in Hanoi'
+    assign hero_heading = 'Fine enamel pieces for every legacy.'
+    assign hero_body = 'Champlevé and cloisonné creations, handcrafted in Hanoi by artisan Đặng Hương Quỳnh.'
+    assign shop_button = 'Shop new arrivals'
+    assign bespoke_button = 'Bespoke commission'
+    assign trust_1_title = 'Handcrafted in Vietnam'
+    assign trust_1_body = 'By master artisans'
+    assign trust_2_title = 'Secure checkout'
+    assign trust_2_body = 'Encrypted & trusted'
+    assign trust_3_title = 'Dedicated care'
+    assign trust_3_body = 'Personal consultation'
+    assign trust_4_title = 'Worldwide delivery'
+    assign trust_4_body = 'Fully insured'
+    assign arrivals_heading = 'New Arrivals'
+    assign view_all = 'View all'
+    assign product_1_meta = 'Champlevé enamel watch'
+    assign product_2_meta = 'Cloisonné cufflinks'
+    assign product_3_meta = 'Champlevé tie clip'
+    assign product_4_meta = 'Cloisonné enamel watch'
+    assign ready_badge = 'Ready'
+    assign bespoke_badge = 'Bespoke'
+    assign made_badge = 'Made to order'
+    assign free_shipping = 'Complimentary shipping'
+    assign bespoke_eyebrow = 'Private commission'
+    assign bespoke_heading = 'Bring your story to life.'
+    assign bespoke_copy = 'Work one-on-one with our atelier to create a piece that is uniquely yours.'
+    assign bespoke_cta = 'Start your bespoke journey'
+    assign service_1_title = 'Materials & Quality'
+    assign service_1_body = 'Fine metals, vitreous enamel'
+    assign service_2_title = 'Care & Service'
+    assign service_2_body = 'Lifetime support'
+    assign service_3_title = 'Client Concierge'
+    assign service_3_body = 'Personal assistance'
+    assign service_4_title = 'Visit Our Atelier'
+    assign service_4_body = 'Hanoi, by appointment'
+    assign footer_copy = 'Vietnamese enamel artistry for a new generation.'
+    assign footer_shop = 'Shop'
+    assign footer_service = 'Client Service'
+    assign footer_about = 'About HVDQ'
+    assign footer_follow = 'Follow'
+    assign footer_shipping = 'Shipping'
+    assign footer_warranty = 'Warranty'
+    assign footer_contact = 'Contact'
+    assign footer_artisan = 'Artisan'
+    assign demo_notice = 'PREVIEW DATA · Images and products are for interface review only'
+    assign search_label = 'Search'
+    assign account_label = 'Account'
+    assign cart_label = 'Cart'
+  else
+    assign utility_text = 'Miễn phí vận chuyển và đổi trả toàn cầu'
+    assign nav_watches = 'Đồng hồ'
+    assign nav_cufflinks = 'Khuy măng sét'
+    assign nav_tie_clips = 'Kẹp cà vạt'
+    assign nav_accessories = 'Phụ kiện'
+    assign nav_bespoke = 'Chế tác riêng'
+    assign nav_gifts = 'Quà tặng'
+    assign nav_atelier = 'Nghệ xưởng'
+    assign nav_journal = 'Tạp chí'
+    assign eyebrow = 'Pháp Lam thủ công Việt Nam · Chế tác tại Hà Nội'
+    assign hero_heading = 'Tuyệt tác Pháp Lam cho dấu ấn trường tồn.'
+    assign hero_body = 'Đồng hồ và phụ kiện Champlevé, Cloisonné được nghệ nhân Đặng Hương Quỳnh chế tác thủ công tại Hà Nội.'
+    assign shop_button = 'Khám phá sản phẩm mới'
+    assign bespoke_button = 'Đặt chế tác riêng'
+    assign trust_1_title = 'Chế tác tại Việt Nam'
+    assign trust_1_body = 'Bởi nghệ nhân HVDQ'
+    assign trust_2_title = 'Thanh toán an toàn'
+    assign trust_2_body = 'Bảo mật và tin cậy'
+    assign trust_3_title = 'Chăm sóc chuyên biệt'
+    assign trust_3_body = 'Tư vấn cá nhân'
+    assign trust_4_title = 'Giao hàng toàn cầu'
+    assign trust_4_body = 'Bảo hiểm đầy đủ'
+    assign arrivals_heading = 'Tác phẩm mới'
+    assign view_all = 'Xem tất cả'
+    assign product_1_meta = 'Đồng hồ men Champlevé'
+    assign product_2_meta = 'Khuy măng sét Cloisonné'
+    assign product_3_meta = 'Kẹp cà vạt Champlevé'
+    assign product_4_meta = 'Đồng hồ men Cloisonné'
+    assign ready_badge = 'Có sẵn'
+    assign bespoke_badge = 'Độc bản'
+    assign made_badge = 'Đặt chế tác'
+    assign free_shipping = 'Miễn phí vận chuyển'
+    assign bespoke_eyebrow = 'Chế tác độc bản'
+    assign bespoke_heading = 'Biến câu chuyện của anh thành tác phẩm.'
+    assign bespoke_copy = 'Làm việc trực tiếp cùng nghệ xưởng để tạo nên một tác phẩm duy nhất, mang dấu ấn của riêng anh.'
+    assign bespoke_cta = 'Bắt đầu hành trình độc bản'
+    assign service_1_title = 'Chất liệu & Chất lượng'
+    assign service_1_body = 'Kim loại tuyển chọn, men thủy tinh'
+    assign service_2_title = 'Bảo quản & Dịch vụ'
+    assign service_2_body = 'Đồng hành trọn đời'
+    assign service_3_title = 'Chăm sóc khách hàng'
+    assign service_3_body = 'Hỗ trợ cá nhân'
+    assign service_4_title = 'Thăm nghệ xưởng'
+    assign service_4_body = 'Hà Nội, theo lịch hẹn'
+    assign footer_copy = 'Nghệ thuật Pháp Lam Việt Nam cho một thế hệ mới.'
+    assign footer_shop = 'Mua sắm'
+    assign footer_service = 'Dịch vụ khách hàng'
+    assign footer_about = 'Về HVDQ'
+    assign footer_follow = 'Kết nối'
+    assign footer_shipping = 'Vận chuyển'
+    assign footer_warranty = 'Bảo hành'
+    assign footer_contact = 'Liên hệ'
+    assign footer_artisan = 'Nghệ nhân'
+    assign demo_notice = 'DỮ LIỆU PREVIEW · Hình ảnh và sản phẩm chỉ dùng để duyệt giao diện'
+    assign search_label = 'Tìm kiếm'
+    assign account_label = 'Tài khoản'
+    assign cart_label = 'Giỏ hàng'
+  endif
+%}
+
+<div class="m03" data-hvdq-model-03>
+  <div class="m03__demo-notice">{{ demo_notice }}</div>
+
+  <div class="m03__utility">
+    <span class="m03__utility-dot" aria-hidden="true"></span>
+    <span>{{ utility_text }}</span>
+    {% form 'localization', id: 'HvdqM03Localization', class: 'm03__language-form' %}
+      <button
+        type="submit"
+        name="locale_code"
+        value="vi"
+        class="m03__language{% unless is_english %} is-active{% endunless %}"
+        aria-label="Tiếng Việt"
+      >VI</button>
+      <span aria-hidden="true">/</span>
+      <button
+        type="submit"
+        name="locale_code"
+        value="en"
+        class="m03__language{% if is_english %} is-active{% endif %}"
+        aria-label="English"
+      >EN</button>
+    {% endform %}
+  </div>
+
+  <header class="m03__header">
+    <a class="m03__brand" href="{{ routes.root_url }}" aria-label="HVDQ">
+      <span class="m03__brand-name">HVDQ</span>
+      <span class="m03__brand-sub">Artisan Enamel Atelier</span>
+    </a>
+    <div class="m03__header-actions" aria-label="Tiện ích">
+      <a href="{{ routes.search_url }}" aria-label="{{ search_label }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m16 16 4 4"/></svg>
+      </a>
+      <a href="{{ routes.account_url }}" aria-label="{{ account_label }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-4 3.1-6 7-6s6.3 2 7 6"/></svg>
+      </a>
+      <a href="{{ routes.cart_url }}" aria-label="{{ cart_label }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <nav class="m03__nav" aria-label="HVDQ">
+    <a href="#m03-arrivals">{{ nav_watches }}</a>
+    <a href="#m03-arrivals">{{ nav_cufflinks }}</a>
+    <a href="#m03-arrivals">{{ nav_tie_clips }}</a>
+    <a href="#m03-arrivals">{{ nav_accessories }}</a>
+    <a href="#m03-bespoke">{{ nav_bespoke }}</a>
+    <a href="#m03-arrivals">{{ nav_gifts }}</a>
+    <a href="#m03-atelier">{{ nav_atelier }}</a>
+    <a href="#m03-footer">{{ nav_journal }}</a>
+  </nav>
+
+  <main>
+    <section class="m03__hero">
+      <div class="m03__hero-copy">
+        <p class="m03__eyebrow">{{ eyebrow }}</p>
+        <h1>{{ hero_heading }}</h1>
+        <p class="m03__hero-body">{{ hero_body }}</p>
+        <div class="m03__hero-actions">
+          <a class="m03__button m03__button--primary" href="#m03-arrivals">{{ shop_button }}</a>
+          <a class="m03__button m03__button--secondary" href="#m03-bespoke">{{ bespoke_button }}</a>
+        </div>
+      </div>
+      <div
+        class="m03__hero-image"
+        style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')"
+        role="img"
+        aria-label="Đồng hồ Pháp Lam hoa sen HVDQ"
+      ></div>
+    </section>
+
+    <section class="m03__trust" aria-label="Cam kết dịch vụ">
+      <article>
+        <span class="m03__trust-icon">✦</span>
+        <div><strong>{{ trust_1_title }}</strong><small>{{ trust_1_body }}</small></div>
+      </article>
+      <article>
+        <span class="m03__trust-icon">◇</span>
+        <div><strong>{{ trust_2_title }}</strong><small>{{ trust_2_body }}</small></div>
+      </article>
+      <article>
+        <span class="m03__trust-icon">✧</span>
+        <div><strong>{{ trust_3_title }}</strong><small>{{ trust_3_body }}</small></div>
+      </article>
+      <article>
+        <span class="m03__trust-icon">◎</span>
+        <div><strong>{{ trust_4_title }}</strong><small>{{ trust_4_body }}</small></div>
+      </article>
+    </section>
+
+    <section id="m03-arrivals" class="m03__arrivals">
+      <div class="m03__section-heading">
+        <h2>{{ arrivals_heading }}</h2>
+        <a href="#m03-arrivals">{{ view_all }} <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="m03__products">
+        <article class="m03__product">
+          <div class="m03__product-image m03__product-image--dragon" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
+            <span class="m03__badge">{{ made_badge }}</span>
+          </div>
+          <div class="m03__product-info">
+            <p class="m03__product-name">Imperial Dragon 1964</p>
+            <p class="m03__product-meta">{{ product_1_meta }}</p>
+            <div class="m03__product-price"><strong>48.800.000₫</strong><span>♡</span></div>
+            <small>{{ free_shipping }}</small>
+          </div>
+        </article>
+
+        <article class="m03__product">
+          <div class="m03__product-image m03__product-image--cufflinks" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
+            <span class="m03__badge">{{ ready_badge }}</span>
+          </div>
+          <div class="m03__product-info">
+            <p class="m03__product-name">Lotus Harmony</p>
+            <p class="m03__product-meta">{{ product_2_meta }}</p>
+            <div class="m03__product-price"><strong>12.800.000₫</strong><span>♡</span></div>
+            <small>{{ free_shipping }}</small>
+          </div>
+        </article>
+
+        <article class="m03__product">
+          <div class="m03__product-image m03__product-image--tieclip" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
+            <span class="m03__badge">{{ bespoke_badge }}</span>
+          </div>
+          <div class="m03__product-info">
+            <p class="m03__product-name">Cloud Mountains</p>
+            <p class="m03__product-meta">{{ product_3_meta }}</p>
+            <div class="m03__product-price"><strong>8.600.000₫</strong><span>♡</span></div>
+            <small>{{ free_shipping }}</small>
+          </div>
+        </article>
+
+        <article class="m03__product">
+          <div class="m03__product-image m03__product-image--mountain" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
+            <span class="m03__badge">{{ ready_badge }}</span>
+          </div>
+          <div class="m03__product-info">
+            <p class="m03__product-name">Blue Mountain</p>
+            <p class="m03__product-meta">{{ product_4_meta }}</p>
+            <div class="m03__product-price"><strong>42.800.000₫</strong><span>♡</span></div>
+            <small>{{ free_shipping }}</small>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="m03-bespoke" class="m03__bespoke">
+      <div
+        class="m03__bespoke-image"
+        style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')"
+        role="img"
+        aria-label="Tác phẩm Pháp Lam cá nhân hóa"
+      ></div>
+      <div class="m03__bespoke-copy">
+        <p class="m03__eyebrow">{{ bespoke_eyebrow }}</p>
+        <h2>{{ bespoke_heading }}</h2>
+        <p>{{ bespoke_copy }}</p>
+        <a class="m03__button m03__button--primary" href="#m03-footer">{{ bespoke_cta }}</a>
+      </div>
+    </section>
+
+    <section id="m03-atelier" class="m03__services">
+      <article><span>♢</span><strong>{{ service_1_title }}</strong><small>{{ service_1_body }}</small></article>
+      <article><span>◌</span><strong>{{ service_2_title }}</strong><small>{{ service_2_body }}</small></article>
+      <article><span>♙</span><strong>{{ service_3_title }}</strong><small>{{ service_3_body }}</small></article>
+      <article><span>⌖</span><strong>{{ service_4_title }}</strong><small>{{ service_4_body }}</small></article>
+    </section>
+  </main>
+
+  <footer id="m03-footer" class="m03__footer">
+    <div class="m03__footer-brand">
+      <span class="m03__brand-name">HVDQ</span>
+      <p>{{ footer_copy }}</p>
+    </div>
+    <div><strong>{{ footer_shop }}</strong><a href="#m03-arrivals">{{ nav_watches }}</a><a href="#m03-arrivals">{{ nav_accessories }}</a><a href="#m03-bespoke">{{ nav_bespoke }}</a></div>
+    <div><strong>{{ footer_service }}</strong><a href="#m03-footer">{{ footer_shipping }}</a><a href="#m03-footer">{{ footer_warranty }}</a><a href="#m03-footer">{{ footer_contact }}</a></div>
+    <div><strong>{{ footer_about }}</strong><a href="#m03-atelier">{{ nav_atelier }}</a><a href="#m03-footer">{{ nav_journal }}</a><a href="#m03-footer">{{ footer_artisan }}</a></div>
+    <div><strong>{{ footer_follow }}</strong><a href="#m03-footer">Instagram</a><a href="#m03-footer">Facebook</a><a href="#m03-footer">YouTube</a></div>
+  </footer>
+  <div class="m03__copyright">© {{ 'now' | date: '%Y' }} HVDQ · Hạ Vân Thủ Nghệ Bách Phẩm Đường</div>
+</div>
+
+{% stylesheet %}
+  .page-wrapper:has([data-hvdq-model-03]) > #header-group,
+  .page-wrapper:has([data-hvdq-model-03]) > footer {
+    display: none !important;
+  }
+
+  body:has([data-hvdq-model-03]) {
+    margin: 0;
+    background: #f7f5ef;
+  }
+
+  body:has([data-hvdq-model-03]) .content-for-layout {
+    overflow: visible;
+  }
+
+  .m03 {
+    --m03-green: #0b704c;
+    --m03-green-dark: #075b3d;
+    --m03-ink: #171a17;
+    --m03-muted: #666a64;
+    --m03-line: #d9d8d1;
+    --m03-ivory: #f7f5ef;
+    --m03-white: #fff;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    background: var(--m03-white);
+    color: var(--m03-ink);
+    font-family: var(--font-body--family);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .m03 *,
+  .m03 *::before,
+  .m03 *::after {
+    box-sizing: border-box;
+  }
+
+  .m03 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .m03__demo-notice {
+    padding: 6px 24px;
+    background: #173c2e;
+    color: #e8f1ec;
+    font-size: 10px;
+    letter-spacing: 0.11em;
+    text-align: center;
+  }
+
+  .m03__utility {
+    display: flex;
+    align-items: center;
+    min-height: 31px;
+    padding: 0 4vw;
+    border-bottom: 1px solid var(--m03-line);
+    color: #535852;
+    font-size: 10px;
+  }
+
+  .m03__utility-dot {
+    width: 5px;
+    height: 5px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: var(--m03-green);
+  }
+
+  .m03__language-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+  }
+
+  .m03__language {
+    appearance: none;
+    padding: 3px 1px;
+    border: 0;
+    background: transparent;
+    color: #858982;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .m03__language.is-active {
+    color: var(--m03-ink);
+    font-weight: 700;
+  }
+
+  .m03__header {
+    display: flex;
+    align-items: center;
+    min-height: 76px;
+    padding: 0 4vw;
+    border-bottom: 1px solid var(--m03-line);
+  }
+
+  .m03__brand {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .m03__brand-name {
+    font-family: var(--font-heading--family);
+    font-size: 31px;
+    letter-spacing: 0.055em;
+  }
+
+  .m03__brand-sub {
+    margin-top: 6px;
+    font-size: 7px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .m03__header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+  }
+
+  .m03__header-actions a {
+    display: grid;
+    width: 24px;
+    height: 34px;
+    place-items: center;
+  }
+
+  .m03__header-actions svg {
+    width: 17px;
+    fill: none;
+    stroke: currentcolor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.45;
+  }
+
+  .m03__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 2.6vw, 42px);
+    min-height: 44px;
+    padding: 0 4vw;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--m03-line);
+    font-size: 11px;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .m03__nav a:hover {
+    color: var(--m03-green);
+  }
+
+  .m03__hero {
+    display: grid;
+    grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+    min-height: min(520px, 58vw);
+    background: var(--m03-ivory);
+  }
+
+  .m03__hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(42px, 6vw, 92px);
+  }
+
+  .m03__eyebrow {
+    margin: 0 0 18px;
+    color: #60766b;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .m03__hero h1 {
+    max-width: 12ch;
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(38px, 4.3vw, 62px);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+  }
+
+  .m03__hero-body {
+    max-width: 45ch;
+    margin: 24px 0 0;
+    color: var(--m03-muted);
+    font-size: 14px;
+  }
+
+  .m03__hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .m03__button {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border: 1px solid var(--m03-green);
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 0.035em;
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .m03__button--primary {
+    background: var(--m03-green) !important;
+    color: #fff !important;
+  }
+
+  .m03__button--primary:hover {
+    background: var(--m03-green-dark) !important;
+  }
+
+  .m03__button--secondary {
+    background: transparent !important;
+    color: var(--m03-ink) !important;
+    border-color: #9c9e98;
+  }
+
+  .m03__hero-image {
+    min-height: 440px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto 183%;
+  }
+
+  .m03__trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 18px 4vw;
+    border-block: 1px solid var(--m03-line);
+  }
+
+  .m03__trust article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 3px 18px;
+    border-right: 1px solid var(--m03-line);
+  }
+
+  .m03__trust article:last-child {
+    border-right: 0;
+  }
+
+  .m03__trust-icon {
+    color: var(--m03-green);
+    font-size: 20px;
+  }
+
+  .m03__trust strong,
+  .m03__trust small {
+    display: block;
+  }
+
+  .m03__trust strong {
+    font-size: 11px;
+    font-weight: 650;
+  }
+
+  .m03__trust small {
+    color: var(--m03-muted);
+    font-size: 9px;
+  }
+
+  .m03__arrivals {
+    padding: clamp(44px, 5vw, 76px) 4vw;
+  }
+
+  .m03__section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+
+  .m03__section-heading h2 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 26px;
+    font-weight: 500;
+  }
+
+  .m03__section-heading a {
+    color: var(--m03-green);
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  .m03__products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(12px, 1.4vw, 24px);
+  }
+
+  .m03__product {
+    min-width: 0;
+  }
+
+  .m03__product-image {
+    position: relative;
+    aspect-ratio: .91;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position-y: 97.3%;
+    background-size: 432% auto;
+    transition: filter 180ms ease;
+  }
+
+  .m03__product:hover .m03__product-image {
+    filter: saturate(1.06) contrast(1.02);
+  }
+
+  .m03__product-image--dragon { background-position-x: 1.6%; }
+  .m03__product-image--cufflinks { background-position-x: 33.7%; }
+  .m03__product-image--tieclip { background-position-x: 66.4%; }
+  .m03__product-image--mountain { background-position-x: 98.5%; }
+
+  .m03__badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 7px;
+    background: var(--m03-green);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+  }
+
+  .m03__product-info {
+    padding-top: 12px;
+  }
+
+  .m03__product-name {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .m03__product-meta {
+    margin: 3px 0 9px;
+    color: var(--m03-muted);
+    font-size: 10px;
+  }
+
+  .m03__product-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .m03__product-price span {
+    color: #747872;
+    font-size: 17px;
+  }
+
+  .m03__product-info small {
+    display: block;
+    margin-top: 6px;
+    color: var(--m03-green);
+    font-size: 9px;
+  }
+
+  .m03__bespoke {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    margin: 0 4vw clamp(42px, 5vw, 76px);
+    background: #eef2eb;
+  }
+
+  .m03__bespoke-image {
+    min-height: 310px;
+    background-repeat: no-repeat;
+    background-position: 68% top;
+    background-size: auto 183%;
+  }
+
+  .m03__bespoke-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(36px, 5vw, 72px);
+  }
+
+  .m03__bespoke-copy h2 {
+    max-width: 18ch;
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(30px, 3.2vw, 47px);
+    font-weight: 500;
+    line-height: 1.08;
+  }
+
+  .m03__bespoke-copy > p:not(.m03__eyebrow) {
+    max-width: 46ch;
+    margin: 18px 0 25px;
+    color: var(--m03-muted);
+    font-size: 13px;
+  }
+
+  .m03__services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 28px 4vw;
+    border-block: 1px solid var(--m03-line);
+  }
+
+  .m03__services article {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 2px 10px;
+    padding: 6px 24px;
+    border-right: 1px solid var(--m03-line);
+  }
+
+  .m03__services article:last-child {
+    border-right: 0;
+  }
+
+  .m03__services article > span {
+    grid-row: 1 / 3;
+    color: var(--m03-green);
+    font-size: 21px;
+  }
+
+  .m03__services strong {
+    font-size: 11px;
+  }
+
+  .m03__services small {
+    color: var(--m03-muted);
+    font-size: 9px;
+  }
+
+  .m03__footer {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(4, 1fr);
+    gap: 32px;
+    padding: 52px 4vw;
+    background: #173c2e;
+    color: #edf2ee;
+  }
+
+  .m03__footer > div:not(.m03__footer-brand) {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .m03__footer strong {
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .m03__footer a,
+  .m03__footer p {
+    margin: 0;
+    color: #bac9c1;
+    font-size: 10px;
+  }
+
+  .m03__footer-brand {
+    max-width: 240px;
+  }
+
+  .m03__footer-brand .m03__brand-name {
+    display: block;
+    margin-bottom: 14px;
+    color: #fff;
+  }
+
+  .m03__copyright {
+    padding: 14px 4vw;
+    background: #102d22;
+    color: #9fb3a9;
+    font-size: 9px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .m03__hero {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .m03__trust,
+    .m03__services {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .m03__trust article:nth-child(2),
+    .m03__services article:nth-child(2) {
+      border-right: 0;
+    }
+
+    .m03__trust article:nth-child(-n+2),
+    .m03__services article:nth-child(-n+2) {
+      border-bottom: 1px solid var(--m03-line);
+    }
+
+    .m03__footer {
+      grid-template-columns: 1.4fr repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    .m03__header {
+      min-height: 64px;
+    }
+
+    .m03__brand-name {
+      font-size: 26px;
+    }
+
+    .m03__nav {
+      gap: 22px;
+    }
+
+    .m03__hero {
+      grid-template-columns: 1fr;
+    }
+
+    .m03__hero-copy {
+      padding: 42px 22px;
+    }
+
+    .m03__hero h1 {
+      font-size: 38px;
+    }
+
+    .m03__hero-image {
+      min-height: 420px;
+    }
+
+    .m03__trust,
+    .m03__services {
+      grid-template-columns: 1fr;
+    }
+
+    .m03__trust article,
+    .m03__services article {
+      justify-content: flex-start;
+      border-right: 0;
+      border-bottom: 1px solid var(--m03-line);
+    }
+
+    .m03__products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 28px;
+    }
+
+    .m03__bespoke {
+      grid-template-columns: 1fr;
+      margin-inline: 0;
+    }
+
+    .m03__bespoke-image {
+      min-height: 280px;
+    }
+
+    .m03__footer {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .m03__footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "HVDQ Model 03 Homepage",
+  "tag": "section",
+  "class": "hvdq-model-03-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "HVDQ Model 03 Homepage"
+    }
+  ]
+}
+{% endschema %}
