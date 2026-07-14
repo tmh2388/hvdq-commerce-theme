@@ -64,6 +64,7 @@
     assign account_label = 'Account'
     assign cart_label = 'Cart'
     assign back_to_top_label = 'Back to top'
+    assign menu_label = 'Menu'
   else
     assign utility_text = 'Miễn phí vận chuyển và đổi trả toàn cầu'
     assign nav_watches = 'Đồng hồ'
@@ -123,6 +124,7 @@
     assign account_label = 'Tài khoản'
     assign cart_label = 'Giỏ hàng'
     assign back_to_top_label = 'Lên đầu trang'
+    assign menu_label = 'Danh mục'
   endif
 %}
 
@@ -167,10 +169,13 @@
       <a href="{{ routes.cart_url }}" aria-label="{{ cart_label }}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
       </a>
+      <button class="m03__menu-toggle" type="button" aria-expanded="false" aria-controls="HvdqM03Nav" aria-label="{{ menu_label }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </header>
 
-  <nav class="m03__nav" aria-label="HVDQ">
+  <nav id="HvdqM03Nav" class="m03__nav" aria-label="HVDQ">
     <a href="#m03-arrivals">{{ nav_watches }}</a>
     <a href="#m03-arrivals">{{ nav_cufflinks }}</a>
     <a href="#m03-arrivals">{{ nav_tie_clips }}</a>
@@ -179,6 +184,11 @@
     <a href="#m03-arrivals">{{ nav_gifts }}</a>
     <a href="#m03-atelier">{{ nav_atelier }}</a>
     <a href="#m03-footer">{{ nav_journal }}</a>
+    {% form 'localization', id: 'HvdqM03MobileLocalization', class: 'm03__mobile-language' %}
+      <button type="submit" name="locale_code" value="vi" class="m03__language{% unless is_english %} is-active{% endunless %}">VI</button>
+      <span aria-hidden="true">/</span>
+      <button type="submit" name="locale_code" value="en" class="m03__language{% if is_english %} is-active{% endif %}">EN</button>
+    {% endform %}
   </nav>
   </div>
 
@@ -320,6 +330,8 @@
   (() => {
     const root = document.querySelector('[data-hvdq-model-03]');
     const button = root?.querySelector('.m03__back-top');
+    const menuButton = root?.querySelector('.m03__menu-toggle');
+    const navigation = root?.querySelector('.m03__nav');
     if (!button || button.dataset.ready === 'true') return;
 
     button.dataset.ready = 'true';
@@ -327,6 +339,15 @@
     button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     window.addEventListener('scroll', updateButton, { passive: true });
     updateButton();
+
+    menuButton?.addEventListener('click', () => {
+      const isOpen = navigation?.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(Boolean(isOpen)));
+    });
+    navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      navigation.classList.remove('is-open');
+      menuButton?.setAttribute('aria-expanded', 'false');
+    }));
   })();
 </script>
 
@@ -485,6 +506,11 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 1.45;
+  }
+
+  .m03__menu-toggle,
+  .m03__mobile-language {
+    display: none;
   }
 
   .m03__nav {
@@ -919,17 +945,15 @@
 
   @media screen and (max-width: 680px) {
     html:has([data-hvdq-model-03]) {
-      scroll-padding-top: 90px;
+      scroll-padding-top: 54px;
     }
 
-    .m03__demo-notice {
-      padding-inline: 16px;
-      font-size: 8px;
+    .m03__demo-notice,
+    .m03__utility {
+      display: none;
     }
 
-    .m03__utility,
-    .m03__header,
-    .m03__nav {
+    .m03__header {
       padding-inline: 16px;
     }
 
@@ -945,42 +969,122 @@
       display: none;
     }
 
+    .m03__header-actions {
+      gap: 12px;
+    }
+
+    .m03__header-actions a:nth-of-type(2) {
+      display: none;
+    }
+
+    .m03__menu-toggle {
+      display: grid;
+      width: 30px;
+      height: 38px;
+      padding: 0;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      color: inherit;
+    }
+
+    .m03__menu-toggle svg {
+      width: 19px;
+    }
+
     .m03__nav {
-      gap: 22px;
-      min-height: 38px;
-      scroll-snap-type: x proximity;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-height: calc(100svh - 52px);
+      padding: 10px 16px 16px;
+      overflow-y: auto;
+      background: rgb(255 255 255 / 98%);
+      box-shadow: 0 18px 30px rgb(19 45 34 / 12%);
+    }
+
+    .m03__nav.is-open {
+      display: grid;
     }
 
     .m03__nav a {
       display: inline-flex;
-      min-height: 38px;
+      min-height: 46px;
       align-items: center;
-      scroll-snap-align: start;
+      border-bottom: 1px solid var(--m03-line);
+      font-size: 12px;
+    }
+
+    .m03__mobile-language {
+      display: flex;
+      grid-column: 1 / -1;
+      align-items: center;
+      gap: 8px;
+      min-height: 48px;
+      margin-top: 8px;
     }
 
     .m03__hero {
-      grid-template-columns: 1fr;
+      position: relative;
+      display: block;
+      min-height: min(720px, calc(100svh - 52px));
+      overflow: hidden;
+      background: #d9d1c1;
     }
 
     .m03__hero-copy {
-      padding: 42px 22px;
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      justify-content: flex-end;
+      padding: 48px 22px 34px;
+      background: linear-gradient(180deg, transparent 38%, rgb(8 25 18 / 12%) 57%, rgb(8 25 18 / 86%) 100%);
+      color: #fff;
+    }
+
+    .m03__hero .m03__eyebrow {
+      margin-bottom: 10px;
+      color: #d9e8df;
+      font-size: 9px;
     }
 
     .m03__hero h1 {
-      font-size: 38px;
+      max-width: 10ch;
+      color: #fff;
+      font-size: clamp(34px, 10vw, 44px);
+      line-height: .98;
+      text-wrap: balance;
+    }
+
+    .m03__hero-body,
+    .m03__hero-actions .m03__button--secondary {
+      display: none;
     }
 
     .m03__hero-actions {
-      width: 100%;
+      width: auto;
+      margin-top: 22px;
     }
 
     .m03__hero-actions .m03__button {
       min-height: 46px;
-      flex: 1 1 100%;
+      flex: 0 0 auto;
+      padding-inline: 22px;
+      border-color: #fff;
+      background: #fff !important;
+      color: var(--m03-green) !important;
     }
 
     .m03__hero-image {
-      min-height: 420px;
+      position: absolute;
+      inset: 0;
+      min-height: 0;
+      background-position: 56% top;
+      background-size: auto 148%;
     }
 
     .m03__trust,
