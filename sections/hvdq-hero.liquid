@@ -65,7 +65,49 @@
       {% endif %}
     {% else %}
       <div class="hvdq-hero__placeholder" aria-hidden="true">
-        {{ 'image' | placeholder_svg_tag: 'hvdq-hero__placeholder-svg' }}
+        <svg class="hvdq-hero__demo-art" viewBox="0 0 900 1125" role="presentation">
+          <defs>
+            <radialGradient id="hvdqHeroDial" cx="38%" cy="30%" r="72%">
+              <stop offset="0" stop-color="#68c0c8"/>
+              <stop offset=".4" stop-color="#175f6d"/>
+              <stop offset="1" stop-color="#071820"/>
+            </radialGradient>
+            <linearGradient id="hvdqHeroMetal" x1="0" x2="1">
+              <stop stop-color="#f1eadc"/>
+              <stop offset=".35" stop-color="#877d6c"/>
+              <stop offset=".63" stop-color="#fffaf0"/>
+              <stop offset="1" stop-color="#726858"/>
+            </linearGradient>
+            <linearGradient id="hvdqHeroBackdrop" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#dad3c6"/>
+              <stop offset=".58" stop-color="#b8aa96"/>
+              <stop offset="1" stop-color="#83715d"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="1125" fill="url(#hvdqHeroBackdrop)"/>
+          <circle cx="745" cy="155" r="245" fill="none" stroke="#d8b665" stroke-width="2" opacity=".55"/>
+          <circle cx="745" cy="155" r="190" fill="none" stroke="#d8b665" stroke-width="1" opacity=".35"/>
+          <path d="M0 920c225-115 460-107 900 35v170H0z" fill="#171916" opacity=".92"/>
+          <g transform="translate(112 70) rotate(-9 340 500)">
+            <path d="M277 0h196l45 305H232zM232 765h286l-45 360H277z" fill="#35271f"/>
+            <path d="M291 0h168l28 281H263zM263 789h224l-28 336H291z" fill="#5c4231"/>
+            <circle cx="375" cy="535" r="296" fill="url(#hvdqHeroMetal)"/>
+            <circle cx="375" cy="535" r="263" fill="#08151c"/>
+            <circle cx="375" cy="535" r="240" fill="url(#hvdqHeroDial)"/>
+            <g fill="none" stroke="#d9b35b" stroke-width="8" opacity=".95">
+              <path d="M210 458c82-107 203-114 327-18-97 13-155 77-168 195-52-90-105-149-159-177z"/>
+              <path d="M231 628c82-70 171-64 272 17M262 376c81 25 154 24 223-3"/>
+              <path d="M244 493c52 28 96 74 132 139M348 395c-23 91-13 168 32 231"/>
+            </g>
+            <g stroke="#f7ecd1" stroke-width="8" stroke-linecap="round">
+              <path d="M375 319v27M375 724v27M159 535h27M564 535h27"/>
+              <path d="M375 535l-112-71M375 535l100-134" stroke-width="11"/>
+            </g>
+            <circle cx="375" cy="535" r="16" fill="#d8b15a"/>
+            <rect x="669" y="498" width="38" height="74" rx="9" fill="#8d826f"/>
+          </g>
+          <text x="58" y="1050" fill="#e7d6aa" font-size="20" letter-spacing="6">HVDQ · DEMO VISUAL</text>
+        </svg>
       </div>
     {% endif %}
     {% if section.settings.show_decorative_mark %}
