@@ -176,12 +176,12 @@
   </header>
 
   <nav id="HvdqM03Nav" class="m03__nav" aria-label="HVDQ">
-    <a href="#m03-arrivals">{{ nav_watches }}</a>
-    <a href="#m03-arrivals">{{ nav_cufflinks }}</a>
-    <a href="#m03-arrivals">{{ nav_tie_clips }}</a>
-    <a href="#m03-arrivals">{{ nav_accessories }}</a>
+    <a href="/collections/hvdq-demo-model-03">{{ nav_watches }}</a>
+    <a href="/collections/hvdq-demo-model-03">{{ nav_cufflinks }}</a>
+    <a href="/collections/hvdq-demo-model-03">{{ nav_tie_clips }}</a>
+    <a href="/collections/hvdq-demo-model-03">{{ nav_accessories }}</a>
     <a href="#m03-bespoke">{{ nav_bespoke }}</a>
-    <a href="#m03-arrivals">{{ nav_gifts }}</a>
+    <a href="/collections/hvdq-demo-model-03">{{ nav_gifts }}</a>
     <a href="#m03-atelier">{{ nav_atelier }}</a>
     <a href="#m03-footer">{{ nav_journal }}</a>
     {% form 'localization', id: 'HvdqM03MobileLocalization', class: 'm03__mobile-language' %}
@@ -199,7 +199,7 @@
         <h1>{{ hero_heading }}</h1>
         <p class="m03__hero-body">{{ hero_body }}</p>
         <div class="m03__hero-actions">
-          <a class="m03__button m03__button--primary" href="#m03-arrivals">{{ shop_button }}</a>
+          <a class="m03__button m03__button--primary" href="/collections/hvdq-demo-model-03">{{ shop_button }}</a>
           <a class="m03__button m03__button--secondary" href="#m03-bespoke">{{ bespoke_button }}</a>
         </div>
       </div>
@@ -233,11 +233,11 @@
     <section id="m03-arrivals" class="m03__arrivals">
       <div class="m03__section-heading">
         <h2>{{ arrivals_heading }}</h2>
-        <a href="#m03-arrivals">{{ view_all }} <span aria-hidden="true">→</span></a>
+        <a href="/collections/hvdq-demo-model-03">{{ view_all }} <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="m03__products">
-        <article class="m03__product">
+        <a class="m03__product" href="/products/hvdq-test-imperial-dragon">
           <div class="m03__product-image m03__product-image--dragon" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
             <span class="m03__badge">{{ made_badge }}</span>
           </div>
@@ -247,9 +247,9 @@
             <div class="m03__product-price"><strong>48.800.000₫</strong><span>♡</span></div>
             <small>{{ free_shipping }}</small>
           </div>
-        </article>
+        </a>
 
-        <article class="m03__product">
+        <a class="m03__product" href="/products/hvdq-test-lotus-harmony">
           <div class="m03__product-image m03__product-image--cufflinks" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
             <span class="m03__badge">{{ ready_badge }}</span>
           </div>
@@ -259,9 +259,9 @@
             <div class="m03__product-price"><strong>12.800.000₫</strong><span>♡</span></div>
             <small>{{ free_shipping }}</small>
           </div>
-        </article>
+        </a>
 
-        <article class="m03__product">
+        <a class="m03__product" href="/products/hvdq-test-nocturne-eclat">
           <div class="m03__product-image m03__product-image--tieclip" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
             <span class="m03__badge">{{ bespoke_badge }}</span>
           </div>
@@ -271,9 +271,9 @@
             <div class="m03__product-price"><strong>8.600.000₫</strong><span>♡</span></div>
             <small>{{ free_shipping }}</small>
           </div>
-        </article>
+        </a>
 
-        <article class="m03__product">
+        <a class="m03__product" href="/products/hvdq-test-blue-mountain-cufflinks">
           <div class="m03__product-image m03__product-image--mountain" style="background-image:url('{{ 'hvdq-demo-products.png' | asset_url }}')">
             <span class="m03__badge">{{ ready_badge }}</span>
           </div>
@@ -283,7 +283,7 @@
             <div class="m03__product-price"><strong>42.800.000₫</strong><span>♡</span></div>
             <small>{{ free_shipping }}</small>
           </div>
-        </article>
+        </a>
       </div>
     </section>
 
