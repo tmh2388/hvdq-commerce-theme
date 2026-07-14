@@ -321,9 +321,9 @@
     <div><strong>{{ footer_follow }}</strong><a href="#m03-footer">Instagram</a><a href="#m03-footer">Facebook</a><a href="#m03-footer">YouTube</a></div>
   </footer>
   <div class="m03__copyright">© {{ 'now' | date: '%Y' }} HVDQ · Hạ Vân Thủ Nghệ Bách Phẩm Đường</div>
-  <button class="m03__back-top" type="button" aria-label="{{ back_to_top_label }}" title="{{ back_to_top_label }}">
+  <a class="m03__back-top" href="#m03-top" aria-label="{{ back_to_top_label }}" title="{{ back_to_top_label }}">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
-  </button>
+  </a>
 </div>
 
 <script>
@@ -338,7 +338,12 @@
     const isShopifyPreview = new URLSearchParams(window.location.search).has('preview_theme_id')
       || document.documentElement.classList.contains('shopify-design-mode');
     root.classList.toggle('is-shopify-preview', isShopifyPreview);
-    button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     menuButton?.addEventListener('click', () => {
       const isOpen = navigation?.classList.toggle('is-open');
@@ -881,7 +886,7 @@
     position: fixed;
     z-index: 999;
     right: 24px;
-    bottom: 24px;
+    bottom: 124px;
     display: grid;
     width: 48px;
     height: 48px;
@@ -906,7 +911,7 @@
   }
 
   .m03.is-shopify-preview .m03__back-top {
-    bottom: 92px;
+    bottom: 124px;
   }
 
   .m03__back-top:hover {
@@ -1139,13 +1144,13 @@
 
     .m03__back-top {
       right: 16px;
-      bottom: max(18px, calc(env(safe-area-inset-bottom) + 12px));
+      bottom: max(124px, calc(env(safe-area-inset-bottom) + 110px));
       width: 46px;
       height: 46px;
     }
 
     .m03.is-shopify-preview .m03__back-top {
-      bottom: 104px;
+      bottom: max(124px, calc(env(safe-area-inset-bottom) + 110px));
     }
   }
 {% endstylesheet %}
