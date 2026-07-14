@@ -335,10 +335,10 @@
     if (!button || button.dataset.ready === 'true') return;
 
     button.dataset.ready = 'true';
-    const updateButton = () => button.classList.toggle('is-visible', window.scrollY > 160);
+    const isShopifyPreview = new URLSearchParams(window.location.search).has('preview_theme_id')
+      || document.documentElement.classList.contains('shopify-design-mode');
+    root.classList.toggle('is-shopify-preview', isShopifyPreview);
     button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    window.addEventListener('scroll', updateButton, { passive: true });
-    updateButton();
 
     menuButton?.addEventListener('click', () => {
       const isOpen = navigation?.classList.toggle('is-open');
@@ -893,9 +893,9 @@
     box-shadow: 0 10px 28px rgb(9 71 48 / 24%);
     color: #fff;
     cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(12px);
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
     transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
   }
 
@@ -903,6 +903,10 @@
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+  }
+
+  .m03.is-shopify-preview .m03__back-top {
+    bottom: 92px;
   }
 
   .m03__back-top:hover {
@@ -1135,9 +1139,13 @@
 
     .m03__back-top {
       right: 16px;
-      bottom: 18px;
+      bottom: max(18px, calc(env(safe-area-inset-bottom) + 12px));
       width: 46px;
       height: 46px;
+    }
+
+    .m03.is-shopify-preview .m03__back-top {
+      bottom: 104px;
     }
   }
 {% endstylesheet %}
