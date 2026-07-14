@@ -63,6 +63,7 @@
     assign search_label = 'Search'
     assign account_label = 'Account'
     assign cart_label = 'Cart'
+    assign back_to_top_label = 'Back to top'
   else
     assign utility_text = 'Miễn phí vận chuyển và đổi trả toàn cầu'
     assign nav_watches = 'Đồng hồ'
@@ -121,10 +122,11 @@
     assign search_label = 'Tìm kiếm'
     assign account_label = 'Tài khoản'
     assign cart_label = 'Giỏ hàng'
+    assign back_to_top_label = 'Lên đầu trang'
   endif
 %}
 
-<div class="m03" data-hvdq-model-03>
+<div id="m03-top" class="m03" data-hvdq-model-03>
   <div class="m03__demo-notice">{{ demo_notice }}</div>
 
   <div class="m03__utility">
@@ -149,6 +151,7 @@
     {% endform %}
   </div>
 
+  <div class="m03__sticky-shell">
   <header class="m03__header">
     <a class="m03__brand" href="{{ routes.root_url }}" aria-label="HVDQ">
       <span class="m03__brand-name">HVDQ</span>
@@ -177,6 +180,7 @@
     <a href="#m03-atelier">{{ nav_atelier }}</a>
     <a href="#m03-footer">{{ nav_journal }}</a>
   </nav>
+  </div>
 
   <main>
     <section class="m03__hero">
@@ -307,9 +311,32 @@
     <div><strong>{{ footer_follow }}</strong><a href="#m03-footer">Instagram</a><a href="#m03-footer">Facebook</a><a href="#m03-footer">YouTube</a></div>
   </footer>
   <div class="m03__copyright">© {{ 'now' | date: '%Y' }} HVDQ · Hạ Vân Thủ Nghệ Bách Phẩm Đường</div>
+  <button class="m03__back-top" type="button" aria-label="{{ back_to_top_label }}" title="{{ back_to_top_label }}">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
+  </button>
 </div>
 
+<script>
+  (() => {
+    const section = document.currentScript?.closest('.shopify-section');
+    const root = section?.querySelector('[data-hvdq-model-03]');
+    const button = root?.querySelector('.m03__back-top');
+    if (!button || button.dataset.ready === 'true') return;
+
+    button.dataset.ready = 'true';
+    const updateButton = () => button.classList.toggle('is-visible', window.scrollY > 520);
+    button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', updateButton, { passive: true });
+    updateButton();
+  })();
+</script>
+
 {% stylesheet %}
+  html:has([data-hvdq-model-03]) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 128px;
+  }
+
   .page-wrapper:has([data-hvdq-model-03]) > #header-group,
   .page-wrapper:has([data-hvdq-model-03]) > footer {
     display: none !important;
@@ -400,6 +427,15 @@
   .m03__language.is-active {
     color: var(--m03-ink);
     font-weight: 700;
+  }
+
+  .m03__sticky-shell {
+    position: sticky;
+    z-index: 40;
+    top: 0;
+    background: rgb(255 255 255 / 96%);
+    box-shadow: 0 8px 24px rgb(19 45 34 / 5%);
+    backdrop-filter: blur(12px);
   }
 
   .m03__header {
@@ -816,6 +852,47 @@
     font-size: 9px;
   }
 
+  .m03__back-top {
+    position: fixed;
+    z-index: 50;
+    right: 24px;
+    bottom: 24px;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 50%;
+    background: var(--m03-green);
+    box-shadow: 0 10px 28px rgb(9 71 48 / 24%);
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+  }
+
+  .m03__back-top.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .m03__back-top:hover {
+    background: var(--m03-green-dark);
+  }
+
+  .m03__back-top svg {
+    width: 22px;
+    fill: none;
+    stroke: currentcolor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+  }
+
   @media screen and (max-width: 900px) {
     .m03__hero {
       grid-template-columns: 1fr 1fr;
@@ -842,6 +919,21 @@
   }
 
   @media screen and (max-width: 680px) {
+    html:has([data-hvdq-model-03]) {
+      scroll-padding-top: 106px;
+    }
+
+    .m03__demo-notice {
+      padding-inline: 16px;
+      font-size: 8px;
+    }
+
+    .m03__utility,
+    .m03__header,
+    .m03__nav {
+      padding-inline: 16px;
+    }
+
     .m03__header {
       min-height: 64px;
     }
@@ -852,6 +944,15 @@
 
     .m03__nav {
       gap: 22px;
+      min-height: 42px;
+      scroll-snap-type: x proximity;
+    }
+
+    .m03__nav a {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      scroll-snap-align: start;
     }
 
     .m03__hero {
@@ -864,6 +965,15 @@
 
     .m03__hero h1 {
       font-size: 38px;
+    }
+
+    .m03__hero-actions {
+      width: 100%;
+    }
+
+    .m03__hero-actions .m03__button {
+      min-height: 46px;
+      flex: 1 1 100%;
     }
 
     .m03__hero-image {
@@ -887,6 +997,18 @@
       row-gap: 28px;
     }
 
+    .m03__arrivals {
+      padding-inline: 16px;
+    }
+
+    .m03__product-name {
+      font-size: 14px;
+    }
+
+    .m03__product-meta {
+      min-height: 3em;
+    }
+
     .m03__bespoke {
       grid-template-columns: 1fr;
       margin-inline: 0;
@@ -902,6 +1024,13 @@
 
     .m03__footer-brand {
       grid-column: 1 / -1;
+    }
+
+    .m03__back-top {
+      right: 16px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
     }
   }
 {% endstylesheet %}
