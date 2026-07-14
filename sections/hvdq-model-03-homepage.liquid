@@ -318,13 +318,12 @@
 
 <script>
   (() => {
-    const section = document.currentScript?.closest('.shopify-section');
-    const root = section?.querySelector('[data-hvdq-model-03]');
+    const root = document.querySelector('[data-hvdq-model-03]');
     const button = root?.querySelector('.m03__back-top');
     if (!button || button.dataset.ready === 'true') return;
 
     button.dataset.ready = 'true';
-    const updateButton = () => button.classList.toggle('is-visible', window.scrollY > 520);
+    const updateButton = () => button.classList.toggle('is-visible', window.scrollY > 160);
     button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     window.addEventListener('scroll', updateButton, { passive: true });
     updateButton();
@@ -334,7 +333,7 @@
 {% stylesheet %}
   html:has([data-hvdq-model-03]) {
     scroll-behavior: smooth;
-    scroll-padding-top: 128px;
+    scroll-padding-top: 102px;
   }
 
   .page-wrapper:has([data-hvdq-model-03]) > #header-group,
@@ -441,7 +440,7 @@
   .m03__header {
     display: flex;
     align-items: center;
-    min-height: 76px;
+    min-height: 60px;
     padding: 0 4vw;
     border-bottom: 1px solid var(--m03-line);
   }
@@ -454,13 +453,13 @@
 
   .m03__brand-name {
     font-family: var(--font-heading--family);
-    font-size: 31px;
+    font-size: 25px;
     letter-spacing: 0.055em;
   }
 
   .m03__brand-sub {
-    margin-top: 6px;
-    font-size: 7px;
+    margin-top: 4px;
+    font-size: 6px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
@@ -492,7 +491,7 @@
     display: flex;
     align-items: center;
     gap: clamp(20px, 2.6vw, 42px);
-    min-height: 44px;
+    min-height: 40px;
     padding: 0 4vw;
     overflow-x: auto;
     border-bottom: 1px solid var(--m03-line);
@@ -854,7 +853,7 @@
 
   .m03__back-top {
     position: fixed;
-    z-index: 50;
+    z-index: 999;
     right: 24px;
     bottom: 24px;
     display: grid;
@@ -920,7 +919,7 @@
 
   @media screen and (max-width: 680px) {
     html:has([data-hvdq-model-03]) {
-      scroll-padding-top: 106px;
+      scroll-padding-top: 90px;
     }
 
     .m03__demo-notice {
@@ -935,22 +934,26 @@
     }
 
     .m03__header {
-      min-height: 64px;
+      min-height: 52px;
     }
 
     .m03__brand-name {
-      font-size: 26px;
+      font-size: 21px;
+    }
+
+    .m03__brand-sub {
+      display: none;
     }
 
     .m03__nav {
       gap: 22px;
-      min-height: 42px;
+      min-height: 38px;
       scroll-snap-type: x proximity;
     }
 
     .m03__nav a {
       display: inline-flex;
-      min-height: 42px;
+      min-height: 38px;
       align-items: center;
       scroll-snap-align: start;
     }
