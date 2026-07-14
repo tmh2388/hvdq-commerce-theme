@@ -15,6 +15,39 @@
   assign personalization = product_resource.metafields.hvdq.personalization.value
   assign care = product_resource.metafields.hvdq.care.value
   assign warranty = product_resource.metafields.hvdq.warranty.value
+  assign language_code = localization.language.iso_code
+  assign details_heading_label = 'Craft and product details'
+  assign technique_label = 'Technique'
+  assign material_label = 'Material'
+  assign dimensions_label = 'Dimensions'
+  assign edition_label = 'Edition'
+  assign artisan_label = 'Artisan'
+  assign personalization_label = 'Personalization'
+  assign care_label = 'Care instructions'
+  assign warranty_label = 'Warranty'
+
+  case language_code
+    when 'vi'
+      assign details_heading_label = 'Chế tác và thông tin sản phẩm'
+      assign technique_label = 'Kỹ thuật'
+      assign material_label = 'Chất liệu'
+      assign dimensions_label = 'Kích thước'
+      assign edition_label = 'Phiên bản'
+      assign artisan_label = 'Nghệ nhân'
+      assign personalization_label = 'Cá nhân hóa'
+      assign care_label = 'Hướng dẫn bảo quản'
+      assign warranty_label = 'Bảo hành'
+    when 'zh-CN', 'zh-TW', 'zh'
+      assign details_heading_label = '工艺与产品信息'
+      assign technique_label = '工艺'
+      assign material_label = '材质'
+      assign dimensions_label = '尺寸'
+      assign edition_label = '版本'
+      assign artisan_label = '工艺师'
+      assign personalization_label = '个性化定制'
+      assign care_label = '保养说明'
+      assign warranty_label = '保修'
+  endcase
 
   assign has_specifications = false
   if technique != blank or material != blank or dimensions != blank or edition != blank or artisan != blank
@@ -25,38 +58,38 @@
 {% if has_specifications or personalization != blank or care != blank or warranty != blank %}
   <section class="hvdq-product-details" aria-labelledby="HvdqProductDetails-{{ block.id }}" {{ block.shopify_attributes }}>
     <h2 id="HvdqProductDetails-{{ block.id }}" class="hvdq-product-details__heading">
-      {{ 'products.hvdq.details_heading' | t }}
+      {{ details_heading_label }}
     </h2>
 
     {% if has_specifications %}
       <dl class="hvdq-product-details__specifications">
         {% if technique != blank %}
           <div class="hvdq-product-details__row">
-            <dt>{{ 'products.hvdq.technique' | t }}</dt>
+            <dt>{{ technique_label }}</dt>
             <dd>{{ technique | escape }}</dd>
           </div>
         {% endif %}
         {% if material != blank %}
           <div class="hvdq-product-details__row">
-            <dt>{{ 'products.hvdq.material' | t }}</dt>
+            <dt>{{ material_label }}</dt>
             <dd>{{ material | escape | newline_to_br }}</dd>
           </div>
         {% endif %}
         {% if dimensions != blank %}
           <div class="hvdq-product-details__row">
-            <dt>{{ 'products.hvdq.dimensions' | t }}</dt>
+            <dt>{{ dimensions_label }}</dt>
             <dd>{{ dimensions | escape }}</dd>
           </div>
         {% endif %}
         {% if edition != blank %}
           <div class="hvdq-product-details__row">
-            <dt>{{ 'products.hvdq.edition' | t }}</dt>
+            <dt>{{ edition_label }}</dt>
             <dd>{{ edition | escape }}</dd>
           </div>
         {% endif %}
         {% if artisan != blank %}
           <div class="hvdq-product-details__row">
-            <dt>{{ 'products.hvdq.artisan' | t }}</dt>
+            <dt>{{ artisan_label }}</dt>
             <dd>{{ artisan | escape }}</dd>
           </div>
         {% endif %}
@@ -68,7 +101,7 @@
         {% if personalization != blank %}
           <details class="hvdq-product-details__disclosure">
             <summary>
-              {{ 'products.hvdq.personalization' | t }}
+              {{ personalization_label }}
               <span aria-hidden="true"></span>
             </summary>
             <div class="hvdq-product-details__content">{{ personalization | escape | newline_to_br }}</div>
@@ -77,7 +110,7 @@
         {% if care != blank %}
           <details class="hvdq-product-details__disclosure">
             <summary>
-              {{ 'products.hvdq.care' | t }}
+              {{ care_label }}
               <span aria-hidden="true"></span>
             </summary>
             <div class="hvdq-product-details__content">{{ care | escape | newline_to_br }}</div>
@@ -86,7 +119,7 @@
         {% if warranty != blank %}
           <details class="hvdq-product-details__disclosure">
             <summary>
-              {{ 'products.hvdq.warranty' | t }}
+              {{ warranty_label }}
               <span aria-hidden="true"></span>
             </summary>
             <div class="hvdq-product-details__content">{{ warranty | escape | newline_to_br }}</div>

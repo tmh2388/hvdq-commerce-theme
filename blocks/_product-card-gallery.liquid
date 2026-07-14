@@ -3,15 +3,30 @@
 {% liquid
   assign product = closest.product
   assign commerce_mode = product.metafields.hvdq.commerce_mode.value
+  assign language_code = localization.language.iso_code
+  assign ready_to_ship_label = 'Ready to ship'
+  assign made_to_order_label = 'Made to order'
+  assign bespoke_label = 'Bespoke'
+
+  case language_code
+    when 'vi'
+      assign ready_to_ship_label = 'Hàng có sẵn'
+      assign made_to_order_label = 'Đặt làm theo mẫu'
+      assign bespoke_label = 'Chế tác riêng'
+    when 'zh-CN', 'zh-TW', 'zh'
+      assign ready_to_ship_label = '现货'
+      assign made_to_order_label = '按款定制'
+      assign bespoke_label = '专属定制'
+  endcase
 
   capture commerce_mode_label
     case commerce_mode
       when 'READY_TO_SHIP'
-        echo 'products.hvdq.ready_to_ship' | t
+        echo ready_to_ship_label
       when 'MADE_TO_ORDER'
-        echo 'products.hvdq.made_to_order' | t
+        echo made_to_order_label
       when 'BESPOKE'
-        echo 'products.hvdq.bespoke' | t
+        echo bespoke_label
       else
         echo commerce_mode | escape
     endcase

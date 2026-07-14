@@ -368,25 +368,6 @@
       "in_cart": "in cart",
       "default_title": "Default Title",
       "sticky_add_to_cart": "Quick add to cart bar"
-    },
-    "hvdq": {
-      "details_heading": "Craft and product details",
-      "ready_to_ship": "Ready to ship",
-      "made_to_order": "Made to order",
-      "bespoke": "Bespoke",
-      "lead_time_days": {
-        "one": "Estimated lead time: {{ count }} day",
-        "other": "Estimated lead time: {{ count }} days"
-      },
-      "technique": "Technique",
-      "material": "Material",
-      "dimensions": "Dimensions",
-      "edition": "Edition",
-      "artisan": "Artisan",
-      "personalization": "Personalization",
-      "care": "Care instructions",
-      "warranty": "Warranty",
-      "recommendations": "You may also like"
     }
   }
 }

@@ -346,7 +346,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>{{ 'products.hvdq.recommendations' | t }}</h3>",
+            "text": "t:html_defaults.may_also_like",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
