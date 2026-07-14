@@ -339,6 +339,10 @@
         "padding-block-end": 0
       }
     },
+    "hvdq_order_assurance": {
+      "type": "hvdq-order-assurance",
+      "settings": {}
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -464,6 +468,7 @@
   },
   "order": [
     "main",
+    "hvdq_order_assurance",
     "product_recommendations_qggXJq"
   ]
 }

@@ -1,0 +1,153 @@
+{% liquid
+  assign language_code = localization.language.iso_code
+  assign heading = 'From atelier to your hands'
+  assign intro = 'Every order is confirmed, protected in transit, and supported after delivery.'
+  assign step_1 = 'Order confirmed'
+  assign step_1_body = 'We verify your piece and contact details.'
+  assign step_2 = 'Atelier preparation'
+  assign step_2_body = 'Ready pieces are inspected; commissions enter the agreed schedule.'
+  assign step_3 = 'Insured delivery'
+  assign step_3_body = 'Tracking is shared when the parcel leaves our atelier.'
+  assign step_4 = 'Lifetime care'
+  assign step_4_body = 'Care guidance and warranty history remain connected to your order.'
+
+  if language_code == 'vi'
+    assign heading = 'Từ nghệ xưởng đến tay anh'
+    assign intro = 'Mỗi đơn hàng đều được xác nhận, bảo vệ trong quá trình vận chuyển và đồng hành sau khi giao.'
+    assign step_1 = 'Xác nhận đơn hàng'
+    assign step_1_body = 'HVDQ kiểm tra tác phẩm và thông tin người nhận.'
+    assign step_2 = 'Chuẩn bị tại nghệ xưởng'
+    assign step_2_body = 'Hàng có sẵn được kiểm định; đơn chế tác đi theo lịch đã thống nhất.'
+    assign step_3 = 'Giao hàng bảo đảm'
+    assign step_3_body = 'Mã theo dõi được gửi khi kiện hàng rời nghệ xưởng.'
+    assign step_4 = 'Đồng hành trọn đời'
+    assign step_4_body = 'Hướng dẫn bảo quản và lịch sử bảo hành gắn với đơn hàng.'
+  endif
+%}
+
+<section class="hvdq-order-assurance" aria-labelledby="HvdqOrderAssurance-{{ section.id }}">
+  <div class="hvdq-order-assurance__header">
+    <p class="hvdq-order-assurance__eyebrow">HVDQ Client Care</p>
+    <h2 id="HvdqOrderAssurance-{{ section.id }}">{{ heading }}</h2>
+    <p>{{ intro }}</p>
+  </div>
+  <div class="hvdq-order-assurance__steps">
+    <article><span>01</span><strong>{{ step_1 }}</strong><p>{{ step_1_body }}</p></article>
+    <article><span>02</span><strong>{{ step_2 }}</strong><p>{{ step_2_body }}</p></article>
+    <article><span>03</span><strong>{{ step_3 }}</strong><p>{{ step_3_body }}</p></article>
+    <article><span>04</span><strong>{{ step_4 }}</strong><p>{{ step_4_body }}</p></article>
+  </div>
+</section>
+
+{% stylesheet %}
+  .hvdq-order-assurance {
+    padding: clamp(44px, 6vw, 82px) 4vw;
+    border-block: 1px solid #d9d8d1;
+    background: #f7f5ef;
+    color: #171a17;
+  }
+
+  .hvdq-order-assurance__header {
+    max-width: 680px;
+    margin-bottom: 32px;
+  }
+
+  .hvdq-order-assurance__eyebrow {
+    margin: 0 0 10px;
+    color: #0b704c;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .hvdq-order-assurance__header h2 {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(30px, 3.4vw, 48px);
+    font-weight: 500;
+    line-height: 1.06;
+  }
+
+  .hvdq-order-assurance__header > p:last-child {
+    max-width: 58ch;
+    margin: 15px 0 0;
+    color: #666a64;
+    font-size: 13px;
+  }
+
+  .hvdq-order-assurance__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #d9d8d1;
+  }
+
+  .hvdq-order-assurance__steps article {
+    padding: 24px 22px 8px 0;
+    border-right: 1px solid #d9d8d1;
+  }
+
+  .hvdq-order-assurance__steps article:not(:first-child) {
+    padding-left: 22px;
+  }
+
+  .hvdq-order-assurance__steps article:last-child {
+    border-right: 0;
+  }
+
+  .hvdq-order-assurance__steps span,
+  .hvdq-order-assurance__steps strong {
+    display: block;
+  }
+
+  .hvdq-order-assurance__steps span {
+    margin-bottom: 14px;
+    color: #0b704c;
+    font-family: var(--font-heading--family);
+    font-size: 18px;
+  }
+
+  .hvdq-order-assurance__steps strong {
+    font-size: 12px;
+  }
+
+  .hvdq-order-assurance__steps p {
+    margin: 6px 0 0;
+    color: #666a64;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  @media screen and (max-width: 749px) {
+    .hvdq-order-assurance {
+      padding: 42px 18px;
+    }
+
+    .hvdq-order-assurance__steps {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hvdq-order-assurance__steps article,
+    .hvdq-order-assurance__steps article:not(:first-child) {
+      padding: 20px 14px;
+      border-bottom: 1px solid #d9d8d1;
+    }
+
+    .hvdq-order-assurance__steps article:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .hvdq-order-assurance__steps article:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "HVDQ Order Assurance",
+  "tag": "section",
+  "class": "hvdq-order-assurance-section",
+  "settings": [],
+  "presets": [{ "name": "HVDQ Order Assurance" }]
+}
+{% endschema %}
