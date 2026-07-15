@@ -27,16 +27,21 @@ This module moves approved PIM data into Shopify as **Draft products only**.
 2. Add all files in `src/` and replace the manifest with `appsscript.json`.
 3. Add Script Properties, with `LIVE_SYNC_ENABLED=false`.
 4. Run `runHvdqUnitTests()`.
-5. Run `runPimSchemaAudit()` and resolve every `ERROR` before AppSheet Gate 1.
-6. Run `inspectSystemSafety()`.
-7. Run `dryRunProductBySku('<approved SKU>')` and inspect the payload.
-8. Only after Founder approval, set `LIVE_SYNC_ENABLED=true` and sync one approved test product.
+5. Run `syncPimLookupValidations()` after changing LOOKUPS.
+6. Run `runPimSchemaAudit()` and resolve every `ERROR` before AppSheet Gate 1.
+7. Run `inspectSystemSafety()`.
+8. Run `dryRunProductBySku('<approved SKU>')` and inspect the payload.
+9. Only after Founder approval, set `LIVE_SYNC_ENABLED=true` and sync one approved test product.
 
 ## AppSheet schema contract
 
 - `src/SchemaContract.gs` is the only authoritative column-level AppSheet
   configuration matrix.
 - `src/SchemaAudit.gs` performs read-only checks against the live PIM Sheet.
+- `src/AppDefinitionContract.gs` defines the required workflow actions/bot.
+- `src/AuditTrail.gs` stamps direct Google Sheets edits; Apps Script writes are
+  stamped centrally by `updateRecord_()`.
+- `src/PimSetup.gs` synchronizes strict Sheet validations from active LOOKUPS.
 - The audit checks source tables and columns, key uniqueness, required values,
   duplicate SKU rules, reference integrity, LOOKUPS, and safety config.
 - AppSheet-only properties such as Label, Ref, Editable, Show If, and virtual
