@@ -49,10 +49,17 @@ function findBySku_(table, skuHeader, sku) {
 }
 
 function updateRecord_(table, rowNumber, patch) {
-  Object.keys(patch).forEach(function (header) {
+  const stampedPatch = Object.assign({}, patch);
+  if (table.headers.indexOf('Last Updated') !== -1 && !Object.prototype.hasOwnProperty.call(stampedPatch, 'Last Updated')) {
+    stampedPatch['Last Updated'] = new Date();
+  }
+  if (table.headers.indexOf('Updated By') !== -1 && !Object.prototype.hasOwnProperty.call(stampedPatch, 'Updated By')) {
+    stampedPatch['Updated By'] = getAutomationActor_();
+  }
+  Object.keys(stampedPatch).forEach(function (header) {
     const columnIndex = table.headers.indexOf(header);
     if (columnIndex === -1) throw new Error('Cannot update missing column: ' + header);
-    table.sheet.getRange(rowNumber, columnIndex + 1).setValue(patch[header]);
+    table.sheet.getRange(rowNumber, columnIndex + 1).setValue(stampedPatch[header]);
   });
 }
 
