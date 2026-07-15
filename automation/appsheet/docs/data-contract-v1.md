@@ -12,7 +12,7 @@ renamed, removed, or repurposed by this contract.
 | VARIANTS | Variant ID | Variant SKU | — |
 | MEDIA | Media ID | Filename | — |
 | PRICING | Price ID | Price ID | — |
-| INVENTORY | Inventory ID | Variant SKU | — |
+| INVENTORY | Inventory ID | SKU | — |
 | TRANSLATIONS | Translation ID | Field | — |
 | APPROVAL_QUEUE | Request ID | Request ID | — |
 | SYNC_LOG | Log ID | Log ID | — |
@@ -43,7 +43,7 @@ does not modify the Google Sheet structure:
 | APPROVAL_QUEUE | Product Ref | Ref → PRODUCTS | `ANY(SELECT(PRODUCTS[Product ID], [SKU] = [_THISROW].[SKU]))` |
 | SYNC_LOG | Product Ref | Ref → PRODUCTS | `ANY(SELECT(PRODUCTS[Product ID], [SKU] = [_THISROW].[SKU]))` |
 | ERROR_QUEUE | Product Ref | Ref → PRODUCTS | `ANY(SELECT(PRODUCTS[Product ID], [SKU] = [_THISROW].[SKU]))` |
-| INVENTORY | Variant Ref | Ref → VARIANTS | `ANY(SELECT(VARIANTS[Variant ID], [Variant SKU] = [_THISROW].[Variant SKU]))` |
+| INVENTORY | Variant Ref | Ref → VARIANTS | `ANY(SELECT(VARIANTS[Variant ID], [Variant SKU] = [_THISROW].[SKU]))` |
 
 `PRODUCTS[Collection]` becomes a physical `Ref → COLLECTIONS`. The PIM contains
 no launch product rows at this baseline, so the field can safely store
