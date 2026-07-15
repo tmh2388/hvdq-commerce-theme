@@ -7,9 +7,10 @@ function runHvdqUnitTests() {
     function () { assertEqual_('number', 25000000, asNumber_('25000000')); },
     function () { assertEqual_('unique strings', 'A|B', uniqueStrings_(['A', 'A', '', 'B']).join('|')); },
     function () { assertEqual_('shop domain', 'hvdq.myshopify.com', normalizeShopDomain_('https://hvdq.myshopify.com/')); },
-    function () { assertEqual_('schema contract version', '1.1.0', HVDQ_SCHEMA_CONTRACT_VERSION); },
-    function () { assertEqual_('schema contract fields', 18, HVDQ_SCHEMA_CONTRACT_FIELDS.length); },
-    function () { assertEqual_('schema contract rows', 210, HVDQ_SCHEMA_CONTRACT.length); }
+    function () { assertEqual_('schema contract version', '1.2.0', HVDQ_SCHEMA_CONTRACT_VERSION); },
+    function () { assertEqual_('schema contract fields', 20, HVDQ_SCHEMA_CONTRACT_FIELDS.length); },
+    function () { assertEqual_('schema contract rows', 210, HVDQ_SCHEMA_CONTRACT.length); },
+    function () { assertEqual_('workflow action count', 6, HVDQ_PRODUCT_WORKFLOW_ACTIONS.length); }
   ];
 
   const results = [];
