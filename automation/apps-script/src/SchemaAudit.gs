@@ -17,6 +17,9 @@ function runPimSchemaAudit() {
   auditSkuRules_(tables, findings);
   auditReferenceIntegrity_(tables, findings);
   auditLookups_(tables, findings);
+  auditSpreadsheetFormulas_(tables, findings);
+  auditLookupValidationRules_(tables, findings);
+  auditContractDefaults_(contract, findings);
   auditSafetyConfig_(tables, findings);
 
   const summary = summarizeAuditFindings_(findings);
@@ -76,9 +79,13 @@ function loadAuditTables_(spreadsheet, physicalRows, findings) {
     const headerRow = tableName === 'START_HERE' ? 3 : 1;
     const lastRow = sheet.getLastRow();
     const lastColumn = sheet.getLastColumn();
-    const values = lastColumn > 0 && lastRow >= headerRow
-      ? sheet.getRange(headerRow, 1, lastRow - headerRow + 1, lastColumn).getValues()
-      : [];
+    const auditLastRow = Math.max(lastRow, headerRow + 1);
+    const range = lastColumn > 0 && auditLastRow >= headerRow
+      ? sheet.getRange(headerRow, 1, auditLastRow - headerRow + 1, lastColumn)
+      : null;
+    const values = range ? range.getValues() : [];
+    const formulas = range ? range.getFormulas() : [];
+    const validations = range ? range.getDataValidations() : [];
     const headers = values.length ? values[0].map(function (value) { return String(value).trim(); }) : [];
     const records = [];
     for (let index = 1; index < values.length; index += 1) {
@@ -99,7 +106,7 @@ function loadAuditTables_(spreadsheet, physicalRows, findings) {
         addAuditFinding_(findings, 'WARNING', 'COLUMN_UNCONTRACTED', tableName, header, headerRow, 'Source column is not present in the canonical contract.');
       }
     });
-    result[tableName] = { sheet, headers, rows: records, contractRows: rowsByTable[tableName] };
+    result[tableName] = { sheet, headers, rows: records, formulas, validations, headerRow, contractRows: rowsByTable[tableName] };
   });
   return result;
 }
@@ -219,6 +226,67 @@ function auditSafetyConfig_(tables, findings) {
   }
 }
 
+function auditSpreadsheetFormulas_(tables, findings) {
+  const expected = [
+    { table: 'PRODUCTS', column: 'Validation Status', formula: '=ARRAYFORMULA(IF(B2:B="";"";IF((D2:D<>"")*(E2:E<>"")*(F2:F<>"")*(O2:O<>"")*(R2:R<>"")*(S2:S<>"");"VALID";"MISSING REQUIRED")))' },
+    { table: 'PRODUCTS', column: 'Validation Errors', formula: '=ARRAYFORMULA(IF(B2:B="";"";TRIM(IF(D2:D="";"Tên VI; ";"")&IF(E2:E="";"Mô hình; ";"")&IF(F2:F="";"Danh mục; ";"")&IF(O2:O="";"Câu chuyện VI; ";"")&IF(R2:R="";"Lead time; ";"")&IF(S2:S="";"Ảnh hero; ";""))))' },
+    { table: 'INVENTORY', column: 'Available', formula: '=ARRAYFORMULA(IF(B2:B="";"";N(D2:D)-N(E2:E)))' }
+  ];
+  expected.forEach(function (rule) {
+    const table = tables[rule.table];
+    if (!table) return;
+    const columnIndex = table.headers.indexOf(rule.column);
+    const actual = columnIndex >= 0 && table.formulas[1] ? table.formulas[1][columnIndex] : '';
+    if (normalizeFormula_(actual) !== normalizeFormula_(rule.formula)) {
+      addAuditFinding_(findings, 'ERROR', 'SOURCE_FORMULA_MISMATCH', rule.table, rule.column, 2, 'Expected protected ARRAYFORMULA does not match the source sheet.');
+    }
+  });
+}
+
+function auditLookupValidationRules_(tables, findings) {
+  const mappings = [
+    { table: 'PRODUCTS', column: 'Product Model', group: 'PRODUCT_MODEL' },
+    { table: 'PRODUCTS', column: 'Category', group: 'CATEGORY' },
+    { table: 'PRODUCTS', column: 'Technique', group: 'TECHNIQUE' },
+    { table: 'PRICING', column: 'Market', group: 'MARKET' }
+  ];
+  mappings.forEach(function (mapping) {
+    const table = tables[mapping.table];
+    if (!table || !tables.LOOKUPS) return;
+    const expected = activeLookupCodes_(tables.LOOKUPS, mapping.group).sort();
+    const columnIndex = table.headers.indexOf(mapping.column);
+    const validation = columnIndex >= 0 && table.validations[1] ? table.validations[1][columnIndex] : null;
+    const actual = validation ? validation.getCriteriaValues()[0].map(String).sort() : [];
+    if (!validation || String(validation.getCriteriaType()) !== String(SpreadsheetApp.DataValidationCriteria.VALUE_IN_LIST)) {
+      addAuditFinding_(findings, 'ERROR', 'LOOKUP_VALIDATION_MISSING', mapping.table, mapping.column, 2, 'Expected strict list validation sourced from active LOOKUPS group ' + mapping.group + '.');
+    } else if (actual.join('|') !== expected.join('|') || validation.getAllowInvalid()) {
+      addAuditFinding_(findings, 'ERROR', 'LOOKUP_VALIDATION_DRIFT', mapping.table, mapping.column, 2, 'Sheet validation values differ from active LOOKUPS or allow invalid values.');
+    }
+  });
+}
+
+function auditContractDefaults_(contract, findings) {
+  const expected = {
+    'PRODUCTS|Product ID': 'UNIQUEID()',
+    'PRODUCTS|Workflow Status': 'DRAFT',
+    'PRODUCTS|Submit for Review': 'FALSE',
+    'PRODUCTS|Shopify Sync Status': 'NOT_SYNCED',
+    'PRODUCTS|Created At': 'NOW()',
+    'PRODUCTS|Created By': 'USEREMAIL()'
+  };
+  contract.forEach(function (row) {
+    const identity = row.Table + '|' + row.Column;
+    if (Object.prototype.hasOwnProperty.call(expected, identity) && row['Initial value'] !== expected[identity]) {
+      addAuditFinding_(findings, 'ERROR', 'CONTRACT_DEFAULT_MISMATCH', row.Table, row.Column, 0, 'Contract Initial value must be ' + expected[identity] + '.');
+    }
+    if (HVDQ_LOOKUP_ENUM_COLUMNS_[identity]) {
+      if (row['Base type'] !== 'Text' || row['Allow other values'] !== 'FALSE') {
+        addAuditFinding_(findings, 'ERROR', 'LOOKUP_ENUM_TYPE_UNSAFE', row.Table, row.Column, 0, 'Lookup-backed Enum requires Base type Text and Allow other values FALSE.');
+      }
+    }
+  });
+}
+
 function auditUniqueColumn_(table, column, blankIsError, findings, codePrefix) {
   if (!table || table.headers.indexOf(column) === -1) return;
   const seen = {};
@@ -300,4 +368,8 @@ function normalizeAuditText_(value) {
 
 function isBlankAuditValue_(value) {
   return value === '' || value === null || typeof value === 'undefined';
+}
+
+function normalizeFormula_(value) {
+  return String(value || '').replace(/\s+/g, '').toUpperCase();
 }
