@@ -20,6 +20,7 @@ authoritative column-level contract lives with the audit code at
 - PIM spreadsheet: `HVDQ Product Operations — PIM Lite v1.0`
 - Baseline audit: [`docs/schema-audit-2026-07-14.md`](docs/schema-audit-2026-07-14.md)
 - Contract guide: [`docs/data-contract-v1.md`](docs/data-contract-v1.md)
+- Founder Action Pack: [`docs/founder-action-pack-products-v1.md`](docs/founder-action-pack-products-v1.md)
 
 ## Gate rule
 
