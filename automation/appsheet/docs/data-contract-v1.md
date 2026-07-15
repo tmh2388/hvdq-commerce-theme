@@ -9,7 +9,8 @@ fields:
 
 `Table`, `Column`, `Source type`, `AppSheet type`, `Key`, `Label`, `Ref table`,
 `IsPartOf`, `Required`, `Editable`, `Initial value`, `App formula`, `Valid If`,
-`Show If`, `Search`, `Sensitive`, `Classification`, and `Notes`.
+`Show If`, `Search`, `Sensitive`, `Classification`, and `Notes`. Lookup-backed
+Enums also include `Base type` and `Allow other values`.
 
 This document is only a guide; it deliberately does not repeat column values.
 
