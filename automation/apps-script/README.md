@@ -27,9 +27,21 @@ This module moves approved PIM data into Shopify as **Draft products only**.
 2. Add all files in `src/` and replace the manifest with `appsscript.json`.
 3. Add Script Properties, with `LIVE_SYNC_ENABLED=false`.
 4. Run `runHvdqUnitTests()`.
-5. Run `inspectSystemSafety()`.
-6. Run `dryRunProductBySku('<approved SKU>')` and inspect the payload.
-7. Only after Founder approval, set `LIVE_SYNC_ENABLED=true` and sync one approved test product.
+5. Run `runPimSchemaAudit()` and resolve every `ERROR` before AppSheet Gate 1.
+6. Run `inspectSystemSafety()`.
+7. Run `dryRunProductBySku('<approved SKU>')` and inspect the payload.
+8. Only after Founder approval, set `LIVE_SYNC_ENABLED=true` and sync one approved test product.
+
+## AppSheet schema contract
+
+- `src/SchemaContract.gs` is the only authoritative column-level AppSheet
+  configuration matrix.
+- `src/SchemaAudit.gs` performs read-only checks against the live PIM Sheet.
+- The audit checks source tables and columns, key uniqueness, required values,
+  duplicate SKU rules, reference integrity, LOOKUPS, and safety config.
+- AppSheet-only properties such as Label, Ref, Editable, Show If, and virtual
+  columns still require App Documentation readback; the audit never claims to
+  have verified the AppSheet editor.
 
 ## Shopify scopes
 
