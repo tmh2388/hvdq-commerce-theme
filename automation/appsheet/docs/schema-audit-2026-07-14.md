@@ -6,9 +6,10 @@
 - App version: `1.000028`; 17 tables, 235 columns, 0 slices, 34 views,
   53 actions, and 0 workflow rules.
 - PIM headers and current rows were read independently from Google Sheets.
-- Contract version `1.1.0`: 210 matrix rows, including 204 physical source
+- Contract version `1.2.0`: 210 matrix rows, including 204 physical source
   columns and 6 planned AppSheet virtual columns.
-- Repository tests: legacy unit suite `8/8`; contract/audit suite `14/14`.
+- Repository tests: legacy unit suite `8/8`; contract/audit suite `25/25`;
+  cross-source audit suite `7/7`.
 
 ## Current Gate result
 
@@ -23,6 +24,12 @@ structure or data-integrity errors. Required lookup groups are present;
 This clean result verifies the current Sheet only. It does not verify AppSheet
 Editor properties.
 
+The live source recheck also verified the exact PRODUCTS validation and error
+ARRAYFORMULAs, the INVENTORY available-stock ARRAYFORMULA, strict LOOKUPS,
+and APP_CONFIG safety values. Missing Sheet validations for PRODUCTS Category
+and Technique were repaired directly from active LOOKUPS; Product Model and
+PRICING Market were resynchronized. No product rows were created.
+
 ## Founder-reported changes awaiting readback
 
 - `PRODUCTS[Lead Time (days)]`: Number; blank Initial value.
@@ -35,6 +42,11 @@ Editor properties.
 - `PRODUCTS[Validation Status]`: Enum; blank Initial/App formula;
   non-editable; source Sheet formula retained.
 
+The review subsequently corrected the target type for `Validation Status` back
+to Text because its source formula returns both `VALID` and `MISSING REQUIRED`.
+The prior Founder-reported Enum setting therefore appears once in the final
+Action Pack as a required correction.
+
 These are reported, not yet independently verified. The authoritative target
 for every property is `automation/apps-script/src/SchemaContract.gs`.
 
@@ -46,6 +58,22 @@ for every property is `automation/apps-script/src/SchemaContract.gs`.
 4. There were no slices, role-specific views, approval workflow rules, or bots.
 5. AppSheet-only types, defaults, editability, formulas, and labels require a
    fresh App Documentation readback after remediation.
+6. AppDoc v1.000028 contains only generated Add/Edit/Delete/open/email actions;
+   no action, bot, workflow rule, or Apps Script bridge updates Submit for
+   Review, Workflow Status, Legal Review, or Founder Approval. With those
+   columns non-editable, the workflow is locked until the contracted actions
+   are created.
+
+## Risk decisions
+
+- `Last Updated` is DateTime, not ChangeTimestamp. AppSheet workflow actions,
+  Apps Script writes, and direct Google Sheets edits must all stamp it.
+- `Updated By` is Text so it can hold a user email or source actor such as
+  `APPS_SCRIPT`/`GOOGLE_SHEETS`.
+- Show If is UX only. Authorization comes from sign-in, table security filters,
+  table update mode, role conditions, and non-editable system fields.
+- Lookup-backed Enums use Base type Text and disallow other values.
+- `Product Name VI` is Text. No person-name behavior is required.
 
 ## Gate status
 
