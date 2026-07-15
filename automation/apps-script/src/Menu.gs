@@ -1,6 +1,7 @@
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('HVDQ Operations')
+    .addItem('Kiểm tra PIM và schema contract', 'runPimSchemaAudit')
     .addItem('Kiểm tra cấu hình an toàn', 'inspectSystemSafety')
     .addItem('Dry-run sản phẩm đang chọn', 'dryRunSelectedProduct')
     .addSeparator()
