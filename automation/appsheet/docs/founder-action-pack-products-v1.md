@@ -57,25 +57,67 @@ blank. Their ARRAYFORMULAs stay in Google Sheets.
 
 ## C. Required actions
 
-Create the six actions exactly as defined in
-`automation/apps-script/src/AppDefinitionContract.gs`:
+Each action uses table PRODUCTS and type
+`Data: set the values of some columns in this row`.
 
-1. Submit for Review.
-2. Return for Revision.
-3. Approve Content.
-4. Approve Legal Review.
-5. Approve Product — Founder.
-6. Reject Product — Founder.
+### 1. Submit for Review
 
-Each action is `Data: set the values of some columns in this row`. Copy its
-column assignments and Only if expression from the executable contract. These
-actions are the only AppSheet writers for the four locked workflow fields.
+- Set: `Submit for Review=TRUE`,
+  `Workflow Status="READY_FOR_REVIEW"`, `Last Updated=NOW()`,
+  `Updated By=USEREMAIL()`.
+- Only if:
+  `AND([Validation Status]="VALID", IN([Workflow Status], {"DRAFT", "NEEDS_REVISION"}), IN(LOOKUP(USEREMAIL(), "USERS", "Email", "Role"), {"CONTENT", "MANAGER", "ADMIN", "FOUNDER"}))`
+
+### 2. Return for Revision
+
+- Set: `Submit for Review=FALSE`, `Workflow Status="NEEDS_REVISION"`,
+  `Last Updated=NOW()`, `Updated By=USEREMAIL()`.
+- Only if:
+  `AND([Workflow Status]="READY_FOR_REVIEW", IN(LOOKUP(USEREMAIL(), "USERS", "Email", "Role"), {"MANAGER", "ADMIN", "FOUNDER"}))`
+
+### 3. Approve Content
+
+- Set: `Workflow Status="APPROVED"`, `Content Reviewer=USEREMAIL()`,
+  `Last Updated=NOW()`, `Updated By=USEREMAIL()`.
+- Only if:
+  `AND([Workflow Status]="READY_FOR_REVIEW", [Validation Status]="VALID", IN(LOOKUP(USEREMAIL(), "USERS", "Email", "Role"), {"MANAGER", "ADMIN", "FOUNDER"}))`
+
+### 4. Approve Legal Review
+
+- Set: `Legal Review="APPROVED"`, `Last Updated=NOW()`,
+  `Updated By=USEREMAIL()`.
+- Only if:
+  `IN(LOOKUP(USEREMAIL(), "USERS", "Email", "Role"), {"ADMIN", "FOUNDER"})`
+
+### 5. Approve Product — Founder
+
+- Set: `Founder Approval="APPROVED"`, `Last Updated=NOW()`,
+  `Updated By=USEREMAIL()`.
+- Only if:
+  `AND([Workflow Status]="APPROVED", [Validation Status]="VALID", LOOKUP(USEREMAIL(), "USERS", "Email", "Role")="FOUNDER")`
+
+### 6. Reject Product — Founder
+
+- Set: `Founder Approval="REJECTED"`,
+  `Workflow Status="NEEDS_REVISION"`, `Submit for Review=FALSE`,
+  `Last Updated=NOW()`, `Updated By=USEREMAIL()`.
+- Only if:
+  `LOOKUP(USEREMAIL(), "USERS", "Email", "Role")="FOUNDER"`
+
+These actions are the only AppSheet writers for the four locked workflow
+fields. The executable source of truth is `AppDefinitionContract.gs`.
 
 ## D. Required bot
 
-Create `Queue product review` from the bot specification in
-`AppDefinitionContract.gs`. Trigger only when Workflow Status becomes
-READY_FOR_REVIEW and add one CONTENT/PENDING row to APPROVAL_QUEUE.
+Create bot `Queue product review`:
+
+- Event: PRODUCTS updates.
+- Condition:
+  `AND([Workflow Status]="READY_FOR_REVIEW", [_THISROW_BEFORE].[Workflow Status]<>"READY_FOR_REVIEW")`
+- Process: add one row to APPROVAL_QUEUE.
+- Values: `Request ID=UNIQUEID()`, `SKU=[SKU]`, `Approval Type="CONTENT"`,
+  `Validation Status=[Validation Status]`, `Review Status="PENDING"`,
+  `Requested At=NOW()`, `Requested By=USEREMAIL()`.
 
 ## E. Save and evidence
 
