@@ -32,6 +32,8 @@ Editor properties.
   `LOOKUPS[Label VI]`, `VARIANTS[Variant SKU]`, `MEDIA[Filename]`.
 - `PRODUCTS[Workflow Status]`: Enum; Initial `DRAFT`; non-editable.
 - `PRODUCTS[Submit for Review]`: Yes/No; Initial `FALSE`; non-editable.
+- `PRODUCTS[Validation Status]`: Enum; blank Initial/App formula;
+  non-editable; source Sheet formula retained.
 
 These are reported, not yet independently verified. The authoritative target
 for every property is `automation/apps-script/src/SchemaContract.gs`.
