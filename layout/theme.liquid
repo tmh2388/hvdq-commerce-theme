@@ -15,6 +15,7 @@
 <body class="template-{{ template.name | handle }} page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
 {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}{% render 'chat-drawer' %}
 <div class="page-wrapper">
+<div class="hv-header-sentinel" data-hv-header-sentinel aria-hidden="true"></div>
 {% unless template.name == 'index' %}
 <div class="hv-positioning-bar" data-hv-positioning aria-label="HA VAN brand positioning">
   <span>Born from Fire.</span><span class="hv-positioning-bar__sep" aria-hidden="true">·</span>
@@ -39,37 +40,59 @@
     return bar;
   };
 
-  const homeHeader=document.querySelector('.hv__header');
+  const homeHeader=document.querySelector('[data-hv-home-header],.hv__header');
   if(homeHeader && !document.querySelector('[data-hv-positioning]')){
     homeHeader.insertAdjacentElement('beforebegin',createPositioningBar());
   }
 
-  const headers=[document.getElementById('header-group'),homeHeader].filter(Boolean);
+  const standardHeader=document.getElementById('header-group');
+  const headers=[standardHeader,homeHeader].filter(Boolean);
   const positioningBars=[...document.querySelectorAll('[data-hv-positioning]')];
-  let ticking=false;
+  const sentinel=document.querySelector('[data-hv-header-sentinel]');
   let compactState=null;
+  let ticking=false;
+
+  const readScrollTop=()=>Math.max(
+    window.scrollY||0,
+    window.pageYOffset||0,
+    document.documentElement?.scrollTop||0,
+    document.body?.scrollTop||0
+  );
+
+  const applyState=(compact)=>{
+    if(compact===compactState)return;
+    document.body.classList.toggle('hv-header-compact',compact);
+    headers.forEach((header)=>header.classList.toggle('is-compact',compact));
+    positioningBars.forEach((bar)=>bar.classList.toggle('is-hidden',compact));
+    compactState=compact;
+  };
 
   const updateHeader=()=>{
-    const compact=window.scrollY>36;
-    if(compact!==compactState){
-      document.body.classList.toggle('hv-header-compact',compact);
-      headers.forEach((header)=>header.classList.toggle('is-compact',compact));
-      positioningBars.forEach((bar)=>bar.classList.toggle('is-hidden',compact));
-      compactState=compact;
-    }
+    applyState(readScrollTop()>24);
     ticking=false;
   };
 
   const requestUpdate=()=>{
-    if(!ticking){
-      window.requestAnimationFrame(updateHeader);
-      ticking=true;
-    }
+    if(ticking)return;
+    ticking=true;
+    window.requestAnimationFrame(updateHeader);
   };
 
   window.addEventListener('scroll',requestUpdate,{passive:true});
+  document.addEventListener('scroll',requestUpdate,{passive:true,capture:true});
   window.addEventListener('resize',requestUpdate,{passive:true});
   window.addEventListener('pageshow',requestUpdate);
+  document.addEventListener('shopify:section:load',requestUpdate);
+
+  if('IntersectionObserver' in window && sentinel){
+    const observer=new IntersectionObserver((entries)=>{
+      const entry=entries[0];
+      if(readScrollTop()>4)applyState(!entry.isIntersecting||readScrollTop()>24);
+      else applyState(false);
+    },{root:null,threshold:0,rootMargin:'-24px 0px 0px 0px'});
+    observer.observe(sentinel);
+  }
+
   updateHeader();
 })();
 </script>
