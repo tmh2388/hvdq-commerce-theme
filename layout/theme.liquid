@@ -7,6 +7,7 @@
 {% render 'meta-tags' %}{% render 'stylesheets' %}{% render 'fonts' %}{% render 'scripts' %}{% render 'theme-styles-variables' %}{% render 'color-palette' %}
 {{ 'hvdq-model-03-commerce.css' | asset_url | stylesheet_tag }}
 {{ 'ha-van-brand-system.css' | asset_url | stylesheet_tag }}
+{{ 'ha-van-header-refinement.css' | asset_url | stylesheet_tag }}
 {{ 'ha-van-content-pages.css' | asset_url | stylesheet_tag }}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HA VAN","url":"https://havancraft.vn","logo":"https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-header-logo-transparent.png?v=1784193226"}</script>
 {% if request.design_mode %}{% render 'theme-editor' %}{% endif %}{{ content_for_header }}
@@ -20,4 +21,37 @@
 </div>
 {% render 'cart-drawer', render_wrapper: true %}{% render 'theme-drawer' %}{% render 'search-modal' %}
 {% if settings.quick_add or settings.mobile_quick_add %}{% render 'quick-add-modal' %}{% endif %}
+<script>
+(()=>{
+  const copy=['Born from Fire.','Refined by Craft.','Preserved through Time.'];
+  const makePrinciples=(className)=>{
+    const node=document.createElement('span');
+    node.className=className;
+    copy.forEach((text,index)=>{
+      const item=document.createElement('span'); item.textContent=text; node.appendChild(item);
+      if(index<copy.length-1){const sep=document.createElement('span');sep.className=className+'__sep';sep.textContent='·';node.appendChild(sep);}
+    });
+    return node;
+  };
+  document.querySelectorAll('.hv-header-lockup,.hv__brand').forEach((brand)=>{
+    if(!brand.querySelector('.hv-brand-principles')) brand.appendChild(makePrinciples('hv-brand-principles'));
+  });
+  const customFooter=document.querySelector('.hv__footer');
+  if(customFooter && !customFooter.querySelector('.hv-footer-principles')){
+    const brand=customFooter.querySelector('.hv__footer-brand');
+    const principles=makePrinciples('hv-footer-principles');
+    if(brand) brand.insertAdjacentElement('afterend',principles); else customFooter.prepend(principles);
+  }
+  document.querySelectorAll('.ha-van-footer-brand > p').forEach((p)=>p.classList.add('ha-van-footer-brand__positioning'));
+  const headers=[document.getElementById('header-group'),document.querySelector('.hv__header')].filter(Boolean);
+  let ticking=false;
+  const update=()=>{
+    const compact=window.scrollY>72;
+    headers.forEach((header)=>header.classList.toggle('is-compact',compact));
+    ticking=false;
+  };
+  window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(update);ticking=true;}},{passive:true});
+  update();
+})();
+</script>
 </body></html>
