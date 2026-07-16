@@ -15,7 +15,14 @@
 <body class="template-{{ template.name | handle }} page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
 {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}{% render 'chat-drawer' %}
 <div class="page-wrapper">
-{% unless template.name == 'index' %}<div id="header-group">{% sections 'header-group' %}</div>{% endunless %}
+{% unless template.name == 'index' %}
+<div class="hv-positioning-bar" data-hv-positioning aria-label="HA VAN brand positioning">
+  <span>Born from Fire.</span><span class="hv-positioning-bar__sep" aria-hidden="true">·</span>
+  <span>Refined by Craft.</span><span class="hv-positioning-bar__sep" aria-hidden="true">·</span>
+  <span>Preserved through Time.</span>
+</div>
+<div id="header-group">{% sections 'header-group' %}</div>
+{% endunless %}
 <main id="MainContent" class="content-for-layout" role="main" data-page-transition-enabled="{{ settings.page_transition_enabled }}" data-product-transition="{{ settings.transition_to_main_product }}" data-template="{{ template }}">{{ content_for_layout }}</main>
 {% unless template.name == 'index' %}<footer>{% sections 'footer-group' %}</footer>{% endunless %}
 </div>
@@ -23,35 +30,45 @@
 {% if settings.quick_add or settings.mobile_quick_add %}{% render 'quick-add-modal' %}{% endif %}
 <script>
 (()=>{
-  const copy=['Born from Fire.','Refined by Craft.','Preserved through Time.'];
-  const makePrinciples=(className)=>{
-    const node=document.createElement('span');
-    node.className=className;
-    copy.forEach((text,index)=>{
-      const item=document.createElement('span'); item.textContent=text; node.appendChild(item);
-      if(index<copy.length-1){const sep=document.createElement('span');sep.className=className+'__sep';sep.textContent='·';node.appendChild(sep);}
-    });
-    return node;
+  const createPositioningBar=()=>{
+    const bar=document.createElement('div');
+    bar.className='hv-positioning-bar';
+    bar.dataset.hvPositioning='';
+    bar.setAttribute('aria-label','HA VAN brand positioning');
+    bar.innerHTML='<span>Born from Fire.</span><span class="hv-positioning-bar__sep" aria-hidden="true">·</span><span>Refined by Craft.</span><span class="hv-positioning-bar__sep" aria-hidden="true">·</span><span>Preserved through Time.</span>';
+    return bar;
   };
-  document.querySelectorAll('.hv-header-lockup,.hv__brand').forEach((brand)=>{
-    if(!brand.querySelector('.hv-brand-principles')) brand.appendChild(makePrinciples('hv-brand-principles'));
-  });
-  const customFooter=document.querySelector('.hv__footer');
-  if(customFooter && !customFooter.querySelector('.hv-footer-principles')){
-    const brand=customFooter.querySelector('.hv__footer-brand');
-    const principles=makePrinciples('hv-footer-principles');
-    if(brand) brand.insertAdjacentElement('afterend',principles); else customFooter.prepend(principles);
+
+  const homeHeader=document.querySelector('.hv__header');
+  if(homeHeader && !document.querySelector('[data-hv-positioning]')){
+    homeHeader.insertAdjacentElement('beforebegin',createPositioningBar());
   }
-  document.querySelectorAll('.ha-van-footer-brand > p').forEach((p)=>p.classList.add('ha-van-footer-brand__positioning'));
-  const headers=[document.getElementById('header-group'),document.querySelector('.hv__header')].filter(Boolean);
+
+  const headers=[document.getElementById('header-group'),homeHeader].filter(Boolean);
+  const positioningBars=[...document.querySelectorAll('[data-hv-positioning]')];
   let ticking=false;
-  const update=()=>{
-    const compact=window.scrollY>72;
-    headers.forEach((header)=>header.classList.toggle('is-compact',compact));
+  let compactState=null;
+
+  const updateHeader=()=>{
+    const compact=window.scrollY>36;
+    if(compact!==compactState){
+      headers.forEach((header)=>header.classList.toggle('is-compact',compact));
+      positioningBars.forEach((bar)=>bar.classList.toggle('is-hidden',compact));
+      compactState=compact;
+    }
     ticking=false;
   };
-  window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(update);ticking=true;}},{passive:true});
-  update();
+
+  const requestUpdate=()=>{
+    if(!ticking){
+      window.requestAnimationFrame(updateHeader);
+      ticking=true;
+    }
+  };
+
+  window.addEventListener('scroll',requestUpdate,{passive:true});
+  window.addEventListener('resize',requestUpdate,{passive:true});
+  updateHeader();
 })();
 </script>
 </body></html>
