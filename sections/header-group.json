@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Pháp Lam thủ công Việt Nam · Chế tác tại Hà Nội",
+            "text": "HA VAN · The House of Exceptional Craft · Miễn phí vận chuyển toàn quốc",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "letter_spacing": "normal",
@@ -36,8 +36,8 @@
         "background_color": "{{ settings.color_palette.background }}",
         "divider_width": 1,
         "divider_color": "{{ settings.color_palette.color2 }}",
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "padding-block-start": 12,
+        "padding-block-end": 12
       }
     },
     "header_section": {
