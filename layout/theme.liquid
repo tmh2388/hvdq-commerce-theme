@@ -52,6 +52,7 @@
   const updateHeader=()=>{
     const compact=window.scrollY>36;
     if(compact!==compactState){
+      document.body.classList.toggle('hv-header-compact',compact);
       headers.forEach((header)=>header.classList.toggle('is-compact',compact));
       positioningBars.forEach((bar)=>bar.classList.toggle('is-hidden',compact));
       compactState=compact;
@@ -68,6 +69,7 @@
 
   window.addEventListener('scroll',requestUpdate,{passive:true});
   window.addEventListener('resize',requestUpdate,{passive:true});
+  window.addEventListener('pageshow',requestUpdate);
   updateHeader();
 })();
 </script>
