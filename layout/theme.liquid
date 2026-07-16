@@ -1,12 +1,14 @@
 <!doctype html>
 <html {% if request.design_mode %}class="shopify-design-mode"{% endif %} lang="{{ request.locale.iso_code }}">
 <head>
-{% if settings.favicon != blank %}<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">{% else %}<link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-monogram-balance-latest_4435ab45-7fe6-4ab8-bf16-c3bb8891b37f.png?v=1784191294">{% endif %}
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-monogram-balance-transparent.png?v=1784193250">
+<link rel="apple-touch-icon" href="https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-monogram-balance-transparent.png?v=1784193250">
 {% if settings.transition_to_main_product or settings.page_transition_enabled %}<link rel="expect" href="#MainContent" blocking="render" id="view-transition-render-blocker">{% endif %}
 {% render 'meta-tags' %}{% render 'stylesheets' %}{% render 'fonts' %}{% render 'scripts' %}{% render 'theme-styles-variables' %}{% render 'color-palette' %}
 {{ 'hvdq-model-03-commerce.css' | asset_url | stylesheet_tag }}
 {{ 'ha-van-brand-system.css' | asset_url | stylesheet_tag }}
 {{ 'ha-van-content-pages.css' | asset_url | stylesheet_tag }}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HA VAN","url":"https://havancraft.vn","logo":"https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-header-logo-transparent.png?v=1784193226"}</script>
 {% if request.design_mode %}{% render 'theme-editor' %}{% endif %}{{ content_for_header }}
 </head>
 <body class="template-{{ template.name | handle }} page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
