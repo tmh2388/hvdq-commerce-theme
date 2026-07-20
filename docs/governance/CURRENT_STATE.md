@@ -2,7 +2,7 @@
 
 Last verified: 2026-07-20
 
-This document records only verified state. Plans belong in `ACTIVE_GATE.md`; decisions belong in `DECISION_REGISTER.md`.
+This document records only verified technical and platform state. Durable operating rules are defined in `docs/GITHUB_GOV.md`.
 
 ## GitHub
 
@@ -63,11 +63,11 @@ Not verified:
 
 ## Known architecture conflict
 
-Portal PR #1 describes Google Sheets as the operational source of truth and includes Amazon-oriented AI content generation. The latest Founder direction is Shopify-native, Vietnam-first, with AppSheet PIM, Amazon and unnecessary AI generation outside the current Gate. The portal PR must be narrowed before merge.
+Portal PR #1 describes Google Sheets as the operational source of truth and includes Amazon-oriented AI content generation. The latest Founder direction is Shopify-native and Vietnam-first; AppSheet PIM, Amazon and unnecessary AI generation are outside the current scope. The portal PR must be narrowed before merge.
 
 ## Overall status
 
-- Governance foundation: implementation in progress on `agent/commercial-gov-foundation`.
-- Runtime implementation under this Gate: not permitted.
+- GitHub GOV: implemented on `agent/commercial-gov-foundation`, pending review and merge through PR #2.
+- Runtime implementation: unchanged.
 - Shopify production: protected and not modified.
 - Netlify production: protected and not modified.
