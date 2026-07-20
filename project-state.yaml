@@ -1,14 +1,12 @@
 schema_version: 1
 project: HVDQ Commercial
 last_verified: 2026-07-20
-governance_authority:
-  repository: tmh2388/hvdq-commerce-theme
+governance:
+  authority_repository: tmh2388/hvdq-commerce-theme
+  operating_law: docs/GITHUB_GOV.md
+  current_state: docs/governance/CURRENT_STATE.md
+  implementation_status: IMPLEMENTED_NOT_MERGED
   branch: agent/commercial-gov-foundation
-active_gate:
-  id: GOV-01
-  name: COMMERCIAL GOVERNANCE FOUNDATION
-  status: IMPLEMENTED_NOT_VERIFIED
-  risk: LOW_GOVERNANCE_ONLY
 repositories:
   storefront:
     name: tmh2388/hvdq-commerce-theme
@@ -28,15 +26,7 @@ repositories:
     netlify_preview: PASS
 platforms:
   shopify:
-    authority_for:
-      - products
-      - variants
-      - inventory
-      - collections
-      - customers
-      - orders
-      - payments
-      - fulfillment
+    source_of_truth: true
     live_theme: BLOCKED_ACCESS_REQUIRED
     connected_branch: BLOCKED_ACCESS_REQUIRED
   netlify:
@@ -44,13 +34,12 @@ platforms:
     production_branch: NOT_VERIFIED
     production_deploy: NOT_VERIFIED
     environment_isolation: NOT_VERIFIED
-locks:
-  runtime_changed_in_current_gate: false
-  shopify_changed_in_current_gate: false
-  netlify_changed_in_current_gate: false
+production_protection:
+  runtime_changed: false
+  shopify_changed: false
+  netlify_changed: false
   production_deploy_authorized: false
 blockers:
   - Shopify live theme and connected branch require platform verification.
   - Netlify production branch, site configuration and environment contexts require platform verification.
   - Portal PR 1 scope conflicts with the Shopify-native current direction.
-next_gate: GOV-02_REPOSITORY_DELIVERY_CONTROLS
