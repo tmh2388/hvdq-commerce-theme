@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "ha-van-editorial-page",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Heritage",
+            "copy": "Gìn giữ tinh hoa của kỹ nghệ thủ công."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Mastery",
+            "copy": "Chế tác bằng tay với sự chính xác và tận tâm."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Meaning",
+            "copy": "Mỗi chi tiết mang một câu chuyện."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Integrity",
+            "copy": "Trung thực trong vật liệu và quy trình."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "kicker": "VỀ HA VAN",
+        "heading": "Crafted by heritage. Created for generations.",
+        "intro": "HA VAN là nơi di sản gặp gỡ nghệ thuật chế tác đương đại, tôn vinh tinh hoa thủ công Việt Nam qua từng tác phẩm.",
+        "primary_label": "Khám phá bộ sưu tập",
+        "primary_link": "shopify://collections/all",
+        "secondary_label": "Đặt chế tác riêng",
+        "process_heading": "Giá trị cốt lõi",
+        "cta_kicker": "THE HOUSE OF EXCEPTIONAL CRAFT",
+        "cta_heading": "Gìn giữ hôm nay. Truyền cảm hứng mai sau.",
+        "cta_copy": "Sở hữu một tác phẩm mang dấu ấn riêng của bạn."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

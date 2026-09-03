@@ -1,0 +1,86 @@
+<ha-van-global-header class="hv-header-root" data-scrolled="false" data-menu-open="false">
+  {% if section.settings.show_announcement %}
+    <div class="hv-announcement">
+      <a class="hv-announcement__link" href="{{ section.settings.announcement_link | default: routes.root_url }}">{{ section.settings.announcement_text }}</a>
+    </div>
+  {% endif %}
+
+  <div class="hv-site-header">
+    <div class="hv-header hv-shell">
+      <a class="hv-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: 620 | image_tag: widths: '220,320,440,620', loading: 'eager', alt: shop.name }}
+        {% else %}
+          <img src="https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-header-logo-clean-transparent.png?v=1784247606" width="2600" height="900" loading="eager" fetchpriority="high" alt="HA VAN — The House of Exceptional Craft">
+        {% endif %}
+      </a>
+
+      <nav class="hv-nav" aria-label="Điều hướng chính">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% else %}
+          <a href="/collections/all">Phụ kiện nam</a>
+          <a href="/pages/private-commission">Chế tác riêng</a>
+          <a href="/collections/all">Đồng hồ Pháp Lam</a>
+          <a href="/collections">Bộ sưu tập</a>
+          <a href="/pages/about">Nghệ nhân</a>
+          <a href="/blogs/news">Journal</a>
+          <a href="/pages/about">Về HA VAN</a>
+        {% endfor %}
+      </nav>
+
+      <div class="hv-utils">
+        <a class="hv-icon-button hv-search" href="{{ routes.search_url }}" aria-label="Tìm kiếm">{% render 'ha-van-icon', name: 'search' %}</a>
+        {% if shop.customer_accounts_enabled %}
+          <a class="hv-icon-button hv-account" href="{{ routes.account_url }}" aria-label="Tài khoản">{% render 'ha-van-icon', name: 'account' %}</a>
+        {% endif %}
+        <a class="hv-icon-button" href="{{ routes.cart_url }}" aria-label="Giỏ hàng">{% render 'ha-van-icon', name: 'bag' %}</a>
+        {% if cart.item_count > 0 %}<span class="hv-cart-count">{{ cart.item_count }}</span>{% endif %}
+        <button class="hv-menu-trigger" type="button" data-hv-open aria-controls="HaVanMenuDrawer" aria-expanded="false">
+          {% render 'ha-van-icon', name: 'menu' %}<span>Menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button class="hv-drawer-overlay" type="button" data-hv-overlay tabindex="-1" aria-label="Đóng menu"></button>
+
+  <aside class="hv-drawer" id="HaVanMenuDrawer" data-hv-drawer aria-hidden="true">
+    <div class="hv-drawer__head">
+      <a class="hv-drawer__brand" href="{{ routes.root_url }}" aria-label="HA VAN — The House of Exceptional Craft">
+        <img class="hv-drawer__monogram" src="https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-monogram-balance-clean-transparent.png?v=1784247614" width="1830" height="2710" loading="eager" alt="HA VAN monogram">
+        <span class="hv-drawer__wordmark">
+          <span class="hv-drawer__name">HA VAN</span>
+          <span class="hv-drawer__tagline">THE HOUSE OF EXCEPTIONAL CRAFT</span>
+        </span>
+      </a>
+      <button class="hv-icon-button" type="button" data-hv-close aria-label="Đóng menu">{% render 'ha-van-icon', name: 'close' %}</button>
+    </div>
+
+    <nav class="hv-drawer__nav" aria-label="Điều hướng di động">
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% else %}
+        <a href="/collections/all">Phụ kiện nam</a>
+        <a href="/pages/private-commission">Chế tác riêng</a>
+        <a href="/collections/all">Đồng hồ Pháp Lam</a>
+        <a href="/collections">Bộ sưu tập</a>
+        <a href="/pages/about">Nghệ nhân</a>
+        <a href="/blogs/news">Journal</a>
+        <a href="/pages/about">Về HA VAN</a>
+      {% endfor %}
+    </nav>
+
+    <div class="hv-drawer__meta">
+      <a href="{{ routes.search_url }}">Tìm kiếm</a>
+      <a href="{{ routes.cart_url }}">Giỏ hàng ({{ cart.item_count }})</a>
+      {% if section.settings.messenger_url != blank %}
+        <a href="{{ section.settings.messenger_url }}" target="_blank" rel="noopener">Messenger</a>
+      {% endif %}
+    </div>
+  </aside>
+</ha-van-global-header>
+
+{% schema %}
+{"name":"HA VAN — Global Header","tag":"section","class":"hv-global-header-section","settings":[{"type":"checkbox","id":"show_announcement","label":"Hiển thị announcement bar","default":true},{"type":"text","id":"announcement_text","label":"Nội dung announcement","default":"BORN FROM FIRE. · REFINED BY CRAFT. · PRESERVED THROUGH TIME."},{"type":"url","id":"announcement_link","label":"Liên kết announcement"},{"type":"image_picker","id":"logo","label":"Logo header"},{"type":"link_list","id":"menu","label":"Menu chính","default":"main-menu"},{"type":"url","id":"messenger_url","label":"Liên kết Messenger"}],"presets":[{"name":"HA VAN — Global Header"}]}
+{% endschema %}

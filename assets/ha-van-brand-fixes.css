@@ -1,0 +1,51 @@
+/* HA VAN brand and homepage-order corrections — REVIEW 01 */
+.hv-logo{width:clamp(205px,18vw,286px);max-width:none}.hv-logo img{display:block;width:100%;height:auto;max-height:72px;object-fit:contain;object-position:left center}.hv-drawer__brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none}.hv-drawer__monogram{display:block;width:29px;height:43px;object-fit:contain}.hv-footer__logo{display:block;width:min(100%,300px);height:auto;max-height:92px;object-fit:contain;object-position:left center;margin:0 0 22px}
+.hv-main.content-for-layout{display:block!important;flex:none!important;min-height:0!important;position:relative;z-index:1}.hv-homepage,.hv-home-sequence{display:block!important;width:100%;position:relative}.hv-home-sequence>*{position:relative}.hv-footer-wrapper,.hv-footer-wrapper>.shopify-section,.hv-footer{position:static!important;inset:auto!important;transform:none!important;translate:none!important;z-index:auto!important;clear:both!important;float:none!important}.hv-footer-wrapper{display:block!important;order:initial!important;width:100%!important;height:auto!important;min-height:0!important;overflow:visible!important;contain:none!important;isolation:auto!important}.hv-footer-wrapper>.shopify-section,.hv-footer{display:block!important;width:100%!important;height:auto!important;min-height:0!important;margin:0!important}.hv-footer__grid,.hv-footer__bottom{position:relative;z-index:1}
+.hv-hero__content{max-width:none!important;width:min(var(--hv-max),calc(100% - 48px));margin-inline:auto;align-items:stretch!important;padding-block:80px}.hv-hero__copy{width:min(43vw,590px);margin-left:clamp(24px,4.5vw,72px);display:flex;flex-direction:column;align-items:flex-start}.hv-hero__copy .hv-title,.hv-hero__copy .hv-lead{max-width:100%}.hv-trust{position:relative!important;z-index:3!important;clear:both;margin:0!important}
+@media (min-width:768px) and (max-width:1180px) and (orientation:landscape){.hv-shell{width:min(var(--hv-max),calc(100% - 40px))}.hv-hero{min-height:620px}.hv-hero__content{width:min(var(--hv-max),calc(100% - 40px));padding-block:64px}.hv-hero__copy{width:min(48vw,560px);margin-left:0!important}.hv-footer{padding:50px 0 22px}.hv-footer__grid{grid-template-columns:minmax(250px,1.25fr) repeat(3,minmax(0,1fr));gap:28px}.hv-footer__logo{width:min(100%,255px);max-height:78px}.hv-footer__bottom{margin-top:38px}}
+@media (max-width:767px){.hv-logo{width:min(205px,52vw)}.hv-logo img{max-height:58px}.hv-footer__logo{width:min(100%,260px)}.hv-hero__content{width:min(100% - 32px,var(--hv-max));padding-bottom:54px}.hv-hero__copy{width:100%;margin-left:0}.hv-trust{grid-template-columns:repeat(2,1fr)}}
+
+/* Founder-approved two-point correction: horizontal hero alignment + Vietnamese-safe display serif. */
+:root{--hv-serif-vn:var(--font-heading--family),Georgia,"Times New Roman",serif}
+.hv-title,.hv-collection-hero h1,.hv-editorial-hero h1,.hv-page-head h1{font-family:var(--hv-serif-vn)!important;font-synthesis:none;text-rendering:optimizeLegibility}
+@media (min-width:901px){
+  .hv-collection-hero__copy{width:min(600px,calc(100% - 96px))!important;max-width:600px!important;margin-left:clamp(40px,5vw,80px)!important;margin-right:auto!important;text-align:left!important}
+  .hv-editorial-hero__copy{width:min(660px,calc(100% - 96px))!important;max-width:660px!important;margin-left:clamp(40px,5vw,80px)!important;margin-right:auto!important;text-align:left!important}
+}
+@media (min-width:1101px){.hv-hero__copy{margin-left:0!important;text-align:left!important}}
+
+/* Founder-approved mobile drawer refinement — scoped to drawer only. */
+.hv-drawer__head{height:104px;padding:0 26px}
+.hv-drawer__brand{gap:11px;min-width:0}
+.hv-drawer__monogram{width:34px;height:51px;flex:0 0 auto}
+.hv-drawer__wordmark{display:flex;min-width:0;flex-direction:column;justify-content:center;align-items:flex-start}
+.hv-drawer__name{display:block;font-family:var(--hv-serif-vn);font-size:25px;line-height:.95;font-weight:500;letter-spacing:.075em;white-space:nowrap;font-synthesis:none}
+.hv-drawer__tagline{display:block;margin-top:6px;font-family:"Helvetica Neue",Arial,sans-serif;font-size:7px;line-height:1.15;font-weight:500;letter-spacing:.045em;white-space:nowrap}
+.hv-drawer__nav{padding:24px 28px 30px}
+.hv-drawer__nav a{display:block!important;justify-content:initial!important;align-items:initial!important;padding:17px 0!important;border-bottom:1px solid rgba(13,13,13,.24)!important;font-family:"Helvetica Neue",Arial,sans-serif!important;font-size:20px!important;line-height:1.28!important;font-weight:400!important;letter-spacing:0!important;text-align:left!important;font-synthesis:none;text-rendering:optimizeLegibility}
+.hv-drawer__nav a span{display:none!important}
+.hv-drawer__nav a:before,.hv-drawer__nav a:after{content:none!important;display:none!important}
+.hv-drawer__meta{padding:22px 28px 32px;gap:13px}
+.hv-drawer__meta a{font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.35}
+@media (max-width:767px){
+  .hv-drawer{width:min(88vw,420px)}
+  .hv-drawer__head{height:100px;padding-inline:24px}
+  .hv-drawer__monogram{width:32px;height:48px}
+  .hv-drawer__name{font-size:24px}
+  .hv-drawer__tagline{font-size:6.5px;margin-top:5px}
+  .hv-drawer__nav{padding:20px 26px 28px}
+  .hv-drawer__nav a{font-size:19px!important;padding:16px 0!important}
+  .hv-drawer__meta{padding:20px 26px 30px}
+}
+@media (max-width:389px){
+  .hv-drawer__head{padding-inline:20px}
+  .hv-drawer__monogram{width:29px;height:44px}
+  .hv-drawer__name{font-size:22px}
+  .hv-drawer__tagline{font-size:6px;letter-spacing:.03em}
+  .hv-drawer__nav{padding-inline:22px}
+  .hv-drawer__nav a{font-size:18px!important}
+}
+
+/* Social links only. Shopify Inbox owns the real floating chat bubble and panel. */
+.hv-social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:grid;place-items:center;transition:border-color .22s ease,background .22s ease,transform .22s ease}
+.hv-social a:hover,.hv-social a:focus-visible{border-color:rgba(255,255,255,.72);background:rgba(255,255,255,.08);transform:translateY(-2px)}

@@ -17,8 +17,7 @@
   assign has_badges = false
   assign badge_position = null
   if product != blank
-    assign commerce_mode = product.metafields.hvdq.commerce_mode.value
-    if product.available == false or product.compare_at_price > product.price or commerce_mode != blank
+    if product.available == false or product.compare_at_price > product.price
       assign has_badges = true
       assign badge_position = settings.badge_position
     endif

@@ -9,10 +9,105 @@
  */
 {
   "sections": {
-    "hvdq_model_03": {
-      "type": "hvdq-model-03-homepage",
-      "settings": {}
+    "main": {
+      "type": "ha-van-homepage",
+      "blocks": {
+        "trust1": {
+          "type": "trust",
+          "settings": {
+            "title": "Heirloom Quality",
+            "copy": "Timeless by design"
+          }
+        },
+        "trust2": {
+          "type": "trust",
+          "settings": {
+            "title": "Masterfully Crafted",
+            "copy": "By Vietnamese artisans"
+          }
+        },
+        "trust3": {
+          "type": "trust",
+          "settings": {
+            "title": "Precious Materials",
+            "copy": "Selected with intention"
+          }
+        },
+        "trust4": {
+          "type": "trust",
+          "settings": {
+            "title": "Made to Endure",
+            "copy": "For generations"
+          }
+        },
+        "col1": {
+          "type": "collection",
+          "settings": {
+            "collection": "dong-ho-phap-lam",
+            "eyebrow": "ĐỒNG HỒ PHÁP LAM",
+            "title": "Đồng hồ Pháp Lam",
+            "copy": "Nơi nghệ thuật gặp thời gian."
+          }
+        },
+        "col2": {
+          "type": "collection",
+          "settings": {
+            "collection": "phu-kien",
+            "eyebrow": "PHỤ KIỆN",
+            "title": "Phụ kiện",
+            "copy": "Tinh xảo trong từng chi tiết."
+          }
+        },
+        "col3": {
+          "type": "collection",
+          "settings": {
+            "collection": "bespoke",
+            "eyebrow": "CHẾ TÁC RIÊNG",
+            "title": "Chế tác riêng",
+            "copy": "Biến ý tưởng thành tuyệt tác cá nhân hóa."
+          }
+        },
+        "col4": {
+          "type": "collection",
+          "settings": {
+            "collection": "hvdq-demo-model-03",
+            "eyebrow": "BỘ SƯU TẬP",
+            "title": "Bộ sưu tập chọn lọc",
+            "copy": "Những thiết kế được yêu thích tại HA VAN."
+          }
+        }
+      },
+      "block_order": [
+        "trust1",
+        "trust2",
+        "trust3",
+        "trust4",
+        "col1",
+        "col2",
+        "col3",
+        "col4"
+      ],
+      "settings": {
+        "kicker": "THE HOUSE OF EXCEPTIONAL CRAFT",
+        "heading": "Thủ nghệ đáng được lưu truyền.",
+        "intro": "Được tạo nên từ lửa, chất liệu và thời gian. Để truyền lại cho thế hệ mai sau.",
+        "primary_label": "Khám phá bộ sưu tập",
+        "secondary_label": "Chế tác riêng",
+        "collections_heading": "Bộ sưu tập nổi bật",
+        "bespoke_kicker": "BESPOKE & PRIVATE COMMISSION",
+        "bespoke_heading": "Dành riêng cho bạn. Tạo nên để trường tồn.",
+        "bespoke_copy": "Từ cuộc trò chuyện đầu tiên đến từng chi tiết hoàn thiện, chúng tôi tạo nên tác phẩm độc bản mang câu chuyện của riêng bạn.",
+        "bespoke_label": "Khám phá chế tác riêng",
+        "artisan_heading": "Tinh hoa nằm trong đôi tay",
+        "artisan_copy": "Gặp gỡ những người gìn giữ tinh hoa thủ công Việt.",
+        "journal_heading": "Câu chuyện về nghệ thuật, văn hóa và cảm hứng",
+        "journal_copy": "Khám phá những câu chuyện phía sau từng tác phẩm.",
+        "newsletter_heading": "Những câu chuyện trong hộp thư của bạn",
+        "newsletter_copy": "Nhận tin mới về thủ nghệ, tác phẩm và các đợt chế tác riêng."
+      }
     }
   },
-  "order": ["hvdq_model_03"]
+  "order": [
+    "main"
+  ]
 }

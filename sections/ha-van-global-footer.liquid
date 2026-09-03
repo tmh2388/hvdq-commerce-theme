@@ -1,0 +1,90 @@
+<div class="hv-footer" role="contentinfo">
+  <div class="hv-shell">
+    <div class="hv-footer__grid">
+      <div class="hv-footer__col hv-footer__brand">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: 520 | image_tag: class: 'hv-footer__logo', widths: '260,360,520', loading: 'lazy', alt: shop.name }}
+        {% else %}
+          <img class="hv-footer__logo" src="https://cdn.shopify.com/s/files/1/0722/3030/5871/files/ha-van-footer-logo-final-transparent_90320b02-fa70-46f3-b079-5dce79702ad4.png?v=1784247621" width="1404" height="412" loading="lazy" alt="HA VAN — The House of Exceptional Craft">
+        {% endif %}
+
+        <p>{{ section.settings.brand_copy }}</p>
+
+        {% if section.settings.show_social %}
+          <div class="hv-social" aria-label="Mạng xã hội">
+            {% if section.settings.facebook_url != blank %}
+              <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'ha-van-icon', name: 'facebook' %}</a>
+            {% endif %}
+            {% if section.settings.instagram_url != blank %}
+              <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'ha-van-icon', name: 'instagram' %}</a>
+            {% endif %}
+            {% if section.settings.messenger_url != blank %}
+              <a href="{{ section.settings.messenger_url }}" target="_blank" rel="noopener" aria-label="Messenger">{% render 'ha-van-icon', name: 'messenger' %}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% for block in section.blocks %}
+        <div class="hv-footer__col" {{ block.shopify_attributes }}>
+          <h4>{{ block.settings.heading }}</h4>
+          <div class="hv-footer__links">
+            {% for link in block.settings.menu.links %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+
+      {% if section.blocks.size < 3 %}
+        <div class="hv-footer__col">
+          <h4>Customer Care</h4>
+          <div class="hv-footer__links">
+            <a href="/pages/contact">Liên hệ</a>
+            <a href="/policies/shipping-policy">Vận chuyển</a>
+            <a href="/policies/refund-policy">Đổi trả & hoàn tiền</a>
+            <a href="/policies/terms-of-service">Điều khoản</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="hv-footer__bottom">
+      <p>© {{ 'now' | date: '%Y' }} HA VAN. All rights reserved.</p>
+      <p>{{ section.settings.address }}</p>
+    </div>
+  </div>
+</div>
+
+{% comment %}
+  Shopify Inbox owns the embedded chat bubble and conversation panel through its app embed.
+  This theme intentionally does not render a second custom floating chat link.
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "HA VAN — Global Footer",
+  "tag": "section",
+  "settings": [
+    {"type":"image_picker","id":"logo","label":"Logo footer"},
+    {"type":"textarea","id":"brand_copy","label":"Giới thiệu ngắn","default":"Born from fire. Refined by craft. Preserved through time."},
+    {"type":"text","id":"address","label":"Địa chỉ","default":"Hanoi, Vietnam"},
+    {"type":"header","content":"Social"},
+    {"type":"checkbox","id":"show_social","label":"Hiển thị biểu tượng mạng xã hội","default":true},
+    {"type":"url","id":"facebook_url","label":"Facebook URL"},
+    {"type":"url","id":"instagram_url","label":"Instagram URL"},
+    {"type":"url","id":"messenger_url","label":"Messenger URL"},
+    {"type":"paragraph","content":"Instagram và Messenger tự ẩn khi chưa nhập URL. Chat popup thực tế được quản lý bởi Shopify Inbox trong App embeds."}
+  ],
+  "blocks": [
+    {
+      "type":"menu",
+      "name":"Cột menu",
+      "limit":3,
+      "settings":[
+        {"type":"text","id":"heading","label":"Tiêu đề","default":"Collections"},
+        {"type":"link_list","id":"menu","label":"Menu"}
+      ]
+    }
+  ],
+  "presets":[{"name":"HA VAN — Global Footer","blocks":[{"type":"menu"},{"type":"menu"}]}]
+}
+{% endschema %}

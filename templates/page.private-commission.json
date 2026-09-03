@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "ha-van-editorial-page",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Consultation",
+            "copy": "Chúng tôi lắng nghe câu chuyện, nhu cầu và tầm nhìn của bạn."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Concept & Design",
+            "copy": "Phác thảo và đề xuất được xây dựng riêng."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Material Selection",
+            "copy": "Lựa chọn vật liệu, màu sắc và ý nghĩa."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Handcrafting",
+            "copy": "Chế tác thủ công bởi các nghệ nhân."
+          }
+        },
+        "s5": {
+          "type": "step",
+          "settings": {
+            "title": "Delivery & Legacy",
+            "copy": "Hoàn thiện, chứng nhận và bàn giao."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ],
+      "settings": {
+        "kicker": "PRIVATE COMMISSION",
+        "heading": "Private Commission / Chế tác riêng",
+        "intro": "Một tác phẩm độc bản, được lắng nghe, thấu hiểu và chế tác dành riêng cho bạn.",
+        "primary_label": "Đặt lịch tư vấn",
+        "secondary_label": "Gửi yêu cầu",
+        "process_heading": "The Private Commission Process",
+        "cta_kicker": "BEGIN YOUR CREATION",
+        "cta_heading": "Bắt đầu một tác phẩm duy nhất của riêng bạn.",
+        "cta_copy": "Đặt lịch tư vấn hoặc gửi yêu cầu để bắt đầu."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

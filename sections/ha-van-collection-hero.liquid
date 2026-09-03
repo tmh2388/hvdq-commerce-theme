@@ -1,0 +1,9 @@
+{% liquid
+ assign display_image = section.settings.image
+ if display_image == blank
+   assign display_image = collection.featured_image
+ endif
+ if display_image == blank
+   assign display_image = collection.products.first.featured_image
+ endif
+%}<section class="hv-collection-hero">{% if display_image != blank %}<div class="hv-collection-hero__media">{{ display_image | image_url: width: 1800 | image_tag: widths: '720,1100,1500,1800', loading: 'eager', alt: collection.title }}</div>{% endif %}<div class="hv-shell hv-collection-hero__copy"><div class="hv-kicker">{{ section.settings.kicker }}</div><h1>{{ collection.title | default: section.settings.heading }}</h1><p>{{ collection.description | default: section.settings.copy }}</p></div></section>{% schema %}{"name":"HA VAN — Collection Hero","settings":[{"type":"image_picker","id":"image","label":"Ảnh hero"},{"type":"text","id":"kicker","label":"Dòng nhấn","default":"THE HOUSE OF EXCEPTIONAL CRAFT"},{"type":"text","id":"heading","label":"Tiêu đề dự phòng","default":"Bộ sưu tập"},{"type":"textarea","id":"copy","label":"Mô tả dự phòng","default":"Những biểu đạt được tuyển chọn từ di sản, vật liệu và thời gian."}],"presets":[{"name":"HA VAN — Collection Hero"}]}{% endschema %}

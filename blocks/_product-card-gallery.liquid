@@ -1,37 +1,6 @@
 
 
-{% liquid
-  assign product = closest.product
-  assign commerce_mode = product.metafields.hvdq.commerce_mode.value
-  assign language_code = localization.language.iso_code
-  assign ready_to_ship_label = 'Ready to ship'
-  assign made_to_order_label = 'Made to order'
-  assign bespoke_label = 'Bespoke'
-
-  case language_code
-    when 'vi'
-      assign ready_to_ship_label = 'Hàng có sẵn'
-      assign made_to_order_label = 'Đặt làm theo mẫu'
-      assign bespoke_label = 'Chế tác riêng'
-    when 'zh-CN', 'zh-TW', 'zh'
-      assign ready_to_ship_label = '现货'
-      assign made_to_order_label = '按款定制'
-      assign bespoke_label = '专属定制'
-  endcase
-
-  capture commerce_mode_label
-    case commerce_mode
-      when 'READY_TO_SHIP'
-        echo ready_to_ship_label
-      when 'MADE_TO_ORDER'
-        echo made_to_order_label
-      when 'BESPOKE'
-        echo bespoke_label
-      else
-        echo commerce_mode | escape
-    endcase
-  endcapture
-%}
+{% assign product = closest.product %}
 
 {% capture children %}
   {% unless product == blank %}
@@ -42,11 +11,6 @@
         --badge-font-family: var(--font-{{ settings.badge_font_family }}--family); --badge-font-weight: var(--font-{{ settings.badge_font_family }}--weight); --badge-text-transform: {{ settings.badge_text_transform }};
       "
     >
-      {% if commerce_mode != blank %}
-        <div class="product-badges__badge product-badges__badge--rectangle product-badges__badge--hvdq">
-          {{ commerce_mode_label | strip }}
-        </div>
-      {% endif %}
       {%- if product.available == false or product.compare_at_price > product.price -%}
         <div
           class="
@@ -161,6 +125,7 @@
       "type": "color",
       "id": "border_color",
       "label": "t:settings.color",
+      "placeholder": "t:settings.default",
       "visible_if": "{{ block.settings.border != 'none' }}"
     },
     {
