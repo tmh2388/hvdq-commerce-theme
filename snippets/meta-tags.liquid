@@ -1,7 +1,8 @@
 {% doc %}
   Renders all meta tags for the page including Open Graph, Twitter Cards, and SEO tags.
 
-  @param {object} [product] - The product object, available on product pages for price meta tags.
+  Rendered globally from layout/theme.liquid with no explicit params; relies on the
+  global `product`/`collection` objects and `request.page_type` for per-template output.
 {% enddoc %}
 
 <meta charset="utf-8">
