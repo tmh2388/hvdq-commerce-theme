@@ -19,10 +19,10 @@
         {% for link in section.settings.menu.links %}
           <a href="{{ link.url }}">{{ link.title }}</a>
         {% else %}
-          <a href="/collections/all">Phụ kiện nam</a>
+          <a href="{{ routes.all_products_collection_url }}">Phụ kiện nam</a>
           <a href="/pages/private-commission">Chế tác riêng</a>
-          <a href="/collections/all">Đồng hồ Pháp Lam</a>
-          <a href="/collections">Bộ sưu tập</a>
+          <a href="{{ routes.all_products_collection_url }}">Đồng hồ Pháp Lam</a>
+          <a href="{{ routes.collections_url }}">Bộ sưu tập</a>
           <a href="/pages/about">Nghệ nhân</a>
           <a href="/blogs/news">Journal</a>
           <a href="/pages/about">Về HA VAN</a>
@@ -61,10 +61,10 @@
       {% for link in section.settings.menu.links %}
         <a href="{{ link.url }}">{{ link.title }}</a>
       {% else %}
-        <a href="/collections/all">Phụ kiện nam</a>
+        <a href="{{ routes.all_products_collection_url }}">Phụ kiện nam</a>
         <a href="/pages/private-commission">Chế tác riêng</a>
-        <a href="/collections/all">Đồng hồ Pháp Lam</a>
-        <a href="/collections">Bộ sưu tập</a>
+        <a href="{{ routes.all_products_collection_url }}">Đồng hồ Pháp Lam</a>
+        <a href="{{ routes.collections_url }}">Bộ sưu tập</a>
         <a href="/pages/about">Nghệ nhân</a>
         <a href="/blogs/news">Journal</a>
         <a href="/pages/about">Về HA VAN</a>

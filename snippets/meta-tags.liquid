@@ -121,3 +121,89 @@
     content="{{ page_description | escape }}"
   >
 {% endif %}
+
+{%- comment -%}
+  Organization JSON-LD already renders sitewide from sections/header.liquid, and Product JSON-LD
+  already renders on the product template from sections/product-information.liquid (Shopify's own
+  `structured_data` filter). Only add the WebSite/SearchAction block here — the one schema.org type
+  genuinely missing from the theme.
+{%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ shop.name | json }},
+    "url": {{ shop.url | json }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": {{ shop.url | append: routes.search_url | append: '?q={search_term_string}' | json }}
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>
+
+{%- comment -%}
+  No visible breadcrumb UI exists in this theme; BreadcrumbList structured data is valid on its own
+  per Google's guidelines and only affects search-result rich snippets, not page rendering.
+{%- endcomment -%}
+{%- if request.page_type == 'collection' and collection != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": {{ shop.name | json }},
+          "item": {{ shop.url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": {{ shop.url | append: collection.url | json }}
+        }
+      ]
+    }
+  </script>
+{%- elsif request.page_type == 'product' and product != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": {{ shop.name | json }},
+          "item": {{ shop.url | json }}
+        }
+        {%- if collection != blank -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": {{ shop.url | append: collection.url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ product.title | json }},
+          "item": {{ shop.url | append: product.url | json }}
+        }
+        {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ product.title | json }},
+          "item": {{ shop.url | append: product.url | json }}
+        }
+        {%- endif -%}
+      ]
+    }
+  </script>
+{%- endif -%}
